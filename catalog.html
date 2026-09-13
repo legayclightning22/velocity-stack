@@ -3,35 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XCD FLEET CATALOG | Vector Wireframe Showcase</title>
+    <title>XCD FLEET CATALOG | Computational Induction Systems</title>
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&family=JetBrains+Mono:wght@400;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap');
 
-        * { font-family: 'Space Grotesk', sans-serif; }
+        * { font-family: 'Space Grotesk', sans-serif; cursor: default; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #040507; }
         ::-webkit-scrollbar-thumb { background: #00f0ff; border-radius: 2px; }
 
         .hud-grid {
             background-image: 
-                radial-gradient(circle at 50% 10%, rgba(0, 240, 255, 0.1) 0%, transparent 60%),
+                radial-gradient(circle at 50% 10%, rgba(0, 240, 255, 0.12) 0%, transparent 65%),
                 linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 48px 48px, 48px 48px;
+            background-size: 100% 100%, 40px 40px, 40px 40px;
         }
 
         .glass-hull {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(10, 14, 22, 0.75) 100%);
-            backdrop-filter: blur(20px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(10, 14, 22, 0.85) 100%);
+            backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 40px -15px rgba(0, 0, 0, 0.9);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 24px 48px -18px rgba(0, 0, 0, 0.95);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .glass-hull:hover {
@@ -40,185 +43,301 @@
             transform: translateY(-6px);
         }
 
-        .neon-glow-cyan { box-shadow: 0 0 35px -5px rgba(0, 240, 255, 0.4); }
-        .neon-glow-red { box-shadow: 0 0 35px -5px rgba(255, 30, 56, 0.4); }
+        .neon-glow-red { box-shadow: 0 0 40px -5px rgba(255, 30, 56, 0.5); }
+        .neon-glow-cyan { box-shadow: 0 0 35px -5px rgba(0, 240, 255, 0.45); }
 
-        .wireframe-bike {
+        .wireframe-vector {
             fill: none;
-            stroke-width: 2;
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 0;
-            transition: all 0.5s ease;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: all 0.4s ease;
         }
-        .glass-hull:hover .wireframe-bike {
-            stroke-width: 2.5;
-            filter: drop-shadow(0 0 8px currentColor);
+        .glass-hull:hover .wireframe-vector {
+            stroke-width: 2.8;
+            filter: drop-shadow(0 0 10px currentColor);
         }
+
+        .aero-streamline {
+            fill: none;
+            stroke-dasharray: 12 8;
+            animation: streamline-flow 1.2s linear infinite;
+        }
+        @keyframes streamline-flow {
+            to { stroke-dashoffset: -40; }
+        }
+
+        #hud-cursor {
+            pointer-events: none;
+            position: fixed;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.15s, height 0.15s, border-color 0.2s;
+        }
+
+        .ticker-wrap { display: flex; overflow: hidden; user-select: none; }
+        .ticker-move { display: flex; animation: ticker 28s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     </style>
 </head>
 <body class="overflow-x-hidden hud-grid text-zinc-100 min-h-screen">
 
-    <!-- CATALOG NAVBAR -->
+    <!-- HUD CURSOR -->
+    <div id="hud-cursor" class="w-8 h-8 rounded-full border border-[#00f0ff]/60 flex items-center justify-center">
+        <div class="w-1.5 h-1.5 bg-[#00f0ff] rounded-full animate-ping"></div>
+    </div>
+
+    <!-- WIND TUNNEL STREAMLINES CANVAS -->
+    <canvas id="wind-tunnel" class="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- TOP NAVIGATION -->
     <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-5 border-b border-white/10 bg-[#040507]/85 backdrop-blur-xl">
         <a href="index.html" class="flex items-center space-x-3 text-xs font-mono font-bold text-zinc-400 hover:text-[#00f0ff] transition">
-            <span>←</span>
+            <span class="text-[#00f0ff]">←</span>
             <span>BACK TO MAIN TERMINAL</span>
         </a>
-        <div class="flex items-center space-x-3">
-            <span class="text-xs font-mono tracking-widest text-zinc-500 hidden sm:inline-block">XCD FLEET CATALOG // REV 2026</span>
+
+        <div class="flex items-center space-x-4">
+            <span class="hidden md:inline-block text-xs font-mono text-zinc-500">
+                ACTIVE PIPELINE: 5 VALIDATED PLATFORMS
+            </span>
             <a href="aeropulse-r38.html" class="px-5 py-2 text-xs font-mono font-bold uppercase tracking-wider bg-[#ff1e38] text-white rounded hover:bg-white hover:text-black transition neon-glow-red">
                 CBR 250R Dossier →
             </a>
         </div>
     </nav>
 
-    <!-- CATALOG HEADER -->
-    <header class="pt-36 pb-16 px-6 md:px-16 max-w-7xl mx-auto">
+    <!-- HERO HEADER -->
+    <header class="pt-40 pb-16 px-6 md:px-16 max-w-7xl mx-auto">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#00f0ff]/30 bg-[#00f0ff]/10 text-[#00f0ff] text-[11px] font-mono tracking-widest uppercase mb-6">
-            AERODYNAMIC APPLICATION FLEET
+            AERODYNAMIC VECTOR FLEET // MULTI-PLATFORM MATRIX
         </div>
-        <h1 class="text-5xl md:text-8xl font-black uppercase tracking-tight leading-none mb-6">
+
+        <h1 class="text-5xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-none mb-8">
             THE VECTOR <br>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-white to-[#ff1e38]">PLATFORMS.</span>
         </h1>
-        <p class="text-zinc-400 max-w-2xl text-base font-light leading-relaxed">
-            Every motorcycle airbox possesses distinct acoustic wave harmonics. Explore our application-specific intake velocity funnels below, rendered through their raw chassis silhouettes.
+
+        <p class="text-zinc-400 max-w-2xl text-base md:text-lg font-light leading-relaxed mb-10">
+            Every motorcycle engine possesses distinct intake harmonics. Factory airboxes choke throttle bodies with boundary-layer turbulence. Filter through our application-specific intake tuners engineered to eliminate flow stalls.
         </p>
+
+        <!-- INTERACTIVE FILTER TABS -->
+        <div class="flex flex-wrap gap-2 p-1.5 bg-zinc-950/80 border border-zinc-800 rounded-xl w-fit font-mono text-xs">
+            <button onclick="filterFleet('all')" id="tab-all" class="px-5 py-2.5 rounded-lg bg-[#00f0ff] text-black font-bold transition">ALL PLATFORMS [5]</button>
+            <button onclick="filterFleet('available')" id="tab-available" class="px-5 py-2.5 rounded-lg text-zinc-400 hover:text-white transition">AVAILABLE NOW (48H)</button>
+            <button onclick="filterFleet('singles')" id="tab-singles" class="px-5 py-2.5 rounded-lg text-zinc-400 hover:text-white transition">HIGH-VACUUM SINGLES</button>
+            <button onclick="filterFleet('twins')" id="tab-twins" class="px-5 py-2.5 rounded-lg text-zinc-400 hover:text-white transition">270° PARALLEL TWINS</button>
+        </div>
     </header>
 
-    <!-- CATALOG GRID (4 VECTOR SHOWCASES) -->
-    <section class="pb-32 px-6 md:px-16 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- LIVE FLEET STATUS TICKER -->
+    <div class="py-3 border-y border-white/5 bg-[#030406]/90 ticker-wrap font-mono text-xs text-zinc-500 mb-16">
+        <div class="ticker-move space-x-12">
+            <span class="text-[#00f0ff]">[ BATCH 04 IN PRODUCTION ]</span>
+            <span>CBR 250R: IN STOCK // 48-HOUR DISPATCH</span>
+            <span class="text-[#ff1e38]">RS 457: ASYMMETRIC TWIN CFD TESTING</span>
+            <span>GT 650: 72 MM EXTENDED RUNNER BENCHMARK</span>
+            <span class="text-[#00f0ff]">KTM 390: -35 KPA CYCLIC VACUUM FEA PASSED</span>
+            <span>YAMAHA R15: 7,400 RPM VVA DUAL-STAGE TUNER</span>
+            <span class="text-[#00f0ff]">[ BATCH 04 IN PRODUCTION ]</span>
+            <span>CBR 250R: IN STOCK // 48-HOUR DISPATCH</span>
+        </div>
+    </div>
 
-            <!-- CARD 1: HONDA CBR 250R (FLAGSHIP - READY) -->
-            <div class="glass-hull p-8 md:p-10 rounded-2xl relative overflow-hidden group border-2 border-[#ff1e38]/50">
-                <div class="flex justify-between items-start mb-6">
+    <!-- CATALOG SHOWCASE GRID -->
+    <section class="pb-32 px-6 md:px-16 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="fleet-grid">
+
+            <!-- PLATFORM 1: HONDA CBR 250R (FLAGSHIP - READY) -->
+            <div class="fleet-card card-available card-singles glass-hull p-8 md:p-10 rounded-2xl relative overflow-hidden group border-2 border-[#ff1e38]/50">
+                <div class="flex justify-between items-start mb-4">
                     <div>
                         <span class="text-xs font-mono text-[#ff1e38] tracking-widest uppercase block mb-1">AVAILABLE NOW // FLAGSHIP</span>
                         <h3 class="text-3xl font-black uppercase text-white group-hover:text-[#ff1e38] transition">HONDA CBR 250R</h3>
+                        <p class="text-xs font-mono text-[#00f0ff] mt-1">"THE ACOUSTIC RAM CHARGER"</p>
                     </div>
                     <span class="px-3 py-1 bg-[#ff1e38] text-white text-[10px] font-mono font-bold rounded">SHIPS IN 48H</span>
                 </div>
 
-                <!-- VECTOR SILHOUETTE (CBR 250R) -->
+                <!-- VECTOR BLUEPRINT SILHOUETTE (CBR 250R) -->
                 <div class="py-6 flex justify-center">
-                    <svg viewBox="0 0 400 180" class="w-full max-w-sm h-auto">
-                        <!-- Wheels -->
-                        <circle cx="80" cy="130" r="35" stroke="#444" stroke-width="2" fill="none" />
-                        <circle cx="320" cy="130" r="35" stroke="#444" stroke-width="2" fill="none" />
-                        <!-- Supersport Sharp Wireframe -->
-                        <path class="wireframe-bike stroke-[#ff1e38]" d="M 50,130 L 70,80 L 110,65 L 150,55 L 180,40 L 210,38 L 230,55 L 260,60 L 310,45 L 350,50 L 360,70 L 330,90 L 300,130 L 270,130 L 230,95 L 180,95 L 150,130 Z" />
+                    <svg viewBox="0 0 460 200" class="w-full max-w-md h-auto">
+                        <!-- Wheels & Rotors -->
+                        <circle cx="95" cy="140" r="42" stroke="#333" stroke-width="2.5" fill="none" />
+                        <circle cx="365" cy="140" r="42" stroke="#333" stroke-width="2.5" fill="none" />
+                        <circle cx="95" cy="140" r="28" stroke="rgba(255,30,56,0.3)" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
+                        <circle cx="365" cy="140" r="28" stroke="rgba(0,240,255,0.3)" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
+                        
+                        <!-- Exhaust & Frame -->
+                        <path d="M 230,150 L 150,150 L 100,125" fill="none" stroke="#52525b" stroke-width="2" />
+                        
+                        <!-- Supersport Chassis Contour -->
+                        <path class="wireframe-vector stroke-[#ff1e38]" 
+                              d="M 60,140 L 80,85 L 125,70 L 170,60 L 205,45 L 235,42 L 260,60 L 295,65 L 350,50 L 395,55 L 405,78 L 375,98 L 340,140 L 310,140 L 260,105 L 205,105 L 170,140 Z" />
+                        
+                        <!-- Redline Intake Vector -->
+                        <path class="aero-streamline stroke-[#00f0ff]" stroke-width="2" d="M 430,60 C 360,50 300,75 240,85" />
+                        <circle cx="235" cy="85" r="4" fill="#ff1e38" />
                     </svg>
                 </div>
 
                 <div class="space-y-3 font-mono text-xs text-zinc-400 border-t border-white/10 pt-6">
-                    <div class="flex justify-between"><span>MODEL DESIGNATION:</span><span class="text-white font-bold">AeroPulse R-38</span></div>
-                    <div class="flex justify-between"><span>THROTTLE BORE:</span><span class="text-white font-bold">Ø38.0 mm</span></div>
+                    <div class="flex justify-between"><span>DESIGNATION:</span><span class="text-white font-bold">AeroPulse R-38</span></div>
+                    <div class="flex justify-between"><span>THROTTLE BORE:</span><span class="text-white font-bold">Ø38.0 mm Direct Interference Fit</span></div>
                     <div class="flex justify-between"><span>ACOUSTIC GAIN:</span><span class="text-[#00f0ff] font-bold">+1.2 HP (Mid) / +3.4 HP (Stage 2)</span></div>
+                    <div class="flex justify-between"><span>GPS DRAGY DELTA:</span><span class="text-[#ff1e38] font-bold">-0.79s (0-100 km/h) / +8.2 km/h Top</span></div>
                 </div>
 
                 <div class="mt-8 flex gap-4">
-                    <a href="aeropulse-r38.html" class="w-full py-3.5 bg-[#ff1e38] text-white font-mono font-bold text-center text-xs uppercase rounded hover:bg-white hover:text-black transition">
-                        View Full Dossier →
+                    <a href="aeropulse-r38.html" class="w-full py-4 bg-[#ff1e38] text-white font-mono font-bold text-center text-xs uppercase rounded-lg hover:bg-white hover:text-black transition neon-glow-red">
+                        View Full Engineering Dossier →
                     </a>
                 </div>
             </div>
 
-            <!-- CARD 2: APRILIA RS 457 -->
-            <div class="glass-hull p-8 md:p-10 rounded-2xl relative overflow-hidden group">
-                <div class="flex justify-between items-start mb-6">
+            <!-- PLATFORM 2: APRILIA RS 457 (CFD STAGE) -->
+            <div class="fleet-card card-twins glass-hull p-8 md:p-10 rounded-2xl relative overflow-hidden group border-l-4 border-[#00f0ff]">
+                <div class="flex justify-between items-start mb-4">
                     <div>
                         <span class="text-xs font-mono text-[#00f0ff] tracking-widest uppercase block mb-1">CFD VALIDATION // HIGH DEMAND</span>
                         <h3 class="text-3xl font-black uppercase text-white group-hover:text-[#00f0ff] transition">APRILIA RS 457</h3>
+                        <p class="text-xs font-mono text-[#00f0ff] mt-1">"THE ASYMMETRIC TWIN DECOUPLER"</p>
                     </div>
-                    <span class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[10px] font-mono font-bold rounded">IN VALIDATION</span>
+                    <span class="px-3 py-1 bg-zinc-900 border border-zinc-800 text-zinc-300 text-[10px] font-mono font-bold rounded">CFD TESTING</span>
                 </div>
 
-                <!-- VECTOR SILHOUETTE (RS 457) -->
+                <!-- VECTOR BLUEPRINT SILHOUETTE (RS 457) -->
                 <div class="py-6 flex justify-center">
-                    <svg viewBox="0 0 400 180" class="w-full max-w-sm h-auto">
-                        <circle cx="80" cy="130" r="35" stroke="#444" stroke-width="2" fill="none" />
-                        <circle cx="320" cy="130" r="35" stroke="#444" stroke-width="2" fill="none" />
-                        <!-- Sharp Italian Twin Silhouette -->
-                        <path class="wireframe-bike stroke-[#00f0ff]" d="M 50,130 L 65,75 L 105,58 L 140,48 L 175,32 L 205,32 L 225,48 L 255,55 L 305,38 L 355,42 L 365,65 L 335,85 L 305,130 L 275,130 L 235,90 L 185,90 L 155,130 Z" />
+                    <svg viewBox="0 0 460 200" class="w-full max-w-md h-auto">
+                        <circle cx="95" cy="140" r="42" stroke="#333" stroke-width="2.5" fill="none" />
+                        <circle cx="365" cy="140" r="42" stroke="#333" stroke-width="2.5" fill="none" />
+                        <!-- Sharp Italian Twin Profile -->
+                        <path class="wireframe-vector stroke-[#00f0ff]" 
+                              d="M 60,140 L 75,80 L 120,62 L 160,52 L 200,35 L 230,35 L 255,52 L 290,58 L 345,42 L 400,46 L 410,70 L 380,92 L 345,140 L 315,140 L 265,98 L 210,98 L 175,140 Z" />
+                        <path class="aero-streamline stroke-[#ff1e38]" stroke-width="1.8" d="M 430,45 C 370,40 310,65 255,75" />
+                        <path class="aero-streamline stroke-[#00f0ff]" stroke-width="1.8" d="M 430,65 C 370,60 310,85 255,95" />
                     </svg>
                 </div>
 
                 <div class="space-y-3 font-mono text-xs text-zinc-400 border-t border-white/10 pt-6">
-                    <div class="flex justify-between"><span>ARCHITECTURE:</span><span class="text-white font-bold">Dual Synchronized Stacks</span></div>
-                    <div class="flex justify-between"><span>TARGET CONFIG:</span><span class="text-white font-bold">270° Parallel Twin Acoustic Balance</span></div>
-                    <div class="flex justify-between"><span>CFD STATUS:</span><span class="text-[#00f0ff] font-bold">Eliminating High-RPM Airbox Choke</span></div>
+                    <div class="flex justify-between"><span>ARCHITECTURE:</span><span class="text-white font-bold">Dual Asymmetric Stacks</span></div>
+                    <div class="flex justify-between"><span>TARGET ENGINE:</span><span class="text-white font-bold">457cc 270° Parallel Twin</span></div>
+                    <div class="flex justify-between"><span>SOLVING:</span><span class="text-[#00f0ff] font-bold">7.4% Cylinder 2 Air Mass Drop</span></div>
+                    <div class="flex justify-between"><span>DEVELOPMENT:</span><span class="text-zinc-300 font-bold">Q3 2026 CFD Allocation</span></div>
                 </div>
 
                 <div class="mt-8">
-                    <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20XCD%20Industries,%20I%20want%20to%20join%20the%20RS%20457%20Velocity%20Stack%20Priority%20Waitlist." target="_blank" class="block w-full py-3.5 border border-[#00f0ff] text-[#00f0ff] font-mono font-bold text-center text-xs uppercase rounded hover:bg-[#00f0ff] hover:text-black transition">
-                        Join RS 457 Priority Waitlist
+                    <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20XCD%20Industries,%20I%20want%20to%20join%20the%20RS%20457%20Priority%20Waitlist." target="_blank" class="block w-full py-4 border border-[#00f0ff] text-[#00f0ff] font-mono font-bold text-center text-xs uppercase rounded-lg hover:bg-[#00f0ff] hover:text-black transition">
+                        Join RS 457 Priority Waitlist →
                     </a>
                 </div>
             </div>
 
-            <!-- CARD 3: RE CONTINENTAL GT 650 -->
-            <div class="glass-hull p-8 md:p-10 rounded-2xl relative overflow-hidden group">
-                <div class="flex justify-between items-start mb-6">
+            <!-- PLATFORM 3: RE CONTINENTAL GT 650 (PROTOTYPE STAGE) -->
+            <div class="fleet-card card-twins glass-hull p-8 md:p-10 rounded-2xl relative overflow-hidden group border-l-4 border-orange-500">
+                <div class="flex justify-between items-start mb-4">
                     <div>
                         <span class="text-xs font-mono text-orange-400 tracking-widest uppercase block mb-1">PROTOTYPING // TORQUE MULTIPLIER</span>
-                        <h3 class="text-3xl font-black uppercase text-white group-hover:text-orange-400 transition">RE CONT. GT 650</h3>
+                        <h3 class="text-3xl font-black uppercase text-white group-hover:text-orange-400 transition">RE CONTINENTAL GT 650</h3>
+                        <p class="text-xs font-mono text-orange-400 mt-1">"THE ACOUSTIC TORQUE MULTIPLIER"</p>
                     </div>
-                    <span class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[10px] font-mono font-bold rounded">PROTOTYPING</span>
+                    <span class="px-3 py-1 bg-zinc-900 border border-zinc-800 text-zinc-300 text-[10px] font-mono font-bold rounded">PROTOTYPING</span>
                 </div>
 
-                <!-- VECTOR SILHOUETTE (GT 650 CAFE RACER) -->
+                <!-- VECTOR BLUEPRINT SILHOUETTE (GT 650 CAFE) -->
                 <div class="py-6 flex justify-center">
-                    <svg viewBox="0 0 400 180" class="w-full max-w-sm h-auto">
-                        <circle cx="80" cy="130" r="35" stroke="#444" stroke-width="2" fill="none" />
-                        <circle cx="320" cy="130" r="35" stroke="#444" stroke-width="2" fill="none" />
-                        <!-- Cafe Racer Low Clip-on Silhouette -->
-                        <path class="wireframe-bike stroke-orange-400" d="M 50,130 L 70,85 L 120,75 L 170,55 L 210,55 L 240,70 L 290,70 L 330,60 L 350,75 L 330,95 L 300,130 L 270,130 L 220,105 L 170,105 L 140,130 Z" />
+                    <svg viewBox="0 0 460 200" class="w-full max-w-md h-auto">
+                        <circle cx="95" cy="140" r="42" stroke="#333" stroke-width="2.5" fill="none" />
+                        <circle cx="365" cy="140" r="42" stroke="#333" stroke-width="2.5" fill="none" />
+                        <!-- Classic Cafe Racer Low-Clip Line -->
+                        <path class="wireframe-vector stroke-orange-400" 
+                              d="M 60,140 L 80,95 L 135,85 L 190,62 L 235,62 L 270,78 L 325,78 L 370,68 L 390,82 L 370,105 L 340,140 L 310,140 L 250,115 L 195,115 L 160,140 Z" />
                     </svg>
                 </div>
 
                 <div class="space-y-3 font-mono text-xs text-zinc-400 border-t border-white/10 pt-6">
-                    <div class="flex justify-between"><span>ARCHITECTURE:</span><span class="text-white font-bold">Long-Runner Acoustic Horns</span></div>
-                    <div class="flex justify-between"><span>TARGET GAIN:</span><span class="text-white font-bold">+3.2 Nm Across 3,500 – 6,000 RPM</span></div>
-                    <div class="flex justify-between"><span>INTENDED BENEFIT:</span><span class="text-orange-400 font-bold">Massive Midrange Roll-on Punch</span></div>
+                    <div class="flex justify-between"><span>ARCHITECTURE:</span><span class="text-white font-bold">72 mm Extended Acoustic Horns</span></div>
+                    <div class="flex justify-between"><span>TARGET ENGINE:</span><span class="text-white font-bold">648cc Parallel Twin</span></div>
+                    <div class="flex justify-between"><span>SOLVING:</span><span class="text-orange-400 font-bold">Fuel Reversion Standoff Mist</span></div>
+                    <div class="flex justify-between"><span>MIDRANGE GAIN:</span><span class="text-white font-bold">+3.2 Nm @ 4,500 – 6,000 RPM</span></div>
                 </div>
 
                 <div class="mt-8">
-                    <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20XCD%20Industries,%20I%20want%20to%20reserve%20a%20GT%20650%20AeroTwin%20Runner%20Stack." target="_blank" class="block w-full py-3.5 border border-orange-400 text-orange-400 font-mono font-bold text-center text-xs uppercase rounded hover:bg-orange-400 hover:text-black transition">
-                        Join GT 650 Priority Allocation
+                    <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20XCD%20Industries,%20I%20want%20to%20reserve%20a%20Continental%20GT%20650%20Stack." target="_blank" class="block w-full py-4 border border-orange-400 text-orange-400 font-mono font-bold text-center text-xs uppercase rounded-lg hover:bg-orange-400 hover:text-black transition">
+                        Register GT 650 Allocation →
                     </a>
                 </div>
             </div>
 
-            <!-- CARD 4: KTM DUKE / RC 390 -->
-            <div class="glass-hull p-8 md:p-10 rounded-2xl relative overflow-hidden group">
-                <div class="flex justify-between items-start mb-6">
+            <!-- PLATFORM 4: KTM 390 PLATFORM (DUKE & RC) -->
+            <div class="fleet-card card-singles glass-hull p-8 md:p-10 rounded-2xl relative overflow-hidden group border-l-4 border-amber-500">
+                <div class="flex justify-between items-start mb-4">
                     <div>
                         <span class="text-xs font-mono text-amber-500 tracking-widest uppercase block mb-1">VACUUM FEA // HIGH-PULSE SINGLE</span>
                         <h3 class="text-3xl font-black uppercase text-white group-hover:text-amber-500 transition">KTM 390 PLATFORM</h3>
+                        <p class="text-xs font-mono text-amber-500 mt-1">"THE ANTI-FLUTTER RESONATOR"</p>
                     </div>
-                    <span class="px-3 py-1 bg-zinc-800 text-zinc-300 text-[10px] font-mono font-bold rounded">FEA REINFORCEMENT</span>
+                    <span class="px-3 py-1 bg-zinc-900 border border-zinc-800 text-zinc-300 text-[10px] font-mono font-bold rounded">FEA PASSED</span>
                 </div>
 
-                <!-- VECTOR SILHOUETTE (KTM AGGRESSIVE NAKED) -->
+                <!-- VECTOR BLUEPRINT SILHOUETTE (KTM AGGRESSIVE NAKED) -->
                 <div class="py-6 flex justify-center">
-                    <svg viewBox="0 0 400 180" class="w-full max-w-sm h-auto">
-                        <circle cx="80" cy="130" r="35" stroke="#444" stroke-width="2" fill="none" />
-                        <circle cx="320" cy="130" r="35" stroke="#444" stroke-width="2" fill="none" />
-                        <!-- Aggressive Streetfighter Naked Silhouette -->
-                        <path class="wireframe-bike stroke-amber-500" d="M 50,130 L 65,85 L 110,65 L 145,50 L 175,40 L 195,50 L 220,70 L 250,75 L 290,55 L 340,55 L 345,75 L 315,95 L 285,130 L 260,130 L 220,100 L 175,100 L 140,130 Z" />
+                    <svg viewBox="0 0 460 200" class="w-full max-w-md h-auto">
+                        <circle cx="95" cy="140" r="42" stroke="#333" stroke-width="2.5" fill="none" />
+                        <circle cx="365" cy="140" r="42" stroke="#333" stroke-width="2.5" fill="none" />
+                        <!-- Naked Streetfighter Profile -->
+                        <path class="wireframe-vector stroke-amber-500" 
+                              d="M 60,140 L 75,95 L 125,75 L 165,58 L 195,46 L 220,58 L 245,80 L 280,85 L 325,62 L 380,62 L 385,85 L 355,108 L 325,140 L 295,140 L 250,110 L 200,110 L 160,140 Z" />
                     </svg>
                 </div>
 
                 <div class="space-y-3 font-mono text-xs text-zinc-400 border-t border-white/10 pt-6">
-                    <div class="flex justify-between"><span>CHALLENGE:</span><span class="text-white font-bold">Brutal -35 kPa Vacuum Spikes</span></div>
-                    <div class="flex justify-between"><span>SOLUTION:</span><span class="text-white font-bold">6-Perimeter Reinforced Flange</span></div>
-                    <div class="flex justify-between"><span>TARGET PLATFORM:</span><span class="text-amber-500 font-bold">Duke 390 & RC 390 (Gen 2/3)</span></div>
+                    <div class="flex justify-between"><span>ARCHITECTURE:</span><span class="text-white font-bold">6-Perimeter Reinforced ASA-CF</span></div>
+                    <div class="flex justify-between"><span>TARGET ENGINE:</span><span class="text-white font-bold">373cc & 399cc LC4c Singles</span></div>
+                    <div class="flex justify-between"><span>SOLVING:</span><span class="text-amber-500 font-bold">-35 kPa Cyclic Wall Flutter</span></div>
+                    <div class="flex justify-between"><span>OVER-REV BENEFIT:</span><span class="text-white font-bold">Eliminates 8,800 RPM Top Choke</span></div>
                 </div>
 
                 <div class="mt-8">
-                    <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20XCD%20Industries,%20I%20want%20to%20request%20the%20KTM%20390%20Stack." target="_blank" class="block w-full py-3.5 border border-amber-500 text-amber-500 font-mono font-bold text-center text-xs uppercase rounded hover:bg-amber-500 hover:text-black transition">
-                        Register KTM 390 Interest
+                    <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20XCD%20Industries,%20I%20am%20interested%20in%20the%20KTM%20390%20Stack." target="_blank" class="block w-full py-4 border border-amber-500 text-amber-500 font-mono font-bold text-center text-xs uppercase rounded-lg hover:bg-amber-500 hover:text-black transition">
+                        Register KTM 390 Interest →
+                    </a>
+                </div>
+            </div>
+
+            <!-- PLATFORM 5: YAMAHA R15 (V3 / V4) -->
+            <div class="fleet-card card-singles glass-hull p-8 md:p-10 rounded-2xl relative overflow-hidden group border-l-4 border-[#00f0ff]">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <span class="text-xs font-mono text-[#00f0ff] tracking-widest uppercase block mb-1">CAD GEOMETRY // 155CC VVA</span>
+                        <h3 class="text-3xl font-black uppercase text-white group-hover:text-[#00f0ff] transition">YAMAHA R15 V3 / V4</h3>
+                        <p class="text-xs font-mono text-[#00f0ff] mt-1">"THE VVA STEP ACCELERATOR"</p>
+                    </div>
+                    <span class="px-3 py-1 bg-zinc-900 border border-zinc-800 text-zinc-300 text-[10px] font-mono font-bold rounded">PROTOTYPING</span>
+                </div>
+
+                <!-- VECTOR BLUEPRINT SILHOUETTE (R15) -->
+                <div class="py-6 flex justify-center">
+                    <svg viewBox="0 0 460 200" class="w-full max-w-md h-auto">
+                        <circle cx="95" cy="140" r="42" stroke="#333" stroke-width="2.5" fill="none" />
+                        <circle cx="365" cy="140" r="42" stroke="#333" stroke-width="2.5" fill="none" />
+                        <!-- Sharp Track Aggressive Silhouette -->
+                        <path class="wireframe-vector stroke-[#00f0ff]" 
+                              d="M 60,140 L 75,85 L 115,70 L 155,58 L 195,44 L 225,44 L 250,58 L 285,65 L 340,50 L 390,52 L 400,75 L 370,95 L 335,140 L 305,140 L 255,105 L 200,105 L 165,140 Z" />
+                    </svg>
+                </div>
+
+                <div class="space-y-3 font-mono text-xs text-zinc-400 border-t border-white/10 pt-6">
+                    <div class="flex justify-between"><span>ARCHITECTURE:</span><span class="text-white font-bold">Stepped Dual-Taper Venturi</span></div>
+                    <div class="flex justify-between"><span>TARGET ENGINE:</span><span class="text-white font-bold">155cc 4V SOHC VVA</span></div>
+                    <div class="flex justify-between"><span>SOLVING:</span><span class="text-[#00f0ff] font-bold">7,400 RPM High-Cam Transition Lag</span></div>
+                    <div class="flex justify-between"><span>TARGET REV:</span><span class="text-white font-bold">Sustained Pull to 12,000 RPM</span></div>
+                </div>
+
+                <div class="mt-8">
+                    <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20XCD%20Industries,%20I%20want%20to%20register%20for%20the%20R15%20VVA%20Stack." target="_blank" class="block w-full py-4 border border-[#00f0ff] text-[#00f0ff] font-mono font-bold text-center text-xs uppercase rounded-lg hover:bg-[#00f0ff] hover:text-black transition">
+                        Register R15 VVA Interest →
                     </a>
                 </div>
             </div>
@@ -226,9 +345,160 @@
         </div>
     </section>
 
+    <!-- SECTION: THE FULL FLEET COMPARISON MATRIX -->
+    <section class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
+        <div class="mb-12">
+            <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#ff1e38] block mb-2">[ COMPARATIVE FLUID DYNAMICS ]</span>
+            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Full Fleet Engineering Matrix</h2>
+            <p class="text-zinc-400 text-xs font-mono mt-2">Technical diagnosis of OEM factory intake choke vs. XCD bespoke engineering across all platforms.</p>
+        </div>
+
+        <div class="glass-hull p-6 md:p-8 rounded-2xl overflow-x-auto">
+            <table class="w-full text-left font-mono text-xs whitespace-nowrap">
+                <thead>
+                    <tr class="border-b border-white/10 text-zinc-500 pb-4">
+                        <th class="pb-4">MOTORCYCLE PLATFORM</th>
+                        <th class="pb-4">DISPLACEMENT</th>
+                        <th class="pb-4">OEM CHOKE CAUSE</th>
+                        <th class="pb-4 text-[#00f0ff]">XCD ARCHITECTURE</th>
+                        <th class="pb-4 text-[#ff1e38]">DYNO / REVENUE GAIN</th>
+                        <th class="pb-4">STATUS</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-zinc-300">
+                    <tr>
+                        <td class="py-4 font-bold text-white">HONDA CBR 250R</td>
+                        <td class="py-4 text-zinc-500">249cc Single</td>
+                        <td class="py-4 text-zinc-400">Vena contracta detachment past 8.5K</td>
+                        <td class="py-4 text-[#00f0ff]">AeroPulse R-38 (50 mm / 180° Lip)</td>
+                        <td class="py-4 text-[#ff1e38] font-bold">+1.2 HP (Mid) / +3.4 HP (Race)</td>
+                        <td class="py-4"><span class="px-2 py-0.5 bg-[#ff1e38] text-white text-[9px] font-bold rounded">IN STOCK</span></td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 font-bold text-white">APRILIA RS 457</td>
+                        <td class="py-4 text-zinc-500">457cc 270° Twin</td>
+                        <td class="py-4 text-zinc-400">Cylinder 1-2 intake wave robbing</td>
+                        <td class="py-4 text-[#00f0ff]">Dual Asymmetric Decoupled Funnels</td>
+                        <td class="py-4 text-[#ff1e38] font-bold">+7.4% Cyl 2 Air Density Balance</td>
+                        <td class="py-4"><span class="px-2 py-0.5 bg-zinc-800 text-zinc-400 text-[9px] font-bold rounded">CFD VALIDATION</span></td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 font-bold text-white">RE CONTINENTAL GT 650</td>
+                        <td class="py-4 text-zinc-500">648cc Twin</td>
+                        <td class="py-4 text-zinc-400">Midrange fuel standoff mist reversion</td>
+                        <td class="py-4 text-[#00f0ff]">72 mm Extended Acoustic Horns</td>
+                        <td class="py-4 text-[#ff1e38] font-bold">+3.2 Nm Midrange Roll-on Torque</td>
+                        <td class="py-4"><span class="px-2 py-0.5 bg-zinc-800 text-zinc-400 text-[9px] font-bold rounded">PROTOTYPING</span></td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 font-bold text-white">KTM 390 (DUKE/RC)</td>
+                        <td class="py-4 text-zinc-500">373cc / 399cc</td>
+                        <td class="py-4 text-zinc-400">-35 kPa cyclic vacuum wall collapse</td>
+                        <td class="py-4 text-[#00f0ff]">6-Perimeter Reinforced Carbon Hull</td>
+                        <td class="py-4 text-[#ff1e38] font-bold">Unbroken 10,200 RPM Over-rev</td>
+                        <td class="py-4"><span class="px-2 py-0.5 bg-zinc-800 text-zinc-400 text-[9px] font-bold rounded">FEA PASSED</span></td>
+                    </tr>
+                    <tr>
+                        <td class="py-4 font-bold text-white">YAMAHA R15 V3/V4</td>
+                        <td class="py-4 text-zinc-500">155cc VVA</td>
+                        <td class="py-4 text-zinc-400">High-cam boundary stall @ 7,400 RPM</td>
+                        <td class="py-4 text-[#00f0ff]">Stepped Dual-Taper Venturi</td>
+                        <td class="py-4 text-[#ff1e38] font-bold">Immediate VVA Pickup to 12K RPM</td>
+                        <td class="py-4"><span class="px-2 py-0.5 bg-zinc-800 text-zinc-400 text-[9px] font-bold rounded">PROTOTYPING</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
     <!-- FOOTER -->
-    <footer class="py-8 px-6 md:px-16 border-t border-white/5 text-center text-zinc-600 text-[11px] font-mono">
-        © 2026 XCD INDUSTRIES. ALL VECTOR INTELLECTUAL PROPERTY PROTECTED.
+    <footer class="relative z-20 py-8 px-6 md:px-16 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-zinc-600 text-[11px] font-mono">
+        <div>© 2026 XCD INDUSTRIES. ALL RIGHTS RESERVED. VECTOR FLEET MAPPING.</div>
+        <div class="text-zinc-500">FOUNDED BY RACERS. BACKED BY MATHEMATICAL PHYSICS.</div>
     </footer>
+
+    <!-- INTERACTIVE SCRIPT -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. HUD CURSOR RETICLE
+        const cursor = document.getElementById('hud-cursor');
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1, ease: "power1.out" });
+        });
+
+        // 2. WIND TUNNEL PARTICLES CANVAS
+        const canvas = document.getElementById('wind-tunnel');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class AirStream {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.length = Math.random() * 80 + 40;
+                this.speed = Math.random() * 8 + 6;
+                this.opacity = Math.random() * 0.4 + 0.15;
+            }
+            update() {
+                this.x += this.speed;
+                if (this.x > canvas.width + this.length) { this.x = -this.length; this.y = Math.random() * canvas.height; }
+            }
+            draw() {
+                ctx.beginPath();
+                const grad = ctx.createLinearGradient(this.x, this.y, this.x + this.length, this.y);
+                grad.addColorStop(0, 'rgba(0, 240, 255, 0)');
+                grad.addColorStop(0.5, `rgba(0, 240, 255, ${this.opacity})`);
+                grad.addColorStop(1, `rgba(255, 30, 56, ${this.opacity * 1.5})`);
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = 1.5;
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x + this.length, this.y);
+                ctx.stroke();
+            }
+        }
+        for (let i = 0; i < 40; i++) particles.push(new AirStream());
+        function animateTunnel() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateTunnel);
+        }
+        animateTunnel();
+
+        // 3. STAGGERED REVEAL ON LOAD & SCROLL
+        gsap.from(".fleet-card", {
+            scrollTrigger: { trigger: "#fleet-grid", start: "top 80%" },
+            y: 60, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out"
+        });
+
+        // 4. INTERACTIVE FLEET FILTER TABS
+        function filterFleet(category) {
+            ['all', 'available', 'singles', 'twins'].forEach(cat => {
+                const btn = document.getElementById(`tab-${cat}`);
+                if (cat === category) {
+                    btn.className = "px-5 py-2.5 rounded-lg bg-[#00f0ff] text-black font-bold transition";
+                } else {
+                    btn.className = "px-5 py-2.5 rounded-lg text-zinc-400 hover:text-white transition";
+                }
+            });
+
+            const cards = document.querySelectorAll('.fleet-card');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                    gsap.fromTo(card, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4 });
+                } else if (card.classList.contains(`card-${category}`)) {
+                    card.style.display = 'block';
+                    gsap.fromTo(card, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4 });
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
