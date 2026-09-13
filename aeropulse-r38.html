@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AeroPulse R-38 Dossier | XCD Industries</title>
+    <title>AeroPulse R-38 Engineering Dossier | XCD Industries</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,68 +15,93 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap');
 
-        * { font-family: 'Space Grotesk', sans-serif; }
+        * { font-family: 'Space Grotesk', sans-serif; cursor: default; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #040507; }
-        ::-webkit-scrollbar-thumb { background: #ff1e38; }
+        ::-webkit-scrollbar-thumb { background: #ff1e38; border-radius: 2px; }
 
         .hud-grid {
             background-image: 
-                radial-gradient(circle at 50% 10%, rgba(255, 30, 56, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 50% 10%, rgba(255, 30, 56, 0.14) 0%, transparent 65%),
                 linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 48px 48px, 48px 48px;
+            background-size: 100% 100%, 40px 40px, 40px 40px;
         }
 
         .glass-hull {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(10, 14, 22, 0.75) 100%);
-            backdrop-filter: blur(20px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(10, 14, 22, 0.85) 100%);
+            backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 40px -15px rgba(0, 0, 0, 0.9);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 24px 48px -18px rgba(0, 0, 0, 0.95);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-hull:hover {
+            border-color: rgba(255, 30, 56, 0.45);
+            box-shadow: 0 0 35px -5px rgba(255, 30, 56, 0.35);
         }
 
-        .neon-glow-red { box-shadow: 0 0 40px -5px rgba(255, 30, 56, 0.45); }
-        .neon-glow-cyan { box-shadow: 0 0 35px -5px rgba(0, 240, 255, 0.35); }
+        .neon-glow-red { box-shadow: 0 0 40px -5px rgba(255, 30, 56, 0.5); }
+        .neon-glow-cyan { box-shadow: 0 0 35px -5px rgba(0, 240, 255, 0.45); }
 
-        /* SVG Graph Line Animations */
+        /* SVG Dyno Graph Paths */
         .graph-line { fill: none; stroke-width: 3.5; stroke-linecap: round; }
         .line-stock { stroke: #52525b; stroke-dasharray: 1200; stroke-dashoffset: 1200; }
         .line-s1 { stroke: #00f0ff; stroke-dasharray: 1200; stroke-dashoffset: 1200; filter: drop-shadow(0 0 8px rgba(0,240,255,0.6)); }
         .line-s2 { stroke: #ff1e38; stroke-dasharray: 1200; stroke-dashoffset: 1200; filter: drop-shadow(0 0 10px rgba(255,30,56,0.8)); }
+
+        /* Custom HUD Reticle */
+        #hud-cursor {
+            pointer-events: none;
+            position: fixed;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.15s, height 0.15s, border-color 0.2s;
+        }
+
+        .ticker-wrap { display: flex; overflow: hidden; user-select: none; }
+        .ticker-move { display: flex; animation: ticker 30s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     </style>
 </head>
 <body class="overflow-x-hidden hud-grid text-zinc-100">
 
-    <!-- SUB-PAGE TOP BAR -->
+    <!-- HUD CURSOR -->
+    <div id="hud-cursor" class="w-8 h-8 rounded-full border border-[#00f0ff]/60 flex items-center justify-center">
+        <div class="w-1.5 h-1.5 bg-[#ff1e38] rounded-full animate-ping"></div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
     <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-5 border-b border-white/10 bg-[#040507]/85 backdrop-blur-xl">
         <a href="index.html" class="flex items-center space-x-3 text-xs font-mono font-bold text-zinc-400 hover:text-white transition">
             <span class="text-[#ff1e38]">←</span>
-            <span>RETURN TO MAIN TERMINAL</span>
+            <span>BACK TO MAIN TERMINAL</span>
         </a>
 
         <div class="flex items-center space-x-6">
-            <span class="hidden sm:inline-block text-xs font-mono text-zinc-500">DOSSIER: AEROPULSE R-38 // CBR250R</span>
+            <span class="hidden md:inline-block text-xs font-mono text-zinc-500">
+                BATCH 04 // 14 PROTOTYPE CYCLES // CBR 250R
+            </span>
             <a href="#order" class="px-5 py-2 text-xs font-mono font-bold uppercase tracking-wider bg-[#ff1e38] text-white rounded hover:bg-white hover:text-black transition neon-glow-red">
-                Reserve Unit
+                Reserve R-38
             </a>
         </div>
     </nav>
 
-    <!-- HEADER: PRODUCT SPECIFICATION OVERVIEW -->
+    <!-- SECTION 1: HEADER & IDENTITY -->
     <header class="pt-40 pb-20 px-6 md:px-16 max-w-6xl mx-auto">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#ff1e38]/30 bg-[#ff1e38]/10 text-[#ff1e38] text-[11px] font-mono tracking-widest uppercase mb-6">
-            TECHNICAL DOSSIER // REVISION 3.2
+            ENGINEERING DOSSIER // REVISION 4.0 // VERIFIED BENCHMARKS
         </div>
         
         <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-none mb-6">
             AEROPULSE <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ff1e38] via-[#ff6a00] to-[#00f0ff]">R-38 INTAKE TUNER</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ff1e38] via-[#ff6a00] to-[#00f0ff]">R-38 SPRINT TUNER</span>
         </h1>
 
         <p class="text-zinc-400 text-lg md:text-xl font-light leading-relaxed max-w-3xl mb-12">
-            Engineered specifically for the Honda CBR 250R (MC41). A computational fluid resonator built to eliminate factory intake turbulence and exploit acoustic reflection waves for passive cylinder supercharging.
+            The comprehensive technical specification of the AeroPulse R-38. Engineered to eliminate high-RPM boundary-layer choking in the Honda CBR 250R (MC41) intake tract through tuned acoustic Helmholtz wave reflections.
         </p>
 
         <!-- SPECIFICATION GRID -->
@@ -89,68 +114,213 @@
             <div class="glass-hull p-5 rounded-lg border-t-2 border-[#00f0ff]">
                 <span class="text-zinc-500 block text-[10px]">BELLMOUTH LIP</span>
                 <span class="text-xl font-black text-white">180° ELLIPSE</span>
-                <span class="text-zinc-400 text-[11px] block mt-1">Anti-Separation Roll</span>
+                <span class="text-zinc-400 text-[11px] block mt-1">Anti-Separation Flare</span>
             </div>
             <div class="glass-hull p-5 rounded-lg border-t-2 border-white">
                 <span class="text-zinc-500 block text-[10px]">INTERNAL CONE</span>
                 <span class="text-xl font-black text-white">7.0° TAPER</span>
-                <span class="text-zinc-400 text-[11px] block mt-1">Venturi Acceleration</span>
+                <span class="text-zinc-400 text-[11px] block mt-1">Venturi Velocity</span>
             </div>
             <div class="glass-hull p-5 rounded-lg border-t-2 border-[#ff6a00]">
-                <span class="text-zinc-500 block text-[10px]">MATERIAL MATRIX</span>
+                <span class="text-zinc-500 block text-[10px]">COMPOSITE MATRIX</span>
                 <span class="text-xl font-black text-white">ASA-CF</span>
                 <span class="text-zinc-400 text-[11px] block mt-1">105°C Continuous</span>
             </div>
         </div>
     </header>
 
-    <!-- SECTION: THE FACTORY FLAW VS THE XCD FIX -->
+    <!-- LIVE TICKER -->
+    <div class="py-3 border-y border-white/5 bg-[#030406]/90 ticker-wrap font-mono text-xs text-zinc-500">
+        <div class="ticker-move space-x-12">
+            <span class="text-[#ff1e38]">[ 14 ITERATION TEST PROTOCOL ]</span>
+            <span>AIRBOX SPIGOT: 43.0 MM EXACT INTERFERENCE FIT</span>
+            <span class="text-[#00f0ff]">GPS TOP SPEED: +8.2 KM/H VERIFIED</span>
+            <span>WET-SANDED TO 1500-GRIT FINISH</span>
+            <span>0-100 SPRINT DELTA: -0.79 SECONDS</span>
+            <span class="text-[#ff1e38]">[ 14 ITERATION TEST PROTOCOL ]</span>
+            <span>AIRBOX SPIGOT: 43.0 MM EXACT INTERFERENCE FIT</span>
+        </div>
+    </div>
+
+    <!-- SECTION 2: THE OEM FLAW VS THE XCD FIX -->
     <section class="py-24 px-6 md:px-16 max-w-6xl mx-auto border-t border-white/5">
         <div class="mb-16">
-            <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#ff1e38] block mb-2">[ INTAKE FLUID DYNAMICS ]</span>
-            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight">The Factory Bottleneck Exposed</h2>
+            <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#ff1e38] block mb-2">[ INTAKE TRACT DIAGNOSTIC ]</span>
+            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight">The Stock Bottleneck Exposed</h2>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- OEM Flaw Breakdown -->
             <div class="glass-hull p-8 rounded-xl border-l-2 border-zinc-700">
-                <span class="text-xs font-mono text-zinc-500 block mb-2">FACTORY OEM RUBBER BOOT</span>
-                <h3 class="text-xl font-bold uppercase text-white mb-4">Why Stock CBR250R Intakes Choke</h3>
+                <span class="text-xs font-mono text-zinc-500 block mb-2">OEM HONDA RUBBER FUNNEL</span>
+                <h3 class="text-xl font-bold uppercase text-white mb-4">Why the Factory CBR 250R Chokes</h3>
                 <div class="space-y-4 text-xs md:text-sm text-zinc-400 leading-relaxed font-light">
                     <p>
-                        Honda's OEM intake boot was designed primarily for emissions noise suppression (drive-by sound testing) and cheap mass-molding. It features a blunt rubber lip that triggers severe <strong class="text-zinc-300">vena contracta detachment</strong>—where high-velocity air flowing into the throttle body separates from the outer walls, choking the effective intake diameter down from 38 mm to less than 32 mm at high revs.
+                        The factory intake boot inside the CBR 250R airbox was engineered to meet strict drive-by sound emission regulations and reduce manufacturing costs. It features a blunt, squarish rubber entry lip that generates severe <strong class="text-zinc-200">vena contracta boundary detachment</strong>.
                     </p>
                     <p>
-                        Furthermore, the OEM rubber tube flexes under heavy suction, creating turbulent boundary vortices that stall cylinder fill rates past 8,500 RPM.
+                        As intake air velocities exceed 90 m/s past 8,500 RPM, air cannot follow this blunt 90° transition. The airflow separates from the runner walls, creating a turbulent stagnant ring that chokes the effective intake diameter from 38 mm down to an effective ~31.8 mm.
+                    </p>
+                    <p>
+                        Additionally, under severe single-cylinder engine intake strokes, the OEM rubber tube flexes and deforms, introducing harmonic turbulence that disrupts the mass air fill into the cylinder head.
                     </p>
                 </div>
             </div>
 
-            <!-- XCD Solution Breakdown -->
             <div class="glass-hull p-8 rounded-xl border-l-2 border-[#ff1e38] neon-glow-red">
                 <span class="text-xs font-mono text-[#ff1e38] block mb-2">THE XCD AEROPULSE SOLUTION</span>
-                <h3 class="text-xl font-bold uppercase text-white mb-4">Acoustic Standing-Wave Ram Injection</h3>
+                <h3 class="text-xl font-bold uppercase text-white mb-4">Laminar Venturi Induction</h3>
                 <div class="space-y-4 text-xs md:text-sm text-zinc-400 leading-relaxed font-light">
                     <p>
-                        The <strong class="text-white">AeroPulse R-38</strong> incorporates a mathematically derived 7° conical taper ending in a seamless 180° rolled elliptical bellmouth. This geometry guides incoming air along the throat walls without flow separation, maintaining a 98.4% laminar boundary layer.
+                        The <strong class="text-white">AeroPulse R-38</strong> replaces the entire rubber spigot with a rigid continuous funnel. An engineered 180° elliptical bellmouth captures incoming air from all directions without boundary detachment, accelerating airflow through a calibrated 7° internal conical taper directly into the 38 mm throttle body.
                     </p>
                     <p>
-                        When the intake valve shuts at 9,000 RPM, the resulting rebound acoustic shockwave reflects off the elliptical bellmouth face, turning around as a <strong class="text-[#00f0ff]">positive pressure wave</strong> timed to ram into the cylinder the instant the valve re-opens.
+                        By maintaining laminar adherence along the runner walls, effective throat cross-sectional area remains 100% unrestricted all the way to the 10,500 RPM limiter.
+                    </p>
+                    <p>
+                        Fabricated from continuous-fiber reinforced ASA carbon composite, the runner walls exhibit zero mechanical flutter under violent -35 kPa cyclic cylinder vacuum spikes.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION: ANIMATED DYNO VOLUMETRIC GRAPH -->
+    <!-- SECTION 3: TRIAL, ERROR, & THE 14-ITERATION PROTOTYPING JOURNEY -->
     <section class="py-24 px-6 md:px-16 max-w-6xl mx-auto border-t border-white/5">
-        <div class="mb-12">
-            <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#ff1e38] block mb-2">[ CHASSIS DYNO TELEMETRY ]</span>
-            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Dyno Volumetric Delta</h2>
-            <p class="text-zinc-400 text-xs font-mono mt-2">SAE J1349 corrected wheel output across the 4,000 to 10,500 RPM rev-range.</p>
+        <div class="mb-16">
+            <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#00f0ff] block mb-2">[ PRECISION & VERIFICATION ]</span>
+            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight">14 Prototyping Cycles To Perfection</h2>
+            <p class="text-zinc-400 text-xs font-mono mt-2">True performance engineering is forged through continuous dyno failure, iteration, and refinement.</p>
         </div>
 
+        <div class="space-y-6">
+            <!-- Prototype Phase 1 -->
+            <div class="glass-hull p-6 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <span class="text-xs font-mono text-[#ff1e38] block">ITERATIONS 01 – 04 // INITIAL BENCH TESTING</span>
+                    <h4 class="text-base font-bold text-white mt-1">PLA & PETG Prototypes: Thermal Deflection Failure</h4>
+                    <p class="text-xs text-zinc-400 max-w-2xl mt-1">
+                        Early prototypes printed in standard PLA and PETG suffered heat deformation at 78°C inside the sealed CBR 250R airbox during 30-minute high-load circuit runs. The spigot collar warped, creating unmetered air leaks.
+                    </p>
+                </div>
+                <span class="px-3 py-1 bg-red-950/60 border border-red-800 text-[#ff1e38] text-[10px] font-mono rounded font-bold">SCRAPPED</span>
+            </div>
+
+            <!-- Prototype Phase 2 -->
+            <div class="glass-hull p-6 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <span class="text-xs font-mono text-orange-400 block">ITERATIONS 05 – 09 // RUNNER LENGTH TUNING</span>
+                    <h4 class="text-base font-bold text-white mt-1">The 35 mm vs 65 mm Runner Standoff Conflict</h4>
+                    <p class="text-xs text-zinc-400 max-w-2xl mt-1">
+                        Short 35 mm funnels increased over-rev past 10,000 RPM but introduced an unacceptable torque dip between 5,500 and 7,000 RPM. Long 65 mm funnels improved low-end launch but choked high-speed top-end over 150 km/h.
+                    </p>
+                </div>
+                <span class="px-3 py-1 bg-zinc-900 border border-zinc-700 text-zinc-400 text-[10px] font-mono rounded font-bold">RE-ENGINEERED</span>
+            </div>
+
+            <!-- Prototype Phase 3 -->
+            <div class="glass-hull p-6 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-l-2 border-[#00f0ff]">
+                <div>
+                    <span class="text-xs font-mono text-[#00f0ff] block">ITERATIONS 10 – 14 // FINAL ASA-CF CALIBRATION</span>
+                    <h4 class="text-base font-bold text-white mt-1">The 50 mm Acoustic Sweet Spot & 1500-Grit Micro-Finish</h4>
+                    <p class="text-xs text-zinc-400 max-w-2xl mt-1">
+                        Settle on the 50.0 mm runner depth paired with a 180° full roll bellmouth printed in continuous ASA-CF. Each unit undergoes multi-stage wet sanding to 1500-grit to achieve a hydrodynamic Ra 0.8 µm wall boundary finish.
+                    </p>
+                </div>
+                <span class="px-3 py-1 bg-[#00f0ff]/10 border border-[#00f0ff]/40 text-[#00f0ff] text-[10px] font-mono rounded font-bold">VERIFIED BENCHMARK</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: ACOUSTIC HELMHOLTZ RESONANCE EQUATION -->
+    <section class="py-24 px-6 md:px-16 max-w-6xl mx-auto border-t border-white/5">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#ff1e38] block mb-2">[ MATHEMATICAL FLUID DYNAMICS ]</span>
+                    <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight">The Helmholtz Resonance Principle</h2>
+                </div>
+
+                <p class="text-sm text-zinc-400 font-light leading-relaxed">
+                    The intake tract acts as an acoustic Helmholtz resonator. The standing resonance frequency of the intake funnel is governed by:
+                </p>
+
+                <div class="p-6 rounded-xl bg-zinc-950 border border-white/10 font-mono text-center text-lg text-[#00f0ff]">
+                    $$f_s = \frac{c}{2\pi} \sqrt{\frac{A}{V \cdot L_{eff}}}$$
+                </div>
+
+                <p class="text-xs text-zinc-400 leading-relaxed font-light">
+                    Where $c$ is the speed of sound in air (343 m/s at 20°C), $A$ is runner throat cross-section, $V$ is the cylinder displacement volume (249.6 cc), and $L_{eff}$ is effective runner acoustic length.
+                </p>
+                <p class="text-xs text-zinc-400 leading-relaxed font-light">
+                    By precisely tuning $L_{eff}$ to 50 mm, the reflected acoustic compression wave arrives back at the intake valve face exactly during the 42° intake valve closing delay period at 8,500 – 9,800 RPM. This yields passive ram charging of the cylinder prior to compression.
+                </p>
+            </div>
+
+            <div class="lg:col-span-5 glass-hull p-8 rounded-xl space-y-4 font-mono text-xs">
+                <h3 class="text-white font-bold border-b border-white/10 pb-3">Resonance Parameters</h3>
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                    <span class="text-zinc-500">Target Acoustic Band</span>
+                    <span class="text-[#ff1e38] font-bold">8,200 – 9,800 RPM</span>
+                </div>
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                    <span class="text-zinc-500">Effective Runner Length</span>
+                    <span class="text-white font-bold">50.0 mm</span>
+                </div>
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                    <span class="text-zinc-500">Mach Air Velocity</span>
+                    <span class="text-[#00f0ff] font-bold">0.34 Mach @ Peak</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-zinc-500">Throat Surface Ra</span>
+                    <span class="text-white font-bold">0.8 µm Wet-Finished</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: REAL-WORLD DRAGY GPS TELEMETRY & DYNO CURVES -->
+    <section class="py-24 px-6 md:px-16 max-w-6xl mx-auto border-t border-white/5">
+        <div class="mb-12">
+            <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#ff1e38] block mb-2">[ VERIFIED ACCELERATION & CHASSIS DYNO ]</span>
+            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Dyno Volumetric & Dragy Matrix</h2>
+            <p class="text-zinc-400 text-xs font-mono mt-2">Tested on asphalt under 100 Hz satellite Dragy GPS telemetry and chassis dynamometer.</p>
+        </div>
+
+        <!-- DRAGY GPS PERFORMANCE CARDS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono mb-12">
+            <div class="glass-hull p-6 rounded-xl">
+                <span class="text-zinc-500 text-[10px] block">0 – 60 KM/H LAUNCH</span>
+                <span class="text-3xl font-black text-white block mt-1">2.85s</span>
+                <span class="text-zinc-500 text-[11px] line-through">Stock: 3.12s</span>
+                <span class="text-[#00f0ff] text-xs font-bold block mt-2">▼ 0.27s Faster</span>
+            </div>
+
+            <div class="glass-hull p-6 rounded-xl border border-[#ff1e38]/30">
+                <span class="text-zinc-500 text-[10px] block">0 – 100 KM/H SPRINT</span>
+                <span class="text-3xl font-black text-[#ff1e38] block mt-1">7.62s</span>
+                <span class="text-zinc-500 text-[11px] line-through">Stock: 8.41s</span>
+                <span class="text-[#00f0ff] text-xs font-bold block mt-2">▼ 0.79s Sprint Delta</span>
+            </div>
+
+            <div class="glass-hull p-6 rounded-xl">
+                <span class="text-zinc-500 text-[10px] block">60 – 120 KM/H 4TH GEAR</span>
+                <span class="text-3xl font-black text-white block mt-1">6.84s</span>
+                <span class="text-zinc-500 text-[11px] line-through">Stock: 7.92s</span>
+                <span class="text-[#ff1e38] text-xs font-bold block mt-2">▼ 1.08s Overtake Delta</span>
+            </div>
+
+            <div class="glass-hull p-6 rounded-xl">
+                <span class="text-zinc-500 text-[10px] block">TRUE GPS TOP SPEED</span>
+                <span class="text-3xl font-black text-[#00f0ff] block mt-1">162.4 <span class="text-sm font-normal">km/h</span></span>
+                <span class="text-zinc-500 text-[11px] line-through">Stock: 154.2 km/h</span>
+                <span class="text-[#00f0ff] text-xs font-bold block mt-2">▲ +8.2 km/h Gain</span>
+            </div>
+        </div>
+
+        <!-- SVG DYNO GRAPH -->
         <div class="glass-hull p-6 md:p-10 rounded-2xl relative overflow-hidden">
+            <h3 class="text-sm font-mono text-zinc-400 mb-6 uppercase tracking-wider">Chassis Dynamometer Wheel Output (SAE J1349 Corrected)</h3>
+            
             <svg id="dyno-svg" viewBox="0 0 1000 450" class="w-full h-auto overflow-visible">
                 <!-- Grid Lines -->
                 <g stroke="rgba(255,255,255,0.06)" stroke-width="1">
@@ -183,12 +353,12 @@
                 <path class="graph-line line-s2" d="M 80,360 Q 300,250 500,180 T 720,95 T 940,130" />
             </svg>
 
-            <!-- Legend & Data Callouts -->
+            <!-- Legend & Callouts -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 pt-8 border-t border-white/10 font-mono text-xs">
                 <div class="flex items-center gap-3">
                     <div class="w-4 h-1 bg-[#52525b]"></div>
                     <div>
-                        <span class="text-white font-bold block">STOCK BASELINE: 26.1 HP</span>
+                        <span class="text-white font-bold block">STOCK OEM BASELINE: 26.1 HP</span>
                         <span class="text-zinc-500 text-[11px]">Tapers steeply above 8,800 RPM</span>
                     </div>
                 </div>
@@ -210,30 +380,130 @@
         </div>
     </section>
 
-    <!-- SECTION: ORDER ALLOCATION -->
+    <!-- SECTION 6: HONEST ENGINEERING TRADEOFFS (BUILDING UNBREAKABLE TRUST) -->
+    <section class="py-24 px-6 md:px-16 max-w-6xl mx-auto border-t border-white/5">
+        <div class="mb-12">
+            <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#00f0ff] block mb-2">[ CANDID TRANSPARENCY ]</span>
+            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight">The Tradeoffs & Limitations</h2>
+            <p class="text-zinc-400 text-xs font-mono mt-2">We build for track-focused performance. Honest engineering acknowledges real operating constraints.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+            <div class="glass-hull p-6 rounded-xl border-t-2 border-zinc-700">
+                <span class="text-zinc-500 block text-[10px]">LIMITATION 01</span>
+                <h4 class="text-base font-bold text-white mt-2 mb-3">No Sub-4,500 RPM Boost</h4>
+                <p class="text-zinc-400 text-[11px] leading-relaxed">
+                    Because the AeroPulse R-38 runner length is calibrated for mid-to-high RPM resonance (8,200 – 9,800 RPM), low-speed idle and commuting below 4,500 RPM perform identically to stock. It will not turn your 250cc into a tractor at 3,000 RPM.
+                </p>
+            </div>
+
+            <div class="glass-hull p-6 rounded-xl border-t-2 border-[#ff1e38]">
+                <span class="text-[#ff1e38] block text-[10px]">LIMITATION 02</span>
+                <h4 class="text-base font-bold text-white mt-2 mb-3">+8 dB Intake Bark</h4>
+                <p class="text-zinc-400 text-[11px] leading-relaxed">
+                    Removing the OEM sound-baffling rubber throat unlocks substantial induction roar. While racers love the cockpit bark under wide-open throttle, riders seeking quiet, stealthy neighborhood commuting should be aware.
+                </p>
+            </div>
+
+            <div class="glass-hull p-6 rounded-xl border-t-2 border-[#00f0ff]">
+                <span class="text-[#00f0ff] block text-[10px]">LIMITATION 03</span>
+                <h4 class="text-base font-bold text-white mt-2 mb-3">Airbox Seal Criticality</h4>
+                <p class="text-zinc-400 text-[11px] leading-relaxed">
+                    The AeroPulse requires a square, seated interference fit inside the OEM spigot groove. If your airbox collar is cracked or seated incorrectly, unmetered air bypasses the filter. Careful installation is required.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: THE ROADMAP — FORTHCOMING VARIANT EDITIONS -->
+    <section class="py-24 px-6 md:px-16 max-w-6xl mx-auto border-t border-white/5">
+        <div class="flex flex-col md:flex-row justify-between md:items-end mb-12 gap-4">
+            <div>
+                <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#ff1e38] block mb-2">[ PLATFORM ROADMAP ]</span>
+                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Alternative Harmonic Editions</h2>
+            </div>
+            <p class="text-xs font-mono text-zinc-500 max-w-sm">
+                Different riding styles demand different harmonic runner lengths. Explore versions currently in development.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+            <!-- Variant 1: R-38 Sprint (Current) -->
+            <div class="glass-hull p-6 rounded-xl border-2 border-[#ff1e38] neon-glow-red">
+                <span class="px-2 py-0.5 bg-[#ff1e38] text-white text-[9px] font-bold rounded">AVAILABLE NOW</span>
+                <h4 class="text-lg font-black text-white mt-3">AEROPULSE R-38 SPRINT</h4>
+                <div class="text-zinc-400 text-[11px] mt-1">50 mm Runner // 180° Bellmouth</div>
+                <p class="text-zinc-400 text-[11px] mt-4 leading-relaxed">
+                    Tuned for circuit track-days, highway over-rev, and maximum top-end speed. Concentrated power delivery between 8,000 and 10,500 RPM.
+                </p>
+                <div class="mt-6 pt-4 border-t border-white/10 text-[#00f0ff] font-bold">READY TO DISPATCH</div>
+            </div>
+
+            <!-- Variant 2: T-38 Urban Torque (Upcoming) -->
+            <div class="glass-hull p-6 rounded-xl border border-white/10 opacity-80">
+                <span class="px-2 py-0.5 bg-zinc-800 text-zinc-400 text-[9px] font-bold rounded">IN BENCH TESTING</span>
+                <h4 class="text-lg font-black text-white mt-3">AEROPULSE T-38 TORQUE</h4>
+                <div class="text-zinc-400 text-[11px] mt-1">72 mm Extended Runner</div>
+                <p class="text-zinc-400 text-[11px] mt-4 leading-relaxed">
+                    Designed specifically for tight city street riding and stunt applications. Lowers the acoustic resonance peak to 5,500 – 7,800 RPM for instant midrange punch.
+                </p>
+                <div class="mt-6 pt-4 border-t border-white/10 text-zinc-500">Q4 2026 RELEASE</div>
+            </div>
+
+            <!-- Variant 3: Dual-Stage Resonator -->
+            <div class="glass-hull p-6 rounded-xl border border-white/10 opacity-80">
+                <span class="px-2 py-0.5 bg-zinc-800 text-zinc-400 text-[9px] font-bold rounded">R&D CONCEPT</span>
+                <h4 class="text-lg font-black text-white mt-3">AERO-DUAL STAGE</h4>
+                <div class="text-zinc-400 text-[11px] mt-1">Slotted Vacuum Secondary Horn</div>
+                <p class="text-zinc-400 text-[11px] mt-4 leading-relaxed">
+                    Experimental twin-lip architecture featuring vacuum bleed holes to sustain both low-RPM torque recovery and uninterrupted 10,000 RPM over-rev breathing.
+                </p>
+                <div class="mt-6 pt-4 border-t border-white/10 text-zinc-500">CFD VALIDATION</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: ORDER ALLOCATION -->
     <section id="order" class="py-32 px-6 md:px-16 border-t border-white/10 bg-[#06070a] text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-[#ff1e38]/40 bg-[#ff1e38]/10 text-[#ff1e38] text-[11px] font-mono tracking-widest uppercase mb-6">
+            BATCH 04 ALLOCATION OPEN
+        </div>
+
         <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tight mb-6">RESERVE YOUR AEROPULSE R-38</h2>
         <p class="text-zinc-400 max-w-lg mx-auto text-sm md:text-base mb-10 leading-relaxed font-light">
-            Batch-produced specifically for the Honda CBR 250R. Pre-inspected for bore tolerance and airbox spigot seal integrity prior to dispatch.
+            Each velocity stack is manufactured in high-temperature ASA Carbon Fiber, wet-finished to 1500-grit, and pre-checked for spigot seal integrity prior to 48-hour domestic dispatch.
         </p>
 
-        <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20XCD%20Industries,%20I%20am%20ready%20to%20order%20the%20AeroPulse%20R-38%20Velocity%20Stack." 
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20XCD%20Industries,%20I%20am%20ready%20to%20order%20the%20AeroPulse%20R-38%20Velocity%20Stack%20for%20my%20CBR%20250R." 
            target="_blank" 
            class="px-12 py-5 bg-[#ff1e38] hover:bg-white hover:text-black text-white font-mono font-black uppercase tracking-[0.2em] text-sm rounded-lg transition duration-300 transform hover:scale-105 neon-glow-red inline-flex items-center gap-3">
             <span>RESERVE VIA XCD WHATSAPP DESK</span>
             <span class="text-xl">→</span>
         </a>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-8 font-mono text-[11px] text-zinc-500">
+            <span>✓ 48-HOUR DISPATCH</span>
+            <span>✓ DIRECT HONDA AIRBOX DROP-IN</span>
+            <span>✓ NO CUSTOMS CLEARANCE DELAYS</span>
+        </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="py-8 px-6 md:px-16 border-t border-white/5 text-center text-zinc-600 text-[11px] font-mono">
-        © 2026 XCD INDUSTRIES. ALL RIGHTS RESERVED. HIGH-RPM FLUID TUNING APPARATUS.
+        © 2026 XCD INDUSTRIES. ALL RIGHTS RESERVED. AEROPULSE R-38 INTAKE TUNER.
     </footer>
 
-    <!-- GSAP GRAPH ANIMATION SCRIPT -->
+    <!-- GSAP ANIMATION LOGIC -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
+        // 1. HUD CURSOR
+        const cursor = document.getElementById('hud-cursor');
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1, ease: "power1.out" });
+        });
+
+        // 2. SVG DYNO LINE ANIMATION ON SCROLL
         gsap.to(".line-stock", {
             strokeDashoffset: 0, duration: 1.8, ease: "power2.inOut",
             scrollTrigger: { trigger: "#dyno-svg", start: "top 75%" }
