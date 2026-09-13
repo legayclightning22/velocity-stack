@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#030406] text-[#f1f3f7] selection:bg-[#ff1e38] selection:text-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroPulse R-38 | XCD Industries</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&family=JetBrains+Mono:wght@400;700;800&display=swap');
+        * { font-family: 'Space Grotesk', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #030406; }
+        ::-webkit-scrollbar-thumb { background: #ff1e38; }
+
+        .glass-panel {
+            background: rgba(10, 12, 18, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* SVG Graph Animation Paths */
+        .graph-line { fill: none; stroke-width: 3; stroke-linecap: round; }
+        .line-stock { stroke: #555; stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+        .line-tuned { stroke: #ff1e38; stroke-dasharray: 1000; stroke-dashoffset: 1000; filter: drop-shadow(0 0 8px rgba(255,30,56,0.6)); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-6 border-b border-white/5 bg-[#030406]/90 backdrop-blur-md">
+        <a href="index.html" class="flex items-center space-x-3 hover:opacity-70 transition">
+            <span class="text-xs font-mono font-bold uppercase">← BACK TO TERMINAL</span>
+        </a>
+        <a href="#buy" class="px-5 py-2 text-[10px] font-mono font-bold uppercase tracking-widest bg-[#ff1e38] text-white rounded hover:bg-white hover:text-black transition shadow-[0_0_20px_-5px_#ff1e38]">
+            Order R-38
+        </a>
+    </nav>
+
+    <!-- HEADER / SPECS -->
+    <header class="pt-40 pb-20 px-8 md:px-20 max-w-5xl mx-auto">
+        <span class="gs-fade text-[#ff1e38] font-mono text-[10px] uppercase tracking-[0.3em] mb-4 block">HONDA CBR 250R SPECIFIC</span>
+        <h1 class="gs-fade text-5xl md:text-8xl font-black uppercase tracking-tight mb-8">AeroPulse R-38</h1>
+        
+        <div class="gs-fade grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs mb-12">
+            <div class="border-l-2 border-[#ff1e38] pl-3"><span class="text-zinc-500 block">THROTTLE BORE</span>38.0 mm</div>
+            <div class="border-l-2 border-[#00f0ff] pl-3"><span class="text-zinc-500 block">BELLMOUTH</span>180° Roll</div>
+            <div class="border-l-2 border-white pl-3"><span class="text-zinc-500 block">MATERIAL</span>ASA-CF Matrix</div>
+            <div class="border-l-2 border-orange-500 pl-3"><span class="text-zinc-500 block">THERMAL SOAK</span>105°C Rated</div>
+        </div>
+        
+        <p class="gs-fade text-zinc-400 text-lg leading-relaxed mb-6">
+            The AeroPulse R-38 is not an aesthetic modification. It is a strictly engineered aerodynamic apparatus designed to correct the restrictive boundary-layer separation caused by the factory CBR 250R rubber intake funnel.
+        </p>
+        <p class="gs-fade text-zinc-400 text-lg leading-relaxed">
+            By employing a mathematically calculated 7° internal taper ending in a perfect 180° elliptical lip, incoming air is compressed into a laminar ram-wave. This harnesses acoustic Helmholtz resonance—utilizing the engine's own vacuum pulses to force-feed air into the combustion chamber.
+        </p>
+    </header>
+
+    <!-- ANIMATED DYNO GRAPH SECTION -->
+    <section class="py-20 px-8 md:px-20 bg-[#06070a] border-y border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="gs-fade mb-10">
+                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Volumetric Efficiency Delta</h2>
+                <p class="text-zinc-500 font-mono text-xs mt-2">Tested under constant load / Real-time dyno telemetry mapping.</p>
+            </div>
+
+            <div class="glass-panel p-6 md:p-10 rounded-xl relative">
+                <!-- SVG GRAPH -->
+                <svg id="dyno-graph" viewBox="0 0 1000 400" class="w-full h-auto overflow-visible">
+                    <!-- Grid Lines -->
+                    <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
+                        <line x1="0" y1="100" x2="1000" y2="100" />
+                        <line x1="0" y1="200" x2="1000" y2="200" />
+                        <line x1="0" y1="300" x2="1000" y2="300" />
+                    </g>
+                    <!-- Y Axis Labels -->
+                    <g fill="#555" font-family="JetBrains Mono" font-size="12">
+                        <text x="10" y="95">28 HP</text>
+                        <text x="10" y="195">26 HP</text>
+                        <text x="10" y="295">24 HP</text>
+                    </g>
+                    <!-- X Axis Labels (RPM) -->
+                    <g fill="#555" font-family="JetBrains Mono" font-size="12">
+                        <text x="100" y="380">4K</text>
+                        <text x="300" y="380">6K</text>
+                        <text x="500" y="380">8K</text>
+                        <text x="700" y="380">9K</text>
+                        <text x="900" y="380">10K+</text>
+                    </g>
+                    
+                    <!-- Stock Line -->
+                    <path class="graph-line line-stock" d="M 0,350 Q 200,280 400,250 T 600,180 T 800,220 T 1000,280" />
+                    <!-- AeroPulse Line -->
+                    <path class="graph-line line-tuned" d="M 0,350 Q 200,260 400,220 T 600,130 T 800,80 T 1000,120" />
+                </svg>
+
+                <div class="flex gap-8 mt-8 font-mono text-xs">
+                    <div class="flex items-center gap-2"><div class="w-4 h-1 bg-[#555]"></div> OEM Baseline (Restricted Flow)</div>
+                    <div class="flex items-center gap-2"><div class="w-4 h-1 bg-[#ff1e38]"></div> AeroPulse R-38 (+1.2 HP / +1.1 Nm)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHECKOUT SECTION -->
+    <section id="buy" class="py-32 px-8 md:px-20 text-center">
+        <h2 class="gs-fade text-5xl font-black uppercase tracking-tight mb-4">Acquire Your Stack</h2>
+        <p class="gs-fade text-zinc-400 font-mono text-xs mb-10 max-w-md mx-auto">
+            Batch-produced specifically for the CBR 250R. Pre-inspected for bore tolerance and vacuum seal integrity.
+        </p>
+        <a href="https://wa.me/919741523704?text=Hi%20XCD%20Industries,%20I%20want%20to%20order%20the%20AeroPulse%20R-38." target="_blank" class="gs-fade px-12 py-5 bg-[#ff1e38] text-white font-mono font-black uppercase text-sm rounded shadow-[0_0_30px_-5px_#ff1e38] hover:bg-white hover:text-black transition">
+            Order via XCD Direct
+        </a>
+    </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Simple Fade in for text
+        gsap.utils.toArray('.gs-fade').forEach(elem => {
+            gsap.fromTo(elem, { opacity: 0, y: 30 }, {
+                opacity: 1, y: 0, duration: 1, ease: "power3.out",
+                scrollTrigger: { trigger: elem, start: "top 85%" }
+            });
+        });
+
+        // SVG GRAPH DRAW ANIMATION
+        gsap.to(".line-stock", {
+            strokeDashoffset: 0, duration: 2, ease: "power2.inOut",
+            scrollTrigger: { trigger: "#dyno-graph", start: "top 75%" }
+        });
+        gsap.to(".line-tuned", {
+            strokeDashoffset: 0, duration: 2, delay: 0.5, ease: "power2.inOut",
+            scrollTrigger: { trigger: "#dyno-graph", start: "top 75%" }
+        });
+    </script>
+</body>
+</html>
