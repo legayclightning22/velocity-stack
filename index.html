@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XCD INDUSTRIES | Kinetic Fluid Dynamics & Motorsport Induction</title>
+    <title>XCD INDUSTRIES | Computational Fluid Dynamics & Kinetic Induction Systems</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,20 +21,20 @@
         * { font-family: 'Space Grotesk', sans-serif; cursor: default; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #040507; }
         ::-webkit-scrollbar-thumb { background: #ff1e38; border-radius: 2px; }
 
         .hud-grid {
             background-image: 
-                radial-gradient(circle at 50% 15%, rgba(255, 30, 56, 0.16) 0%, transparent 65%),
+                radial-gradient(circle at 50% 12%, rgba(255, 30, 56, 0.16) 0%, transparent 65%),
                 linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
             background-size: 100% 100%, 40px 40px, 40px 40px;
         }
 
         .glass-hull {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(10, 14, 22, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(10, 14, 22, 0.85) 100%);
             backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 24px 48px -18px rgba(0, 0, 0, 0.95);
@@ -54,7 +54,7 @@
             transform-style: preserve-3d;
         }
 
-        /* SVG Blueprint Drawing Paths */
+        /* Blueprint CAD Vector Animation Paths */
         .blueprint-path {
             fill: none;
             stroke-dasharray: 2200;
@@ -66,14 +66,14 @@
 
         .aero-streamline {
             fill: none;
-            stroke-dasharray: 12 8;
-            animation: streamline-flow 1.2s linear infinite;
+            stroke-dasharray: 14 8;
+            animation: streamline-flow 1.1s linear infinite;
         }
         @keyframes streamline-flow {
-            to { stroke-dashoffset: -40; }
+            to { stroke-dashoffset: -44; }
         }
 
-        /* HUD Reticle Cursor */
+        /* Interactive Reticle Cursor */
         #hud-cursor {
             pointer-events: none;
             position: fixed;
@@ -82,7 +82,7 @@
             transition: width 0.15s, height 0.15s, border-color 0.2s;
         }
 
-        /* Race Mode Overdrive Pulsing */
+        /* Overdrive Strobe Easter Egg */
         .race-mode-active {
             filter: contrast(125%) saturate(145%) !important;
             animation: redline-strobe 0.18s infinite alternate;
@@ -93,13 +93,22 @@
         }
 
         .ticker-wrap { display: flex; overflow: hidden; user-select: none; }
-        .ticker-move { display: flex; animation: ticker 28s linear infinite; }
+        .ticker-move { display: flex; animation: ticker 32s linear infinite; }
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* Acoustic Sound Wave Visualizer Bars */
+        .wave-bar {
+            animation: wave-bounce 0.8s ease-in-out infinite alternate;
+        }
+        @keyframes wave-bounce {
+            0% { height: 15%; }
+            100% { height: 95%; }
+        }
     </style>
 </head>
 <body class="overflow-x-hidden hud-grid text-zinc-100">
 
-    <!-- CUSTOM HUD CURSOR -->
+    <!-- HUD CURSOR -->
     <div id="hud-cursor" class="w-8 h-8 rounded-full border border-[#00f0ff]/60 flex items-center justify-center">
         <div class="w-1.5 h-1.5 bg-[#ff1e38] rounded-full animate-ping"></div>
     </div>
@@ -116,7 +125,7 @@
         </spline-viewer>
     </div>
 
-    <!-- HUD NAVBAR -->
+    <!-- HUD NAVIGATION -->
     <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-5 border-b border-white/10 bg-[#040507]/85 backdrop-blur-xl">
         <div class="flex items-center space-x-4">
             <div class="relative flex items-center justify-center w-3 h-3">
@@ -127,16 +136,17 @@
                 XCD <span class="text-[#ff1e38]">INDUSTRIES</span>
             </a>
             <span class="hidden sm:inline-block px-2.5 py-0.5 text-[10px] font-mono tracking-widest uppercase bg-zinc-900 border border-zinc-800 text-[#00f0ff] rounded">
-                COMPUTATIONAL FLUID DYNAMICS
+                CFD FLUID LABS
             </span>
         </div>
 
-        <div class="hidden lg:flex items-center space-x-8 text-xs font-mono tracking-widest text-zinc-400">
+        <div class="hidden lg:flex items-center space-x-7 text-xs font-mono tracking-widest text-zinc-400">
             <a href="aeropulse-r38.html" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#ff1e38]">01</span> R-38 DOSSIER</a>
             <a href="catalog.html" class="hover:text-[#00f0ff] transition flex items-center gap-1.5"><span class="text-[#00f0ff]">02</span> FLEET BLUEPRINTS</a>
-            <a href="#telemetry" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#ff1e38]">03</span> GPS DRAGY MATRIX</a>
-            <a href="#schematic" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#00f0ff]">04</span> AERO BLUEPRINT</a>
-            <a href="#manifesto" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#ff1e38]">05</span> DISRUPTOR MANIFESTO</a>
+            <a href="#tuner" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#ff1e38]">03</span> RESONANCE TUNER</a>
+            <a href="#schematic" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#00f0ff]">04</span> CBR250R SCHEMATIC</a>
+            <a href="#telemetry" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#ff1e38]">05</span> DRAGY GPS DATA</a>
+            <a href="#manifesto" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#00f0ff]">06</span> MANIFESTO</a>
         </div>
 
         <div class="flex items-center gap-3">
@@ -154,7 +164,7 @@
         <div class="max-w-3xl">
             <div class="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full border border-[#ff1e38]/30 bg-[#ff1e38]/10 text-[#ff1e38] text-[11px] font-mono tracking-widest uppercase mb-8">
                 <span class="w-1.5 h-1.5 rounded-full bg-[#ff1e38] animate-pulse"></span>
-                Acoustic Inertia Induction Resonance
+                Computational Acoustic Fluid Dynamics
             </div>
 
             <h1 class="text-6xl sm:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.88] mb-8">
@@ -163,20 +173,20 @@
             </h1>
 
             <p class="text-zinc-400 text-base md:text-xl font-light leading-relaxed max-w-xl mb-10">
-                Atmospheric air is lazy. Factory intake boots choke cylinder volumetric efficiency with turbulent boundary-layer separation. We engineer acoustic resonance funnels that ram pressurized air into the combustion chamber just as the intake valve closes.
+                Atmospheric air is lazy. Factory rubber airbox funnels create stagnant boundary-layer vortices that choke throttle bodies past 8,500 RPM. We engineer tuned acoustic funnels that transform intake depression pulses into dense, high-velocity ram-induction.
             </p>
 
             <div class="flex flex-wrap items-center gap-5 font-mono text-xs">
                 <a href="aeropulse-r38.html" class="px-8 py-4 bg-[#ff1e38] text-white font-bold uppercase tracking-wider rounded hover:bg-white hover:text-black transition duration-300 neon-glow-red">
-                    Enter AeroPulse R-38 Dossier →
+                    Explore Flagship R-38 Dossier →
                 </a>
                 <a href="catalog.html" class="px-8 py-4 border border-zinc-800 bg-zinc-950/70 text-zinc-300 font-bold uppercase tracking-wider rounded hover:border-[#00f0ff] hover:text-[#00f0ff] transition duration-300">
-                    Explore 4-Bike Catalog
+                    View Fleet Catalog (4 Platforms)
                 </a>
             </div>
         </div>
 
-        <!-- FLOATING TACHOMETER TELEMETRY -->
+        <!-- FLOATING TACHOMETER HUD -->
         <div class="absolute right-6 bottom-16 hidden xl:flex flex-col gap-4 font-mono text-[11px] text-zinc-400 pointer-events-none">
             <div class="glass-hull p-5 rounded-xl border-l-2 border-[#ff1e38] w-72">
                 <div class="flex justify-between text-zinc-500 mb-1">
@@ -187,18 +197,18 @@
                     <div id="hud-bar" class="bg-gradient-to-r from-[#00f0ff] to-[#ff1e38] h-full w-[88%] transition-all duration-300"></div>
                 </div>
                 <div class="flex justify-between text-[10px] text-zinc-500 mt-2">
-                    <span>IDLE</span>
+                    <span>4,000 IDLE</span>
                     <span class="text-[#ff1e38]">RESONANCE PEAK</span>
-                    <span>10.5K REDLINE</span>
+                    <span>10.5K CUT</span>
                 </div>
             </div>
 
             <div class="glass-hull p-4 rounded-xl border-l-2 border-[#00f0ff] w-72">
                 <div class="flex justify-between text-zinc-500 mb-1">
-                    <span>RAM PRESSURE RECOVERY</span>
+                    <span>DYNAMIC PRESSURE DELTA</span>
                     <span class="text-[#00f0ff] font-bold">+3.82 kPa</span>
                 </div>
-                <div class="text-[10px] text-zinc-400 mt-1">Laminar layer purity: 98.4% without vena-contracta drag.</div>
+                <div class="text-[10px] text-zinc-400 mt-1">Laminar flow efficiency: 98.4% without vena contracta stall.</div>
             </div>
         </div>
     </header>
@@ -218,7 +228,80 @@
         </div>
     </div>
 
-    <!-- SECTION 2: HIGH-FIDELITY HONDA CBR 250R SCHEMATIC & AIRFLOW SIMULATOR -->
+    <!-- SECTION 2: INTERACTIVE HELMHOLTZ RESONANCE SIMULATOR -->
+    <section id="tuner" class="relative z-20 py-32 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
+        <div class="flex flex-col md:flex-row justify-between md:items-end mb-12 gap-4">
+            <div>
+                <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#ff1e38] block mb-2">[ REAL-TIME PHYSICS CALCULATOR ]</span>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Interactive Resonance Tuner</h2>
+            </div>
+            <p class="text-xs font-mono text-zinc-500 max-w-sm">
+                Drag the throttle slider to observe how cylinder vacuum frequency matches the acoustic runner length of the AeroPulse R-38.
+            </p>
+        </div>
+
+        <div class="glass-hull p-8 md:p-12 rounded-2xl relative overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div>
+                        <div class="flex justify-between font-mono text-sm mb-2">
+                            <span class="text-zinc-400">ENGINE OPERATING SPEED:</span>
+                            <span class="text-2xl font-black text-white" id="slider-rpm-val">8,500 <span class="text-sm font-normal text-[#ff1e38]">RPM</span></span>
+                        </div>
+                        <input type="range" id="rpm-slider" min="4000" max="11000" step="250" value="8500" 
+                               class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-[#ff1e38]">
+                        <div class="flex justify-between font-mono text-[10px] text-zinc-500 mt-2">
+                            <span>4,000 RPM (Low Vacuum)</span>
+                            <span class="text-[#ff1e38]">8,500 – 9,800 RPM (Helmholtz Sweet Spot)</span>
+                            <span>11,000 RPM (Rev Limiter)</span>
+                        </div>
+                    </div>
+
+                    <!-- Live Harmonic Audio Visualizer Bars -->
+                    <div>
+                        <span class="text-[11px] font-mono text-zinc-500 block mb-3">INDUCTION SOUND HARMONIC SPECTRUM:</span>
+                        <div class="flex items-end gap-1.5 h-16 w-full bg-zinc-950/60 p-2 rounded-lg border border-white/5">
+                            <div class="wave-bar w-full bg-[#00f0ff] rounded-t" style="animation-delay: 0.1s;"></div>
+                            <div class="wave-bar w-full bg-[#00f0ff] rounded-t" style="animation-delay: 0.3s;"></div>
+                            <div class="wave-bar w-full bg-[#ff1e38] rounded-t" style="animation-delay: 0.2s;"></div>
+                            <div class="wave-bar w-full bg-[#ff1e38] rounded-t" style="animation-delay: 0.5s;"></div>
+                            <div class="wave-bar w-full bg-[#00f0ff] rounded-t" style="animation-delay: 0.4s;"></div>
+                            <div class="wave-bar w-full bg-[#ff1e38] rounded-t" style="animation-delay: 0.6s;"></div>
+                            <div class="wave-bar w-full bg-[#ff1e38] rounded-t" style="animation-delay: 0.15s;"></div>
+                            <div class="wave-bar w-full bg-[#00f0ff] rounded-t" style="animation-delay: 0.35s;"></div>
+                            <div class="wave-bar w-full bg-[#ff1e38] rounded-t" style="animation-delay: 0.25s;"></div>
+                            <div class="wave-bar w-full bg-[#00f0ff] rounded-t" style="animation-delay: 0.45s;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 grid grid-cols-2 gap-4 font-mono text-xs">
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px]">WAVE FREQUENCY</span>
+                        <span class="text-xl font-bold text-[#00f0ff]" id="sim-freq">70.8 Hz</span>
+                        <span class="text-[10px] text-zinc-500 block mt-1">Acoustic pulse cycle</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px]">INTAKE VELOCITY</span>
+                        <span class="text-xl font-bold text-white" id="sim-vel">112 m/s</span>
+                        <span class="text-[10px] text-zinc-500 block mt-1">Throat mach 0.32</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px]">CYLINDER FILL RATE</span>
+                        <span class="text-xl font-bold text-[#ff1e38]" id="sim-fill">94.8%</span>
+                        <span class="text-[10px] text-zinc-500 block mt-1">Volumetric efficiency</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px]">DELTA OVER OEM</span>
+                        <span class="text-xl font-bold text-[#00f0ff]" id="sim-gain">+11.4%</span>
+                        <span class="text-[10px] text-zinc-500 block mt-1">Laminar reattachment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: HONDA CBR 250R VECTOR CAD BLUEPRINT & INTAKE PATH -->
     <section id="schematic" class="relative z-20 py-32 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
         <div class="flex flex-col md:flex-row justify-between md:items-end mb-12 gap-4">
             <div>
@@ -226,7 +309,7 @@
                 <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">CBR 250R Aero Architecture</h2>
             </div>
             <p class="text-xs font-mono text-zinc-500 max-w-sm">
-                Computational streamline visualization of intake boundary air routing across the front fairing split, around the radiator wash, and directly into the AeroPulse funnel.
+                Streamline vector traces mapping high-velocity airflow across front cowlings, around the frame spars, and into the AeroPulse runner.
             </p>
         </div>
 
@@ -236,7 +319,6 @@
                 ACTIVE VECTOR MAPPING: HONDA CBR 250R (MC41 PLATFORM)
             </div>
 
-            <!-- HIGH FIDELITY SVG WIREFRAME BLUEPRINT -->
             <svg id="bike-blueprint" viewBox="0 0 1100 520" class="w-full max-w-5xl h-auto overflow-visible">
                 <defs>
                     <filter id="cyan-bloom" x="-30%" y="-30%" width="160%" height="160%">
@@ -247,13 +329,12 @@
                     </filter>
                 </defs>
 
-                <!-- Ground Aerodynamic Reference Datum -->
+                <!-- Ground Datum -->
                 <g stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="8 8">
                     <line x1="0" y1="470" x2="1100" y2="470" />
                 </g>
 
-                <!-- WHEELS & BRAKE ROTORS -->
-                <!-- Front Wheel (Right Side in Forward Motion) -->
+                <!-- Front Wheel (Right Side) -->
                 <circle cx="860" cy="370" r="95" stroke="#27272a" stroke-width="2.5" fill="none" />
                 <circle cx="860" cy="370" r="70" stroke="rgba(0,240,255,0.3)" stroke-width="1.5" fill="none" stroke-dasharray="6 6" />
                 <circle cx="860" cy="370" r="45" stroke="#ff1e38" stroke-width="1" fill="none" opacity="0.6" />
@@ -267,18 +348,18 @@
                 <line x1="240" y1="275" x2="240" y2="465" stroke="#3f3f46" stroke-width="1.5" />
                 <line x1="145" y1="370" x2="335" y2="370" stroke="#3f3f46" stroke-width="1.5" />
 
-                <!-- EXHAUST PIPE & MUFFLER CANISTER -->
+                <!-- Exhaust System -->
                 <path class="blueprint-path stroke-zinc-600" stroke-width="2" d="M 520,380 L 400,385 L 260,340 L 210,310" />
                 <polygon points="380,365 240,325 250,305 390,345" fill="none" stroke="#71717a" stroke-width="1.5" />
 
-                <!-- TWIN-SPAR DIAMOND FRAME -->
+                <!-- Twin-Spar Frame -->
                 <path class="blueprint-path stroke-zinc-500" stroke-width="2.5" d="M 740,190 L 590,260 L 460,340 L 420,340 L 520,250 L 710,180 Z" />
 
-                <!-- ENGINE BLOCK & 249cc DOHC CYLINDER HEAD -->
+                <!-- Engine Block -->
                 <rect x="490" y="270" width="110" height="90" rx="8" fill="none" stroke="#3f3f46" stroke-width="2" />
                 <line x1="510" y1="270" x2="550" y2="230" stroke="#71717a" stroke-width="2" />
 
-                <!-- FULL HONDA CBR 250R BODYWORK SILHOUETTE (Draws on scroll) -->
+                <!-- CBR 250R Fairing Silhouette (Drawn via ScrollTrigger) -->
                 <path id="blueprint-cbr-body" class="blueprint-path stroke-[#00f0ff]" stroke-width="2.5" filter="url(#cyan-bloom)"
                     d="M 920,240 
                        L 870,180 
@@ -301,26 +382,22 @@
                        L 830,280 
                        L 920,240 Z" />
 
-                <!-- FRONT FAIRING NOSE & HEADLIGHT COWL -->
+                <!-- Headlight & Tail Details -->
                 <path class="blueprint-path stroke-[#00f0ff]" stroke-width="1.8" d="M 870,180 L 890,210 L 850,230 L 810,210" />
                 <path class="blueprint-path stroke-[#00f0ff]" stroke-width="1.8" d="M 720,130 L 750,110 L 780,140" />
-
-                <!-- SUB-FRAME & SEAT PROFILE -->
                 <path class="blueprint-path stroke-zinc-400" stroke-width="1.8" d="M 530,170 L 460,205 L 350,205 L 290,170" />
 
-                <!-- AIRBOX & VELOCITY STACK INTAKE (FOCAL POINT IN RED) -->
-                <!-- Airbox Plenum -->
+                <!-- Airbox Plenum with Velocity Stack Callout -->
                 <rect x="520" y="180" width="95" height="65" rx="6" fill="rgba(255,30,56,0.08)" stroke="#ff1e38" stroke-width="2" filter="url(#red-bloom)" />
-                <!-- 180° Velocity Stack Bellmouth Horn inside Airbox -->
                 <path id="blueprint-stack" class="blueprint-path stroke-[#ff1e38]" stroke-width="3" filter="url(#red-bloom)"
                     d="M 570,190 C 585,190 595,200 595,210 L 595,235 C 595,245 585,245 570,245" />
 
-                <!-- ANIMATED LAMINAR INTAKE STREAMLINES (Flow into velocity stack) -->
+                <!-- Laminar Inflow Streamlines -->
                 <path class="aero-streamline stroke-[#00f0ff]" stroke-width="1.5" d="M 1020,200 C 920,190 850,160 760,175 C 690,185 640,200 595,210" />
                 <path class="aero-streamline stroke-[#00f0ff]" stroke-width="1.5" d="M 1040,230 C 940,220 860,200 780,205 C 700,210 640,215 595,220" />
                 <path class="aero-streamline stroke-[#ff1e38]" stroke-width="2" d="M 1000,260 C 900,250 820,240 740,235 C 670,230 630,225 595,230" />
 
-                <!-- HUD Vector Annotation Markers -->
+                <!-- HUD Annotations -->
                 <g class="font-mono text-[11px]" fill="#00f0ff">
                     <circle cx="595" cy="220" r="5" fill="#ff1e38" />
                     <line x1="595" y1="220" x2="640" y2="150" stroke="#ff1e38" stroke-width="1.2" />
@@ -328,7 +405,7 @@
                     
                     <circle cx="870" cy="180" r="4" fill="#00f0ff" />
                     <line x1="870" y1="180" x2="900" y2="120" stroke="#00f0ff" stroke-width="1.2" />
-                    <text x="910" y="115">[ HIGH-PRESSURE STAGNATION POINT ]</text>
+                    <text x="910" y="115">[ HIGH-PRESSURE RAM STAGNATION ]</text>
 
                     <text x="280" y="440" fill="#71717a">WHEELBASE: 1,367 MM // DRY WEIGHT: 153 KG</text>
                 </g>
@@ -343,12 +420,12 @@
         </div>
     </section>
 
-    <!-- SECTION 3: REAL-WORLD DRAGY GPS TELEMETRY ACCELERATION BENCH -->
+    <!-- SECTION 4: REAL-WORLD DRAGY GPS TELEMETRY DATA -->
     <section id="telemetry" class="relative z-20 py-32 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
         <div class="mb-16">
             <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#ff1e38] block mb-2">[ REAL-WORLD VERIFICATION ]</span>
-            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Dragy GPS Acceleration Data</h2>
-            <p class="text-zinc-400 text-sm font-mono mt-2">Tested on closed track asphalt under 100 Hz satellite telemetry logger.</p>
+            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Dragy GPS Acceleration Bench</h2>
+            <p class="text-zinc-400 text-sm font-mono mt-2">Tested on closed track asphalt with 100 Hz satellite telemetry logger.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -381,7 +458,7 @@
                 <div class="text-4xl font-black font-mono text-white mb-1">6.84s</div>
                 <div class="text-xs font-mono text-zinc-400 mb-4">Stock OEM: <span class="text-zinc-500 line-through">7.92s</span></div>
                 <div class="text-xs font-mono text-[#ff1e38] font-bold border-t border-white/5 pt-3">
-                    ▼ 1.08s ROLL-ON OVERTAKE
+                    ▼ 1.08s OVERTAKE ADVANTAGE
                 </div>
             </div>
 
@@ -392,13 +469,13 @@
                 <div class="text-4xl font-black font-mono text-[#00f0ff] mb-1">162.4 <span class="text-base font-normal">km/h</span></div>
                 <div class="text-xs font-mono text-zinc-400 mb-4">Stock OEM: <span class="text-zinc-500 line-through">154.2 km/h</span></div>
                 <div class="text-xs font-mono text-[#00f0ff] font-bold border-t border-white/5 pt-3">
-                    ▲ +8.2 km/h REVENUE
+                    ▲ +8.2 km/h TOP-END HOLD
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 4: THE FOUNDER DISRUPTOR MANIFESTO -->
+    <!-- SECTION 5: THE DISRUPTOR ORIGIN MANIFESTO -->
     <section id="manifesto" class="relative z-20 py-32 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-5">
@@ -411,7 +488,7 @@
 
             <div class="lg:col-span-7 space-y-6 text-sm md:text-base text-zinc-400 font-light leading-relaxed glass-hull p-8 md:p-12 rounded-2xl">
                 <p>
-                    For years, motorcycle riders seeking real induction gains have faced an absurd monopoly: importing basic velocity stacks from Italy, the UK, or Japan costs upwards of <strong class="text-white">₹15,000 to ₹25,000</strong>—only to sit stuck in customs clearance for 60 to 90 days with zero fitment guarantees.
+                    For years, motorcycle riders seeking genuine induction gains have faced an absurd monopoly: importing basic velocity stacks from Italy, the UK, or Japan costs upwards of <strong class="text-white">₹15,000 to ₹25,000</strong>—only to sit stuck in customs clearance for 60 to 90 days with zero platform-specific fitment support.
                 </p>
                 <p>
                     Worse yet, the cheap aluminum knock-offs flooding local markets are turned on manual lathes without any fluid-dynamic consideration, creating worse boundary-layer separation and lip turbulence than the factory rubber boot.
@@ -422,13 +499,13 @@
                 <div class="pt-6 border-t border-white/10 flex flex-wrap gap-8 font-mono text-xs text-zinc-400">
                     <div><span class="text-white font-bold block">48 HOURS</span> Dispatch Guarantee</div>
                     <div><span class="text-[#00f0ff] font-bold block">100% CFD TESTED</span> Finite Wave Tuning</div>
-                    <div><span class="text-[#ff1e38] font-bold block">ASA-CF MATRIX</span> 105°C Heat Resistance</div>
+                    <div><span class="text-[#ff1e38] font-bold block">ASA-CF MATRIX</span> 105°C Continuous Rating</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 5: CATALOG CALLOUT -->
+    <!-- SECTION 6: CATALOG GATEWAY -->
     <section class="relative z-20 py-28 px-6 md:px-16 bg-[#06070a] border-t border-white/10 text-center">
         <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#ff1e38] block mb-3">[ EXPANDING FLEET MATRIX ]</span>
         <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight mb-6">Inspect The 4-Bike Blueprint Fleet</h2>
@@ -447,17 +524,17 @@
         <div class="text-zinc-500">FOUNDED BY RACERS. BACKED BY MATHEMATICAL PHYSICS.</div>
     </footer>
 
-    <!-- INTERACTIVE ANIMATION JAVASCRIPT -->
+    <!-- INTERACTIVE JAVASCRIPT -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // 1. HUD CURSOR TRACKING
+        // 1. HUD CURSOR RETICLE
         const cursor = document.getElementById('hud-cursor');
         window.addEventListener('mousemove', (e) => {
             gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1, ease: "power1.out" });
         });
 
-        // 2. REAL-TIME WIND TUNNEL CANVAS
+        // 2. WIND TUNNEL SIMULATOR CANVAS
         const canvas = document.getElementById('wind-tunnel');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -499,7 +576,7 @@
         }
         animateTunnel();
 
-        // 3. 3D STAGE MULTI-AXIS GSAP TIMELINE
+        // 3. 3D VELOCITY STACK MULTI-AXIS GSAP TIMELINE
         const stage = document.getElementById('spline-interactive-stage');
         gsap.timeline({
             scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 1.4 }
@@ -521,7 +598,26 @@
             }
         });
 
-        // 5. OVERDRIVE EASTER EGG (KEY: R)
+        // 5. INTERACTIVE RESONANCE SLIDER LOGIC
+        const slider = document.getElementById('rpm-slider');
+        slider.addEventListener('input', (e) => {
+            const rpm = parseInt(e.target.value);
+            document.getElementById('slider-rpm-val').innerHTML = `${rpm.toLocaleString()} <span class="text-sm font-normal text-[#ff1e38]">RPM</span>`;
+            
+            const freq = (rpm / 120).toFixed(1);
+            document.getElementById('sim-freq').innerText = `${freq} Hz`;
+
+            const vel = Math.round(75 + (rpm - 4000) * (50 / 7000));
+            document.getElementById('sim-vel').innerText = `${vel} m/s`;
+
+            const fill = (82 + (rpm - 4000) * (16 / 7000) - (rpm > 9800 ? (rpm - 9800) * 0.003 : 0)).toFixed(1);
+            document.getElementById('sim-fill').innerText = `${fill}%`;
+
+            const gain = (6.2 + (rpm - 4000) * (8 / 7000)).toFixed(1);
+            document.getElementById('sim-gain').innerText = `+${gain}%`;
+        });
+
+        // 6. OVERDRIVE EASTER EGG (KEY: R)
         let raceMode = false;
         function toggleRaceMode() {
             raceMode = !raceMode;
