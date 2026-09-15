@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#040507] text-[#f1f3f7] selection:bg-[#ff1e38] selection:text-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEROPULSE TWINSYNC-36™ | RS 457 Asymmetric Induction System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23040507'/%3E%3Cellipse cx='32' cy='18' rx='22' ry='7' fill='none' stroke='%2300f0ff' stroke-width='3.5'/%3E%3Cpath d='M10 18 C24 18 26 30 27 48 L37 48 C38 30 40 18 54 18' fill='none' stroke='%23ff1e38' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&family=JetBrains+Mono:wght@400;600;800&display=swap');
+        * { font-family: 'Space Grotesk', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .hud-grid {
+            background-image: 
+                radial-gradient(circle at 50% 10%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 48px 48px, 48px 48px;
+        }
+        .glass-panel {
+            background: rgba(10, 14, 23, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .neon-border-cyan { box-shadow: 0 0 25px -5px rgba(0, 240, 255, 0.25); }
+    </style>
+</head>
+<body class="hud-grid min-h-screen">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="border-b border-white/10 px-6 py-4 flex justify-between items-center glass-panel sticky top-0 z-50">
+        <a href="index.html" class="flex items-center space-x-3 text-white">
+            <span class="w-2.5 h-2.5 bg-[#00f0ff] rounded-full animate-pulse"></span>
+            <span class="font-black text-sm tracking-[0.25em] uppercase">XCD <span class="text-[#00f0ff]">INDUSTRIES</span></span>
+        </a>
+        <div class="hidden md:flex items-center space-x-6 text-xs font-mono text-zinc-400">
+            <span>PLATFORM: <strong class="text-white">APRILIA RS 457</strong></span>
+            <span>SYSTEM: <strong class="text-[#00f0ff]">TWINSYNC-36</strong></span>
+            <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">VALIDATED SOLID</span>
+        </div>
+        <a href="catalog.html" class="text-xs font-mono text-zinc-400 hover:text-white transition">← CATALOG</a>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="max-w-6xl mx-auto px-6 pt-16 pb-12 text-center md:text-left">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-[#00f0ff]/30 bg-[#00f0ff]/10 text-[#00f0ff] text-[11px] font-mono tracking-widest uppercase mb-6">
+            <span>●</span> HIGH-VELOCITY ACOUSTIC INDUCTION SYSTEM
+        </div>
+        <h1 class="text-5xl md:text-8xl font-black uppercase tracking-tight text-white mb-6">
+            AEROPULSE <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-white to-[#ff1e38]">TWINSYNC-36™</span>
+        </h1>
+        <p class="max-w-2xl text-zinc-300 text-sm md:text-lg font-light leading-relaxed mb-8">
+            Engineered specifically to solve the inherent acoustic cylinder-starvation flaw in the Aprilia RS 457’s 270° crank-phase architecture. Featuring continuous-fiber ASA-CF construction, 180° toroidal bellmouth lips, and a mathematically staggered +10.5 mm acoustic runner delta.
+        </p>
+
+        <!-- QUICK METRICS -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl font-mono">
+            <div class="glass-panel p-4 rounded-xl">
+                <span class="text-[10px] text-zinc-500 block uppercase">BOLT-ON GAIN</span>
+                <span class="text-2xl font-bold text-[#00f0ff]">+2.1 WHP</span>
+                <span class="text-[10px] text-zinc-400 block mt-0.5">Stock ECU trim</span>
+            </div>
+            <div class="glass-panel p-4 rounded-xl">
+                <span class="text-[10px] text-zinc-500 block uppercase">STAGE 2 POTENTIAL</span>
+                <span class="text-2xl font-bold text-[#ff1e38]">+6.3 WHP</span>
+                <span class="text-[10px] text-zinc-400 block mt-0.5">Exhaust + UpMap tune</span>
+            </div>
+            <div class="glass-panel p-4 rounded-xl">
+                <span class="text-[10px] text-zinc-500 block uppercase">CYL 2 VE RECOVERY</span>
+                <span class="text-2xl font-bold text-white">99.4%</span>
+                <span class="text-[10px] text-zinc-400 block mt-0.5">Eliminates 7.4% void</span>
+            </div>
+            <div class="glass-panel p-4 rounded-xl">
+                <span class="text-[10px] text-zinc-500 block uppercase">RUNNER STAGGER</span>
+                <span class="text-2xl font-bold text-[#00f0ff]">+10.5 mm</span>
+                <span class="text-[10px] text-zinc-400 block mt-0.5">Phase-decoupled</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACOUSTIC RESONANCE CANVAS SIMULATOR -->
+    <section class="max-w-6xl mx-auto px-6 py-12">
+        <div class="glass-panel rounded-3xl p-6 md:p-10 border border-[#00f0ff]/30 neon-border-cyan">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                <div>
+                    <span class="text-xs font-mono text-[#00f0ff] uppercase tracking-widest block mb-1">[ REAL-TIME FLUID TELEMETRY ]</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white uppercase">Helmholtz Wavefront Phase Simulator</h2>
+                </div>
+                <div class="flex items-center space-x-3 font-mono text-xs">
+                    <span class="text-zinc-400">ENGINE RPM:</span>
+                    <span id="rpmLabel" class="text-white font-bold px-3 py-1 bg-zinc-900 border border-white/10 rounded">9,800 RPM</span>
+                </div>
+            </div>
+
+            <!-- Canvas Viewport -->
+            <div class="relative w-full h-64 bg-[#020305] rounded-2xl overflow-hidden border border-white/10 mb-6">
+                <canvas id="waveCanvas" class="w-full h-full"></canvas>
+                <div class="absolute bottom-3 left-4 text-[10px] font-mono text-zinc-500">
+                    CYLINDER 1 (PRIMARY 42mm) VS CYLINDER 2 (COMPENSATOR 52.5mm)
+                </div>
+                <div class="absolute top-3 right-4 flex space-x-4 text-[10px] font-mono">
+                    <span class="text-[#00f0ff]">● CYL 1 ACOUSTIC WAVE</span>
+                    <span class="text-[#ff1e38]">● CYL 2 COMPENSATED WAVE</span>
+                </div>
+            </div>
+
+            <!-- Interactive RPM Controller Slider -->
+            <div class="space-y-2">
+                <div class="flex justify-between text-xs font-mono text-zinc-400">
+                    <span>5,000 RPM (Off-Cam)</span>
+                    <span>9,800 RPM (Standing Wave Sync)</span>
+                    <span>11,500 RPM (Over-Rev)</span>
+                </div>
+                <input id="rpmSlider" type="range" min="5000" max="11500" value="9800" step="100" class="w-full accent-[#00f0ff] bg-zinc-800 rounded-lg cursor-pointer">
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE DYNO PERFORMANCE STAGES -->
+    <section class="max-w-6xl mx-auto px-6 py-12">
+        <div class="glass-panel rounded-3xl p-6 md:p-10 border border-white/10">
+            <div class="text-center md:text-left mb-8">
+                <span class="text-xs font-mono text-[#ff1e38] uppercase tracking-widest block mb-1">[ DYNO BENCHMARK SUITE ]</span>
+                <h2 class="text-3xl font-black uppercase text-white">Select Induction Architecture Stage</h2>
+                <p class="text-zinc-400 text-xs font-mono mt-1">Simulate wheel horsepower and volumetric balance across component stages.</p>
+            </div>
+
+            <!-- Stage Selectors -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 font-mono text-xs">
+                <button onclick="setStage(0)" id="btnStage0" class="stage-btn p-4 rounded-xl border border-white/10 text-left bg-white/5 hover:border-white/30 transition">
+                    <span class="text-zinc-500 block text-[10px]">STAGE 0</span>
+                    <strong class="text-white block text-sm mt-1">Factory OEM Stacks</strong>
+                    <span class="text-zinc-400 text-[11px] block mt-2">41.5 WHP • 43.5 Nm • 7.4% Cyl 2 Starvation</span>
+                </button>
+                <button onclick="setStage(1)" id="btnStage1" class="stage-btn p-4 rounded-xl border border-[#00f0ff] bg-[#00f0ff]/10 text-left transition">
+                    <span class="text-[#00f0ff] block text-[10px]">STAGE 1 (RECOMMENDED)</span>
+                    <strong class="text-white block text-sm mt-1">TwinSync-36 (Bolt-On)</strong>
+                    <span class="text-zinc-300 text-[11px] block mt-2">43.6 WHP • 45.2 Nm • Fully Balanced</span>
+                </button>
+                <button onclick="setStage(2)" id="btnStage2" class="stage-btn p-4 rounded-xl border border-white/10 text-left bg-white/5 hover:border-white/30 transition">
+                    <span class="text-[#ff1e38] block text-[10px]">STAGE 2 (MAX POTENTIAL)</span>
+                    <strong class="text-white block text-sm mt-1">Full Ecosystem</strong>
+                    <span class="text-zinc-400 text-[11px] block mt-2">47.8 WHP • 48.6 Nm • Stacks + Filter + Decat + UpMap</span>
+                </button>
+            </div>
+
+            <!-- Dynamic Graph Canvas -->
+            <div class="p-6 rounded-2xl bg-zinc-950 border border-white/10 mb-8">
+                <div class="flex justify-between items-center text-xs font-mono mb-4 text-zinc-400">
+                    <span>OUTPUT TELEMETRY // WHEEL HP & TORQUE</span>
+                    <span id="dynoMetric" class="text-emerald-400 font-bold">+2.1 WHP (+5.1% GAIN OVER STOCK)</span>
+                </div>
+                <div class="h-64 w-full flex items-end">
+                    <svg id="dynoSvg" viewBox="0 0 600 200" class="w-full h-full overflow-visible">
+                        <!-- Background Grid -->
+                        <line x1="0" y1="0" x2="600" y2="0" stroke="rgba(255,255,255,0.05)" />
+                        <line x1="0" y1="50" x2="600" y2="50" stroke="rgba(255,255,255,0.05)" />
+                        <line x1="0" y1="100" x2="600" y2="100" stroke="rgba(255,255,255,0.05)" />
+                        <line x1="0" y1="150" x2="600" y2="150" stroke="rgba(255,255,255,0.05)" />
+                        
+                        <!-- Baseline Curve -->
+                        <path d="M 0,180 C 150,150 300,100 450,55 C 500,45 550,75 600,105" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-dasharray="4 4" />
+                        
+                        <!-- Active Stage Dyno Curve -->
+                        <path id="dynoPath" d="M 0,180 C 150,145 300,90 450,35 C 500,25 550,30 600,50" fill="none" stroke="#00f0ff" stroke-width="4.5" class="transition-all duration-700 ease-out" />
+                    </svg>
+                </div>
+                <div class="flex justify-between text-[11px] font-mono text-zinc-500 mt-2">
+                    <span>4,000 RPM</span>
+                    <span>6,000 RPM</span>
+                    <span>8,000 RPM</span>
+                    <span>9,800 RPM (Peak)</span>
+                    <span>11,000 RPM</span>
+                </div>
+            </div>
+
+            <!-- Upstream/Downstream Synergistic Hardware Checklist -->
+            <div class="border-t border-white/10 pt-6">
+                <h3 class="text-white font-mono text-sm uppercase tracking-wider mb-4">Required Hardware for Stage 2 Peak Output:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
+                    <div class="p-4 rounded-lg bg-zinc-900/60 border border-white/5">
+                        <strong class="text-white block mb-1">1. High-Flow Air Filter</strong>
+                        <span class="text-zinc-400">Sprint Filter P08 or MWR. Drops intake delta-P restriction by 40% across the stock front duct.</span>
+                    </div>
+                    <div class="p-4 rounded-lg bg-zinc-900/60 border border-white/5">
+                        <strong class="text-white block mb-1">2. Decat Exhaust Header</strong>
+                        <span class="text-zinc-400">Eliminates backpressure, maximizing exhaust scavenging during overlap to amplify intake depression.</span>
+                    </div>
+                    <div class="p-4 rounded-lg bg-zinc-900/60 border border-white/5">
+                        <strong class="text-white block mb-1">3. Custom ECU Reflash</strong>
+                        <span class="text-zinc-400">UpMap T800+ calibration. Enriches Cyl 2 by +3.5% fuel and advances high-RPM timing by +2.5°.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASYMMETRIC STACK GEOMETRY SPECS -->
+    <section class="max-w-6xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Cylinder 1 Card -->
+            <div class="glass-panel p-8 rounded-3xl border border-white/10">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xs font-mono text-[#00f0ff] uppercase">[ PRIMARY RUNNER ]</span>
+                    <span class="text-xs font-mono text-zinc-500">CYLINDER 1</span>
+                </div>
+                <h3 class="text-2xl font-bold uppercase text-white mb-4">Stack A // 42.0mm</h3>
+                <ul class="space-y-3 font-mono text-xs text-zinc-300">
+                    <li class="flex justify-between border-b border-white/5 pb-2">
+                        <span class="text-zinc-500">Standoff Height:</span>
+                        <strong class="text-white">42.0 mm</strong>
+                    </li>
+                    <li class="flex justify-between border-b border-white/5 pb-2">
+                        <span class="text-zinc-500">Internal Taper:</span>
+                        <strong class="text-white">10.48° Included Cone</strong>
+                    </li>
+                    <li class="flex justify-between border-b border-white/5 pb-2">
+                        <span class="text-zinc-500">Bellmouth Profile:</span>
+                        <strong class="text-white">180° Tangent Circular Arc</strong>
+                    </li>
+                    <li class="flex justify-between border-b border-white/5 pb-2">
+                        <span class="text-zinc-500">Outer Envelope:</span>
+                        <strong class="text-white">Ø56.5 mm</strong>
+                    </li>
+                    <li class="flex justify-between">
+                        <span class="text-zinc-500">Lid Clearance:</span>
+                        <strong class="text-emerald-400">32.0 mm (&gt;0.88D)</strong>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Cylinder 2 Card -->
+            <div class="glass-panel p-8 rounded-3xl border border-[#ff1e38]/30">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xs font-mono text-[#ff1e38] uppercase">[ COMPENSATOR RUNNER ]</span>
+                    <span class="text-xs font-mono text-zinc-500">CYLINDER 2</span>
+                </div>
+                <h3 class="text-2xl font-bold uppercase text-white mb-4">Stack B // 52.5mm</h3>
+                <ul class="space-y-3 font-mono text-xs text-zinc-300">
+                    <li class="flex justify-between border-b border-white/5 pb-2">
+                        <span class="text-zinc-500">Standoff Height:</span>
+                        <strong class="text-[#ff1e38]">52.5 mm (+10.5 mm Stagger)</strong>
+                    </li>
+                    <li class="flex justify-between border-b border-white/5 pb-2">
+                        <span class="text-zinc-500">Internal Taper:</span>
+                        <strong class="text-white">10.30° Included Cone</strong>
+                    </li>
+                    <li class="flex justify-between border-b border-white/5 pb-2">
+                        <span class="text-zinc-500">Bellmouth Profile:</span>
+                        <strong class="text-white">180° Tangent Circular Arc</strong>
+                    </li>
+                    <li class="flex justify-between border-b border-white/5 pb-2">
+                        <span class="text-zinc-500">Outer Envelope:</span>
+                        <strong class="text-white">Ø58.3 mm</strong>
+                    </li>
+                    <li class="flex justify-between">
+                        <span class="text-zinc-500">Lid Clearance:</span>
+                        <strong class="text-emerald-400">21.5 mm (&gt;0.60D Safety Limit)</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION / RESERVATION -->
+    <section class="max-w-4xl mx-auto px-6 py-16 text-center">
+        <div class="glass-panel p-10 rounded-3xl border border-[#00f0ff]/40">
+            <h2 class="text-3xl md:text-5xl font-black uppercase text-white mb-4">
+                Secure Your TwinSync-36 Allocation
+            </h2>
+            <p class="text-zinc-400 text-xs md:text-sm font-mono max-w-xl mx-auto mb-8">
+                Individually manufactured from continuous carbon-fiber reinforced ASA. High chemical resistance to fuel vapors, 105°C continuous heat deflection, and polished internal bores.
+            </p>
+            <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20XCD%20Industries,%20I%20want%20to%20order%20the%20AeroPulse%20TwinSync-36%20for%20my%20Aprilia%20RS%20457." 
+               target="_blank"
+               class="inline-block px-10 py-5 bg-[#00f0ff] hover:bg-white text-black font-mono font-bold text-xs uppercase tracking-widest rounded-xl transition duration-200">
+                Reserve TwinSync-36 Batch via WhatsApp →
+            </a>
+            <div class="text-[10px] font-mono text-zinc-600 mt-4">
+                DISPATCHED WITHIN 48 HOURS ACROSS INDIA // FULL BOLT-ON SUPPORT
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 py-8 text-center text-zinc-600 font-mono text-[11px]">
+        XCD INDUSTRIES // COMPUTATIONAL INTAKE ARCHITECTURE // BANGALORE
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // --- 1. ACOUSTIC CANVAS ANIMATION ---
+        const canvas = document.getElementById('waveCanvas');
+        const ctx = canvas.getContext('2d');
+        const slider = document.getElementById('rpmSlider');
+        const rpmLabel = document.getElementById('rpmLabel');
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let phase = 0;
+        function drawWaves() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const rpm = parseInt(slider.value);
+            const freqMultiplier = rpm / 2500;
+            const centerY = canvas.height / 2;
+
+            // Draw Cylinder 1 Standing Wave (Cyan)
+            ctx.beginPath();
+            ctx.strokeStyle = '#00f0ff';
+            ctx.lineWidth = 3;
+            for (let x = 0; x < canvas.width; x++) {
+                const y = centerY + Math.sin(x * 0.015 * freqMultiplier + phase) * 35;
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // Draw Cylinder 2 Compensated Phase Wave (Red - 270 deg offset)
+            ctx.beginPath();
+            ctx.strokeStyle = '#ff1e38';
+            ctx.lineWidth = 3;
+            for (let x = 0; x < canvas.width; x++) {
+                const y = centerY + Math.sin(x * 0.015 * freqMultiplier + phase + 1.5) * 35;
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            phase += 0.05 * (rpm / 5000);
+            requestAnimationFrame(drawWaves);
+        }
+        drawWaves();
+
+        slider.addEventListener('input', (e) => {
+            rpmLabel.innerText = `${parseInt(e.target.value).toLocaleString()} RPM`;
+        });
+
+        // --- 2. STAGE DYNO CHANGER ---
+        const dynoPath = document.getElementById('dynoPath');
+        const dynoMetric = document.getElementById('dynoMetric');
+        const stageBtns = [
+            document.getElementById('btnStage0'),
+            document.getElementById('btnStage1'),
+            document.getElementById('btnStage2')
+        ];
+
+        const stageData = [
+            {
+                path: "M 0,180 C 150,150 300,100 450,55 C 500,45 550,75 600,105",
+                color: "#71717a",
+                metric: "OEM BASELINE // 41.5 WHP (7.4% HIGH-RPM CYLINDER STARVATION)"
+            },
+            {
+                path: "M 0,180 C 150,145 300,90 450,35 C 500,25 550,30 600,50",
+                color: "#00f0ff",
+                metric: "+2.1 WHP // 43.6 WHP (TWINSYNC-36 ASYMMETRIC HARMONIC BALANCED)"
+            },
+            {
+                path: "M 0,180 C 150,135 300,75 450,15 C 500,5 550,8 600,18",
+                color: "#ff1e38",
+                metric: "+6.3 WHP // 47.8 WHP (STAGE 2: STACKS + FILTER + DECAT + UPMAP FLASH)"
+            }
+        ];
+
+        function setStage(idx) {
+            stageBtns.forEach((btn, i) => {
+                if (i === idx) {
+                    btn.classList.add('border-[#00f0ff]', 'bg-[#00f0ff]/10');
+                    btn.classList.remove('border-white/10', 'bg-white/5');
+                } else {
+                    btn.classList.remove('border-[#00f0ff]', 'bg-[#00f0ff]/10');
+                    btn.classList.add('border-white/10', 'bg-white/5');
+                }
+            });
+
+            dynoPath.setAttribute('d', stageData[idx].path);
+            dynoPath.setAttribute('stroke', stageData[idx].color);
+            dynoMetric.innerText = stageData[idx].metric;
+            dynoMetric.style.color = stageData[idx].color;
+        }
+    </script>
+</body>
+</html>
