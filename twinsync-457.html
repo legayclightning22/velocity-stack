@@ -460,47 +460,424 @@
         </div>
     </section>
 
+   <!-- ================================================================= -->
+    <!-- EXTENSION SECTION 5: FEA VACUUM DEFLECTION & THERMAL SCIENCE     -->
     <!-- ================================================================= -->
-    <!-- EXTENSION SECTION 4: 100 HZ DRAGY SATELLITE RACETRACK LOGS -->
-    <!-- ================================================================= -->
-    <section class="max-w-6xl mx-auto px-6 py-16 border-t border-white/10">
-        <div class="mb-10 flex flex-col md:flex-row justify-between md:items-end gap-4">
-            <div>
-                <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest block mb-2">[ CLOSED ASPHALT TELEMETRY ]</span>
-                <h2 class="text-3xl md:text-5xl font-black uppercase text-white">100 Hz Dragy Satellite Verification</h2>
+    <section class="max-w-6xl mx-auto px-6 py-20 border-t border-white/10">
+        <div class="mb-12">
+            <span class="text-xs font-mono text-[#00f0ff] uppercase tracking-widest block mb-2">[ STRUCTURAL DYNAMICS & FEA ]</span>
+            <h2 class="text-3xl md:text-5xl font-black uppercase text-white">Cyclic Vacuum Deflection Matrix</h2>
+            <p class="text-zinc-400 text-xs md:text-sm font-mono mt-2 max-w-3xl leading-relaxed">
+                Single and twin induction tracts generate sudden intake depressions down to -35 kPa. Thin 3D prints or soft rubber funnels flutter under cyclic vacuum draw, corrupting the boundary layer.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs mb-12">
+            <div class="glass-panel p-6 rounded-2xl border border-white/5">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="text-zinc-500 text-[10px] uppercase">MATERIAL MODULUS</span>
+                    <span class="text-white font-bold">4,800 MPa</span>
+                </div>
+                <h3 class="text-base font-bold text-white mb-2">Continuous ASA-CF</h3>
+                <p class="text-zinc-400 text-[11px] leading-relaxed mb-4">
+                    Carbon fiber micro-strands aligned along the hoop-stress vector provide superior tensile stiffness. Wall deflection is constrained to &lt;0.012 mm under maximum redline intake vacuum.
+                </p>
+                <div class="text-[10px] text-emerald-400 border-t border-white/5 pt-2 font-bold">
+                    DEFLECTION: ZERO MEASURABLE FLUTTER
+                </div>
             </div>
-            <div class="font-mono text-xs text-zinc-500">
-                ASPHALT TEMP: 32°C // AMBIENT: 26°C // ELEVATION: 920M
+
+            <div class="glass-panel p-6 rounded-2xl border border-white/5">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="text-zinc-500 text-[10px] uppercase">MATERIAL MODULUS</span>
+                    <span class="text-zinc-400 font-bold">1,800 MPa</span>
+                </div>
+                <h3 class="text-base font-bold text-zinc-300 mb-2">Standard PETG / ABS</h3>
+                <p class="text-zinc-500 text-[11px] leading-relaxed mb-4">
+                    Unreinforced polymers flex inward by up to 0.42 mm during 9,500+ RPM vacuum pulses, creating micro-vibrations that detach the boundary layer from the internal cone.
+                </p>
+                <div class="text-[10px] text-[#ff1e38] border-t border-white/5 pt-2">
+                    DEFLECTION: 0.42 mm CYCLIC WALL FLEX
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl border border-white/5">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="text-zinc-500 text-[10px] uppercase">MATERIAL MODULUS</span>
+                    <span class="text-zinc-400 font-bold">45 MPa</span>
+                </div>
+                <h3 class="text-base font-bold text-zinc-400 mb-2">Factory EPDM Rubber</h3>
+                <p class="text-zinc-500 text-[11px] leading-relaxed mb-4">
+                    OEM rubber funnels are designed for rapid injection tooling and acoustic deadening. Under high depression, the lip deforms elliptically, reducing the effective intake area by up to 4.5%.
+                </p>
+                <div class="text-[10px] text-[#ff1e38] border-t border-white/5 pt-2">
+                    DEFLECTION: SEVERE LIP DISTORTION
+                </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs">
-            <div class="glass-panel p-5 rounded-xl border border-white/5">
-                <span class="text-zinc-500 block text-[9px] uppercase">0 – 100 KM/H</span>
-                <div class="text-2xl font-black text-white mt-1">4.42s</div>
-                <div class="text-zinc-400 text-[10px]">Stock: <span class="line-through text-zinc-600">4.70s</span></div>
-                <span class="text-emerald-400 font-bold block mt-2 text-[10px]">▼ 0.28s SPRINT</span>
+        <!-- Thermal Soak Comparison Table -->
+        <div class="glass-panel p-6 md:p-8 rounded-2xl border border-white/10 font-mono text-xs overflow-x-auto">
+            <span class="text-zinc-400 uppercase text-[10px] block mb-4">HEAT-SOAK CONDUCTIVITY VS INDUCTION AIR CHARGE DENSITY:</span>
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="border-b border-white/10 text-zinc-500 text-[10px]">
+                        <th class="py-3 pr-4">MATERIAL MATRIX</th>
+                        <th class="py-3 px-4">THERMAL CONDUCTIVITY ($k$)</th>
+                        <th class="py-3 px-4">AIRBOX RUNNER TEMP (AFTER 20 MIN)</th>
+                        <th class="py-3 px-4">AIR DENSITY DELTA</th>
+                        <th class="py-3 pl-4 text-right">HORSEPOWER IMPACT</th>
+                    </tr>
+                </thead>
+                <tbody class="text-zinc-300 divide-y divide-white/5 text-[11px]">
+                    <tr>
+                        <td class="py-3 pr-4 font-bold text-white">Billet 6061 Aluminum</td>
+                        <td class="py-3 px-4 text-[#ff1e38]">167.0 W/m·K (Heat Sink)</td>
+                        <td class="py-3 px-4 text-[#ff1e38]">68.5°C</td>
+                        <td class="py-3 px-4 text-[#ff1e38]">-4.8% Density Loss</td>
+                        <td class="py-3 pl-4 text-right text-[#ff1e38]">-1.2 WHP (Heat Soaked)</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 pr-4 font-bold text-zinc-400">OEM Injection Plastic</td>
+                        <td class="py-3 px-4">0.33 W/m·K</td>
+                        <td class="py-3 px-4">48.2°C</td>
+                        <td class="py-3 px-4">-1.6% Density Loss</td>
+                        <td class="py-3 pl-4 text-right text-zinc-400">Baseline</td>
+                    </tr>
+                    <tr class="bg-[#00f0ff]/5">
+                        <td class="py-3 pr-4 font-bold text-[#00f0ff]">XCD Continuous ASA-CF</td>
+                        <td class="py-3 px-4 text-emerald-400">0.17 W/m·K (Insulator)</td>
+                        <td class="py-3 px-4 text-emerald-400">36.1°C (Ambient Match)</td>
+                        <td class="py-3 px-4 text-emerald-400">+3.2% Dense Mass</td>
+                        <td class="py-3 pl-4 text-right text-emerald-400 font-bold">+0.8 WHP (Cool Charge)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- EXTENSION SECTION 6: COANDA-EFFECT BOUNDARY LAYER PHYSICS       -->
+    <!-- ================================================================= -->
+    <section class="max-w-6xl mx-auto px-6 py-20 border-t border-white/10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 space-y-6">
+                <div>
+                    <span class="text-xs font-mono text-[#00f0ff] uppercase tracking-widest block mb-2">[ FLUID DYNAMICS THEORY ]</span>
+                    <h2 class="text-3xl md:text-5xl font-black uppercase text-white">Coanda-Effect 180° Toroidal Lips</h2>
+                </div>
+                
+                <p class="text-zinc-300 text-xs md:text-sm leading-relaxed font-light">
+                    When air enters an intake runner from a 90° overhead angle inside an airbox, it naturally wants to separate at the outer corner, creating a restricted neck called a <strong class="text-white">Vena Contracta</strong>. This artificial choke reduces the effective bore of a Ø36.0 mm throttle body down to an effective Ø31.8 mm.
+                </p>
+
+                <div class="p-5 rounded-xl bg-zinc-950/80 border border-white/5 font-mono text-xs space-y-3">
+                    <div class="flex justify-between">
+                        <span class="text-zinc-500">DISCHARGE COEFFICIENT ($C_d$):</span>
+                        <span class="text-[#00f0ff] font-bold">0.985 (XCD Toroid) vs 0.820 (Stock)</span>
+                    </div>
+                    <div class="w-full bg-zinc-900 h-2 rounded-full overflow-hidden flex">
+                        <div class="bg-zinc-600 h-full w-[82%]"></div>
+                        <div class="bg-[#00f0ff] h-full w-[16.5%]"></div>
+                    </div>
+                    <p class="text-[11px] text-zinc-500 leading-relaxed pt-2">
+                        Our full 180° elliptical lip curls completely backward toward the airbox floor, creating a localized low-pressure zone that forces high-velocity streamlines to adhere to the curved surface (the Coanda effect). The effective intake throat matches 100% of the physical throttle bore.
+                    </p>
+                </div>
             </div>
 
-            <div class="glass-panel p-5 rounded-xl border border-[#00f0ff]/30">
-                <span class="text-[#00f0ff] block text-[9px] uppercase">60 – 120 KM/H</span>
-                <div class="text-2xl font-black text-[#00f0ff] mt-1">5.41s</div>
-                <div class="text-zinc-400 text-[10px]">Stock: <span class="line-through text-zinc-600">5.82s</span></div>
-                <span class="text-emerald-400 font-bold block mt-2 text-[10px]">▼ 0.41s MID-CORNER</span>
-            </div>
-
-            <div class="glass-panel p-5 rounded-xl border border-white/5">
-                <span class="text-zinc-500 block text-[9px] uppercase">100 – 160 KM/H</span>
-                <div class="text-2xl font-black text-white mt-1">8.32s</div>
-                <div class="text-zinc-400 text-[10px]">Stock: <span class="line-through text-zinc-600">8.94s</span></div>
-                <span class="text-emerald-400 font-bold block mt-2 text-[10px]">▼ 0.62s BACK-STRAIGHT</span>
-            </div>
-
-            <div class="glass-panel p-5 rounded-xl border border-[#ff1e38]/30">
-                <span class="text-[#ff1e38] block text-[9px] uppercase">GPS TRUE TOP SPEED</span>
-                <div class="text-2xl font-black text-[#ff1e38] mt-1">188.4 <span class="text-sm font-normal">km/h</span></div>
-                <div class="text-zinc-400 text-[10px]">Stock: <span class="line-through text-zinc-600">183.0 km/h</span></div>
-                <span class="text-[#00f0ff] font-bold block mt-2 text-[10px]">▲ +5.4 km/h PULL</span>
+            <!-- Interactive Particle Streamline Viewport -->
+            <div class="lg:col-span-6 glass-panel p-6 rounded-3xl border border-[#00f0ff]/30 relative overflow-hidden h-80 flex flex-col justify-between">
+                <canvas id="coandaCanvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+                <div class="relative z-10 flex justify-between font-mono text-[10px]">
+                    <span class="px-2 py-1 bg-black/60 border border-white/10 rounded text-[#00f0ff]">
+                        ● COANDA BOUNDARY STREAMLINES
+                    </span>
+                    <span class="px-2 py-1 bg-black/60 border border-white/10 rounded text-zinc-400">
+                        VELOCITY: 118 M/S
+                    </span>
+                </div>
+                <div class="relative z-10 flex justify-between items-end font-mono text-[10px] text-zinc-500 bg-gradient-to-t from-black/80 to-transparent p-2 rounded">
+                    <span>180° LIP RADIUS: R = 7.5 mm</span>
+                    <span class="text-emerald-400 font-bold">ZERO VENA CONTRACTA DETACHMENT</span>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- ================================================================= -->
+    <!-- EXTENSION SECTION 7: AIRBOX LID TEST-FIT & CLEARANCE CHECKLIST  -->
+    <!-- ================================================================= -->
+    <section class="max-w-6xl mx-auto px-6 py-20 border-t border-white/10">
+        <div class="mb-12">
+            <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest block mb-2">[ INSTALLATION ARCHITECTURE ]</span>
+            <h2 class="text-3xl md:text-5xl font-black uppercase text-white">Packaging Standoff Protocol</h2>
+            <p class="text-zinc-400 text-xs md:text-sm font-mono mt-2 max-w-3xl leading-relaxed">
+                Step-by-step verification process to ensure zero mechanical interference and unobstructed overhead boundary clearance inside the OEM Aprilia RS 457 plenum.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 font-mono text-xs">
+            <div class="glass-panel p-5 rounded-xl border border-white/5">
+                <span class="text-[#00f0ff] font-bold text-sm block mb-2">01 // ACCESS</span>
+                <p class="text-zinc-400 text-[11px] leading-relaxed">
+                    Remove fuel tank fairing fasteners (4x 4mm Allen). Disconnect fuel quick-release and vent lines. Remove 8x Torx T20 airbox perimeter screws.
+                </p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl border border-white/5">
+                <span class="text-[#00f0ff] font-bold text-sm block mb-2">02 // EXTRACTION</span>
+                <p class="text-zinc-400 text-[11px] leading-relaxed">
+                    Remove OEM symmetrical rubber boots from the aluminum throttle body spigots. Clean residual intake blowby from the rubber seat channels.
+                </p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl border border-[#00f0ff]/40 bg-[#00f0ff]/5">
+                <span class="text-white font-bold text-sm block mb-2">03 // SEATING</span>
+                <p class="text-zinc-300 text-[11px] leading-relaxed">
+                    Insert Stack A (42.0mm) into Cylinder 1 (left) and Stack B (52.5mm) into Cylinder 2 (right). Push until the 1.2 mm retention barb clicks into the retention groove.
+                </p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl border border-emerald-500/40 bg-emerald-500/5">
+                <span class="text-emerald-400 font-bold text-sm block mb-2">04 // VERIFICATION</span>
+                <p class="text-zinc-300 text-[11px] leading-relaxed">
+                    Place modeling clay on the top lip of Stack B. Fasten the airbox lid completely. Remove lid and verify clay thickness measures <strong>≥21.5 mm</strong>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- BATCH RESERVATION TERMINAL & WHATSAPP ALLOCATION HOOK           -->
+    <!-- ================================================================= -->
+    <section class="max-w-5xl mx-auto px-6 py-24 text-center border-t border-white/10">
+        <div class="glass-panel p-8 md:p-16 rounded-3xl border-2 border-[#00f0ff]/40 neon-cyan relative overflow-hidden">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#00f0ff]/30 bg-[#00f0ff]/10 text-[#00f0ff] text-[11px] font-mono tracking-widest uppercase mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                BATCH 03 ALLOCATION // APRILIA RS 457
+            </div>
+
+            <h2 class="text-4xl md:text-7xl font-black uppercase text-white mb-6 tracking-tight">
+                SECURE YOUR TWINSYNC-36
+            </h2>
+
+            <p class="text-zinc-300 text-sm md:text-base font-mono max-w-xl mx-auto mb-8 leading-relaxed">
+                Individually manufactured in continuous ASA Carbon Fiber, wet-sanded to Ra 0.8 µm mirror internal bore, and flow-matched to 0.00 mm spigot tolerance.
+            </p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto mb-10 font-mono text-xs">
+                <div class="p-3 rounded-lg bg-black/50 border border-white/5">
+                    <span class="text-zinc-500 block text-[9px]">DISPATCH TIME</span>
+                    <strong class="text-white text-sm">48 Hours</strong>
+                </div>
+                <div class="p-3 rounded-lg bg-black/50 border border-white/5">
+                    <span class="text-zinc-500 block text-[9px]">SHIPPING</span>
+                    <strong class="text-[#00f0ff] text-sm">All-India Fast</strong>
+                </div>
+                <div class="p-3 rounded-lg bg-black/50 border border-white/5">
+                    <span class="text-zinc-500 block text-[9px]">WARRANTY</span>
+                    <strong class="text-white text-sm">Lifetime Track</strong>
+                </div>
+                <div class="p-3 rounded-lg bg-black/50 border border-white/5">
+                    <span class="text-zinc-500 block text-[9px]">FITMENT</span>
+                    <strong class="text-emerald-400 text-sm">100% Plug & Play</strong>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+                <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20XCD%20Industries,%20I%20want%20to%20reserve%20the%20AeroPulse%20TwinSync-36%20for%20my%20Aprilia%20RS%20457." 
+                   target="_blank"
+                   class="px-10 py-5 bg-[#00f0ff] hover:bg-white text-black font-mono font-black text-xs uppercase tracking-widest rounded-xl transition duration-200 neon-cyan text-center shadow-lg">
+                    Reserve Batch via WhatsApp →
+                </a>
+                <a href="catalog.html" class="px-8 py-5 border border-white/20 hover:border-white text-white font-mono font-bold text-xs uppercase tracking-widest rounded-xl transition duration-200 text-center">
+                    Fleet Catalog
+                </a>
+            </div>
+
+            <div class="text-[11px] font-mono text-zinc-500 mt-8">
+                PART NO: XCD-AP-RS36-ASYM // TESTED ON BENGALURU VELOCITY TRACK ASPHALT
+            </div>
+        </div>
+    </section>
+
+    <!-- STATUS FOOTER BAR -->
+    <div class="border-y border-white/5 bg-[#030406]/95 py-3 px-6 md:px-12 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono text-[10px] text-zinc-500">
+        <div class="flex items-center gap-4">
+            <span class="flex items-center gap-1.5 text-[#00f0ff]">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#00f0ff] animate-ping"></span>
+                SYSTEM: PRODUCTION READY
+            </span>
+            <span>CYL 1: 42.0 mm (PRIMARY)</span>
+            <span>CYL 2: 52.5 mm (+10.5 mm OFFSET)</span>
+        </div>
+        <div>
+            HEAT DEFLECTION: 105°C CONTINUOUS // WATER-TIGHT SOLID: 24,512 mm³
+        </div>
+    </div>
+
+    <!-- MAIN FOOTER -->
+    <footer class="relative z-20 py-8 px-6 md:px-16 flex flex-col sm:flex-row justify-between items-center gap-4 text-zinc-600 text-[11px] font-mono">
+        <div>© 2026 XCD INDUSTRIES. COMPUTATIONAL INDUCTION ARCHITECTURE. ALL RIGHTS RESERVED.</div>
+        <div class="text-zinc-500">FOUNDED BY RACERS. BACKED BY MATHEMATICAL ACOUSTICS.</div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT & ANIMATION ENGINES -->
+    <script>
+        // 1. ACOUSTIC HELMHOLTZ CANVAS SIMULATION
+        const canvas = document.getElementById('acousticCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            const slider = document.getElementById('interactiveSlider');
+            const sliderLabel = document.getElementById('sliderRpmValue');
+            const machDisplay = document.getElementById('machDisplay');
+
+            function resizeCanvas() {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            let phaseOffset = 0;
+            function renderAcousticWaves() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const rpm = parseInt(slider.value);
+                const freq = rpm / 2400;
+                const midY = canvas.height / 2;
+
+                // Cylinder 1 Primary Wave (Cyan)
+                ctx.beginPath();
+                ctx.strokeStyle = '#00f0ff';
+                ctx.lineWidth = 3;
+                for (let x = 0; x < canvas.width; x++) {
+                    const y = midY + Math.sin(x * 0.014 * freq + phaseOffset) * 40;
+                    if (x === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                // Cylinder 2 Phase-Compensated Wave (Red - 270 deg delayed)
+                ctx.beginPath();
+                ctx.strokeStyle = '#ff1e38';
+                ctx.lineWidth = 3;
+                for (let x = 0; x < canvas.width; x++) {
+                    const y = midY + Math.sin(x * 0.014 * freq + phaseOffset + 1.5) * 40;
+                    if (x === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                phaseOffset += 0.06 * (rpm / 5000);
+                requestAnimationFrame(renderAcousticWaves);
+            }
+            renderAcousticWaves();
+
+            slider.addEventListener('input', (e) => {
+                const rpmVal = parseInt(e.target.value);
+                sliderLabel.innerText = `${rpmVal.toLocaleString()} RPM (Standing Wave Synchronization Peak)`;
+                const mach = (0.22 + (rpmVal - 5000) * (0.16 / 6500)).toFixed(2);
+                machDisplay.innerText = `${mach} MACH`;
+            });
+        }
+
+        // 2. DYNO STAGE SIMULATOR
+        const dynoPowerPath = document.getElementById('dynoPowerPath');
+        const dynoMetricReadout = document.getElementById('dynoMetricReadout');
+        const stageBtns = [
+            document.getElementById('stageBtn0'),
+            document.getElementById('stageBtn1'),
+            document.getElementById('stageBtn2')
+        ];
+
+        const dynoData = [
+            {
+                path: "M 0,200 C 180,165 350,110 500,60 C 560,50 620,85 700,120",
+                color: "#71717a",
+                readout: "STAGE 0: FACTORY OEM BASELINE // 41.5 WHP (7.4% CYLINDER 2 AIR STARVATION)"
+            },
+            {
+                path: "M 0,200 C 180,160 350,100 500,40 C 560,30 620,38 700,60",
+                color: "#00f0ff",
+                readout: "STAGE 1: +2.1 WHP OVER STOCK // 43.6 WHP (TWINSYNC-36 ASYMMETRIC BALANCED)"
+            },
+            {
+                path: "M 0,200 C 180,145 350,85 500,15 C 560,5 620,10 700,25",
+                color: "#ff1e38",
+                readout: "STAGE 2: +6.3 WHP OVER STOCK // 47.8 WHP (STACKS + FILTER + DECAT + UPMAP)"
+            }
+        ];
+
+        function setStage(index) {
+            stageBtns.forEach((btn, i) => {
+                if (btn) {
+                    if (i === index) {
+                        btn.classList.add('border-[#00f0ff]', 'bg-[#00f0ff]/10');
+                        btn.classList.remove('border-white/10', 'bg-white/5');
+                    } else {
+                        btn.classList.remove('border-[#00f0ff]', 'bg-[#00f0ff]/10');
+                        btn.classList.add('border-white/10', 'bg-white/5');
+                    }
+                }
+            });
+
+            if (dynoPowerPath && dynoMetricReadout) {
+                dynoPowerPath.setAttribute('d', dynoData[index].path);
+                dynoPowerPath.setAttribute('stroke', dynoData[index].color);
+                dynoMetricReadout.innerText = dynoData[index].readout;
+                dynoMetricReadout.style.color = dynoData[index].color;
+            }
+        }
+
+        // 3. COANDA EFFECT PARTICLE CANVAS STREAMLINES
+        const coandaCanvas = document.getElementById('coandaCanvas');
+        if (coandaCanvas) {
+            const cCtx = coandaCanvas.getContext('2d');
+            function resizeCoanda() {
+                coandaCanvas.width = coandaCanvas.parentElement.clientWidth;
+                coandaCanvas.height = coandaCanvas.parentElement.clientHeight;
+            }
+            window.addEventListener('resize', resizeCoanda);
+            resizeCoanda();
+
+            class FlowParticle {
+                constructor() { this.reset(); }
+                reset() {
+                    this.x = Math.random() * (coandaCanvas.width * 0.3);
+                    this.y = Math.random() * (coandaCanvas.height * 0.4);
+                    this.speed = Math.random() * 4 + 4;
+                    this.t = 0;
+                }
+                update() {
+                    this.t += 0.02;
+                    this.x += this.speed;
+                    // Curve downwards along the 180-degree lip profile
+                    if (this.x > coandaCanvas.width * 0.4) {
+                        this.y += Math.sin(this.t) * 2 + 3.5;
+                    }
+                    if (this.x > coandaCanvas.width || this.y > coandaCanvas.height) {
+                        this.reset();
+                    }
+                }
+                draw() {
+                    cCtx.beginPath();
+                    cCtx.arc(this.x, this.y, 1.6, 0, Math.PI * 2);
+                    cCtx.fillStyle = '#00f0ff';
+                    cCtx.shadowColor = '#00f0ff';
+                    cCtx.shadowBlur = 8;
+                    cCtx.fill();
+                }
+            }
+
+            const particles = Array.from({ length: 35 }, () => new FlowParticle());
+            function animateCoanda() {
+                cCtx.clearRect(0, 0, coandaCanvas.width, coandaCanvas.height);
+                particles.forEach(p => { p.update(); p.draw(); });
+                requestAnimationFrame(animateCoanda);
+            }
+            animateCoanda();
+        }
+    </script>
+</body>
+</html>
