@@ -1,134 +1,320 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-[#040507] text-[#f1f3f7] selection:bg-[#d47a2a] selection:text-black">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harley-Davidson X440 Velocity Stack | XCD Industries</title>
+    <title>Harley-Davidson X440 AeroPulse™ Velocity Stack | XCD Industries</title>
+    
+    <!-- KINETIC SVG FAVICON -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23040507'/%3E%3Cellipse cx='32' cy='18' rx='22' ry='7' fill='none' stroke='%23d47a2a' stroke-width='3.5'/%3E%3Cpath d='M10 18 C24 18 26 30 27 48 L37 48 C38 30 40 18 54 18' fill='none' stroke='%23d47a2a' stroke-width='4.5' stroke-linecap='round'/%3E%3Cpath d='M32 24 L32 46' stroke='%2300f0ff' stroke-width='2.5' stroke-dasharray='3 3'/%3E%3C/svg%3E">
+
+    <!-- SEO & SOCIAL META -->
+    <meta name="title" content="Harley-Davidson X440 AeroPulse™ Velocity Stack | XCD Industries">
+    <meta name="description" content="CFD-engineered ASA-Carbon velocity stack for the Harley-Davidson X440. Delivers +2.8 Nm mid-range torque, instant throttle response, and eliminates stock manifold flow choke.">
+    <meta name="theme-color" content="#d47a2a">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <style>
-        :root {
-            --bg-obsidian: #08080a;
-            --surface-card: #121216;
-            --accent-bronze: #d47a2a;
-            --accent-glow: rgba(212, 122, 42, 0.25);
-            --text-main: #f0f0f2;
-            --text-muted: #8a8a93;
-            --border-glow: rgba(255, 255, 255, 0.08);
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap');
+
+        * { font-family: 'Space Grotesk', sans-serif; cursor: default; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #040507; }
+        ::-webkit-scrollbar-thumb { background: #d47a2a; border-radius: 2px; }
+
+        .hud-grid {
+            background-image: 
+                radial-gradient(circle at 50% 12%, rgba(212, 122, 42, 0.14) 0%, transparent 65%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        body { background-color: var(--bg-obsidian); color: var(--text-main); line-height: 1.6; }
-
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; border-bottom: 1px solid var(--border-glow); }
-        .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: 2px; color: var(--text-main); text-decoration: none; }
-        .logo span { color: var(--accent-bronze); }
-        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--text-main); }
-
-        .product-container { max-width: 1200px; margin: 4rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        
-        .product-preview {
-            background: radial-gradient(circle at center, var(--surface-card) 0%, var(--bg-obsidian) 100%);
-            border: 1px solid var(--border-glow);
-            border-radius: 12px;
-            padding: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 420px;
-            position: relative;
+        .glass-hull {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(10, 14, 22, 0.85) 100%);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 24px 48px -18px rgba(0, 0, 0, 0.95);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-hull:hover {
+            border-color: rgba(212, 122, 42, 0.5);
+            box-shadow: 0 0 40px -5px rgba(212, 122, 42, 0.35);
+            transform: translateY(-3px);
         }
 
-        .badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: var(--accent-bronze);
-            color: #000;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            letter-spacing: 1px;
+        .neon-glow-bronze { box-shadow: 0 0 40px -5px rgba(212, 122, 42, 0.45); }
+
+        #hud-cursor {
+            pointer-events: none;
+            position: fixed;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.15s, height 0.15s;
         }
 
-        .product-title { font-size: 2.5rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 0.5rem; }
-        .product-subtitle { color: var(--accent-bronze); font-weight: 600; margin-bottom: 1.5rem; font-size: 1.1rem; }
-        .product-desc { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem; }
-
-        .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem; }
-        .spec-item { background: var(--surface-card); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-glow); }
-        .spec-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-        .spec-value { font-weight: 700; margin-top: 0.25rem; }
-
-        .cta-btn {
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-            background: var(--accent-bronze);
-            color: #000;
-            font-weight: 700;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--accent-glow); }
-
-        @media (max-width: 768px) {
-            .product-container { grid-template-columns: 1fr; gap: 2rem; margin: 2rem auto; }
+        .blueprint-path {
+            fill: none;
+            stroke-dasharray: 2200;
+            stroke-dashoffset: 2200;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
     </style>
 </head>
-<body>
+<body class="overflow-x-hidden hud-grid text-zinc-100">
 
-    <nav class="navbar">
-        <a href="index.html" class="logo">XCD <span>INDUSTRIES</span></a>
-        <div class="nav-links">
-            <a href="index.html#lineup">LINEUP</a>
-            <a href="index.html#testing">R&D</a>
-            <a href="index.html#contact">CONTACT</a>
+    <!-- HUD CURSOR -->
+    <div id="hud-cursor" class="w-8 h-8 rounded-full border border-[#d47a2a]/60 flex items-center justify-center">
+        <div class="w-1.5 h-1.5 bg-[#d47a2a] rounded-full animate-ping"></div>
+    </div>
+
+    <!-- HUD NAVIGATION -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-5 border-b border-white/10 bg-[#040507]/85 backdrop-blur-xl">
+        <div class="flex items-center space-x-4">
+            <div class="relative flex items-center justify-center w-3 h-3">
+                <span class="absolute animate-ping inline-flex h-full w-full rounded-full bg-[#d47a2a] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#d47a2a]"></span>
+            </div>
+            <a href="index.html" class="text-sm font-black tracking-[0.3em] uppercase text-white hover:text-[#d47a2a] transition">
+                XCD <span class="text-[#d47a2a]">INDUSTRIES</span>
+            </a>
+            <span class="hidden sm:inline-block px-2.5 py-0.5 text-[10px] font-mono tracking-widest uppercase bg-zinc-900 border border-zinc-800 text-[#d47a2a] rounded">
+                HD X440 DOSSIER
+            </span>
+        </div>
+
+        <div class="hidden xl:flex items-center space-x-6 text-xs font-mono tracking-widest text-zinc-400">
+            <a href="#overview" class="hover:text-white transition text-[#d47a2a] font-bold">01 OVERVIEW</a>
+            <a href="#problem" class="hover:text-white transition">02 FACTORY CHOKE</a>
+            <a href="#rnd" class="hover:text-white transition">03 CFD & R&D</a>
+            <a href="#metrics" class="hover:text-white transition">04 GAINS MATRIX</a>
+            <a href="#materials" class="hover:text-white transition">05 ASA-CF SPEC</a>
+        </div>
+
+        <div>
+            <a href="index.html" class="px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider bg-zinc-900 border border-zinc-800 text-white rounded hover:bg-zinc-800 transition">
+                ← Back to Fleet
+            </a>
         </div>
     </nav>
 
-    <div class="product-container">
-        <div class="product-preview">
-            <span class="badge">NEW RELEASE</span>
-            <svg width="220" height="220" viewBox="0 0 24 24" fill="none" stroke="var(--accent-bronze)" stroke-width="1.2">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-        </div>
+    <!-- HERO SECTION -->
+    <header class="relative z-20 min-h-[90vh] flex flex-col justify-center px-6 md:px-16 max-w-7xl mx-auto pt-32 pb-16">
+        <div class="max-w-4xl">
+            <div class="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full border border-[#d47a2a]/30 bg-[#d47a2a]/10 text-[#d47a2a] text-[11px] font-mono tracking-widest uppercase mb-8">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#d47a2a] animate-pulse"></span>
+                NEW RELEASE // HARLEY-DAVIDSON X440 AROPULSE™ TORQUE RUNNER
+            </div>
 
-        <div class="product-details">
-            <h1 class="product-title">HARLEY-DAVIDSON X440</h1>
-            <div class="product-subtitle">CUSTOM PERFORMANCE VELOCITY STACK</div>
-            <p class="product-desc">
-                Engineered specifically for the HD X440 single-cylinder powerband. Designed to smooth out intake air turbulence, increase low-to-mid torque response, and maximize volumetric efficiency across the RPM curve.
+            <h1 class="text-6xl sm:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.88] mb-8">
+                UNLEASH <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#d47a2a] via-white to-amber-500">THE TORQUE.</span>
+            </h1>
+
+            <p class="text-zinc-300 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mb-10">
+                The Harley-Davidson X440 long-stroke single is artificially choked by restrictive factory plastic intake tracts. We engineered an aerodynamic ASA-Carbon velocity stack that recovers lost midrange standoff pulses and delivers <strong class="text-white">+2.8 Nm instantaneous roll-on torque</strong>.
             </p>
 
-            <div class="specs-grid">
-                <div class="spec-item">
-                    <div class="spec-label">Fitment</div>
-                    <div class="spec-value">Harley-Davidson X440</div>
+            <div class="flex flex-wrap items-center gap-5 font-mono text-xs">
+                <a href="#order" class="px-8 py-4 bg-[#d47a2a] text-black font-black uppercase tracking-wider rounded hover:bg-white transition duration-300 neon-glow-bronze flex items-center gap-2">
+                    <span>Inquire / Order X440 Runner</span>
+                    <span>→</span>
+                </a>
+                <div class="px-6 py-4 border border-zinc-800 bg-zinc-950/70 text-zinc-400 font-bold uppercase tracking-wider rounded">
+                    Dispatched in 48 Hours Across India
                 </div>
-                <div class="spec-item">
-                    <div class="spec-label">Material</div>
-                    <div class="spec-value">ASA / Carbon Fiber PETG</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- LIVE METRICS BANNER -->
+    <section class="relative z-20 py-10 border-y border-white/5 bg-[#030406]/90 backdrop-blur">
+        <div class="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-2 md:grid-cols-4 gap-8 font-mono">
+            <div>
+                <span class="text-zinc-500 text-[10px] uppercase block">Midrange Torque Gain</span>
+                <span class="text-3xl font-black text-[#d47a2a]">+2.8 Nm</span>
+                <span class="text-xs text-zinc-400 block mt-1">3,800 - 6,200 RPM Band</span>
+            </div>
+            <div>
+                <span class="text-zinc-500 text-[10px] uppercase block">Inlet Velocity Boost</span>
+                <span class="text-3xl font-black text-white">+11.8%</span>
+                <span class="text-xs text-zinc-400 block mt-1">Laminar Flow Acceleration</span>
+            </div>
+            <div>
+                <span class="text-zinc-500 text-[10px] uppercase block">Thermal Limit</span>
+                <span class="text-3xl font-black text-amber-500">105°C</span>
+                <span class="text-xs text-zinc-400 block mt-1">Continuous ASA-CF Matrix</span>
+            </div>
+            <div>
+                <span class="text-zinc-500 text-[10px] uppercase block">Throttle Response</span>
+                <span class="text-3xl font-black text-emerald-400">INSTANT</span>
+                <span class="text-xs text-zinc-400 block mt-1">Zero Roll-on Hesitation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: THE PROBLEM WITH THE X440 STOCK AIRBOX -->
+    <section id="problem" class="relative z-20 py-32 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#d47a2a] block">[ FACTORY BOTTLENECK ANALYSIS ]</span>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Why the Stock X440 Suffocates.</h2>
+                <p class="text-zinc-400 text-sm md:text-base font-light leading-relaxed">
+                    Harley-Davidson designed the X440 airbox for quiet urban commuting and strict noise emission standards. To achieve this, they incorporated a blunt, restrictive rubber intake horn with harsh internal steps and abrupt diameter transitions.
+                </p>
+                <p class="text-zinc-400 text-sm md:text-base font-light leading-relaxed">
+                    At 4,000 to 6,000 RPM—where a long-stroke 440cc single should pull hardest—this abrupt geometry provokes severe <strong class="text-white">boundary-layer separation and micro-turbulence</strong>. Instead of smooth air entering the throttle body, incoming charge air tumbles into chaotic eddies, robbing the motor of volumetric efficiency and causing sluggish roll-on response.
+                </p>
+            </div>
+            <div class="lg:col-span-7 glass-hull p-8 md:p-12 rounded-2xl border-l-2 border-[#d47a2a]">
+                <h3 class="text-xl font-bold uppercase text-white mb-6">Stock Airbox Flaw Breakdown</h3>
+                <div class="space-y-6 font-mono text-xs">
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-[#d47a2a] font-bold block text-sm mb-1">01. Blunt Entry Radii</span>
+                        <span class="text-zinc-400 leading-relaxed block">Stock plastic lips feature a sharp 90° transition instead of an elliptical bellmouth, causing air to shear and create a massive dead-zone ring around the outer perimeter of the bore.</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-[#d47a2a] font-bold block text-sm mb-1">02. Variable Wall Flex & Vacuum Flutter</span>
+                        <span class="text-zinc-400 leading-relaxed block">Under heavy wide-open throttle acceleration, single-cylinder suction creates massive vacuum depression. Thin OEM plastic walls flex inward, creating flow constriction precisely when the engine demands maximum volume.</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-[#d47a2a] font-bold block text-sm mb-1">03. Midrange Standoff Reversion Loss</span>
+                        <span class="text-zinc-400 leading-relaxed block">Without a properly tuned acoustic horn length, fuel-air mist standoff pulses escape backward into the airbox without being recaptured, creating a soft power dip during aggressive overtakes.</span>
+                    </div>
                 </div>
-                <div class="spec-item">
-                    <div class="spec-label">Finish Options</div>
-                    <div class="spec-value">Burnt Bronze / Stealth Black</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Design Standard</div>
-                    <div class="spec-value">CFD Optimized Profile</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: THE XCD ENGINEERING SOLUTION & CFD R&D -->
+    <section id="rnd" class="relative z-20 py-32 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
+        <div class="mb-16">
+            <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#d47a2a] block mb-2">[ COMPUTATIONAL FLUID DYNAMICS LABS ]</span>
+            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">The XCD AeroPulse™ X-440 Solution</h2>
+            <p class="text-zinc-400 text-sm font-mono mt-2">Modeled in OpenSCAD & Blender, simulated with CFD stress vectors, and printed in high-temp ASA-Carbon.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-hull p-8 rounded-2xl relative overflow-hidden group border-t-2 border-[#d47a2a]">
+                <span class="text-[10px] font-mono text-[#d47a2a] uppercase tracking-widest block mb-2">01 // GEOMETRIC PROFILE</span>
+                <h3 class="text-2xl font-black text-white mb-4">180° Elliptical Flare</h3>
+                <p class="text-xs text-zinc-400 font-light leading-relaxed">
+                    Our 180° toroidal bellmouth entry lip completely eliminates entry shear, allowing boundary air to wrap smoothly into the throat using the Coanda effect.
+                </p>
+            </div>
+
+            <div class="glass-hull p-8 rounded-2xl relative overflow-hidden group border-t-2 border-[#d47a2a]">
+                <span class="text-[10px] font-mono text-[#d47a2a] uppercase tracking-widest block mb-2">02 // TAPER DYNAMICS</span>
+                <h3 class="text-2xl font-black text-white mb-4">7.0° Conical Venturi</h3>
+                <p class="text-xs text-zinc-400 font-light leading-relaxed">
+                    A mathematically optimized 7.0° taper angle accelerates air velocity smoothly right down to the throttle body butterfly valve without boundary layer separation.
+                </p>
+            </div>
+
+            <div class="glass-hull p-8 rounded-2xl relative overflow-hidden group border-t-2 border-[#d47a2a]">
+                <span class="text-[10px] font-mono text-[#d47a2a] uppercase tracking-widest block mb-2">03 // STRUCTURAL INTEGRITY</span>
+                <h3 class="text-2xl font-black text-white mb-4">Rigid ASA-CF Matrix</h3>
+                <p class="text-xs text-zinc-400 font-light leading-relaxed">
+                    Printed with 6 solid outer perimeters and internal radial ribs. Zero wall flex even under peak single-cylinder vacuum suction at 7,000 RPM.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: SPECIFICATIONS & MATERIAL MATRIX -->
+    <section id="materials" class="relative z-20 py-32 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 space-y-6">
+                <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#d47a2a] block">[ MATERIAL SCIENCE ]</span>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Built For Track & Asphalt.</h2>
+                <p class="text-zinc-400 text-sm md:text-base font-light leading-relaxed">
+                    Standard 3D-printed plastics like PLA or basic PETG warp and degrade under engine bay heat and fuel vapor exposure. XCD velocity stacks are fabricated exclusively using <strong class="text-white">ASA Carbon Fiber (Acrylonitrile Styrene Acrylate reinforced with chopped carbon fibers)</strong>.
+                </p>
+                <div class="space-y-4 font-mono text-xs text-zinc-400 pt-4">
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 rounded-full bg-[#d47a2a]"></span>
+                        <span>UV-Resistant and Weatherproof Polymer Matrix</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 rounded-full bg-[#d47a2a]"></span>
+                        <span>Continuous Thermal Rating up to 105°C</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 rounded-full bg-[#d47a2a]"></span>
+                        <span>Zero Chemical Degradation from Blow-by Hydrocarbons</span>
+                    </div>
                 </div>
             </div>
 
-            <a href="index.html#contact" class="cta-btn">INQUIRE / ORDER NOW</a>
+            <div class="lg:col-span-6 glass-hull p-8 md:p-10 rounded-2xl border border-[#d47a2a]/30">
+                <h3 class="text-xl font-bold uppercase text-white mb-6">Technical Specification Sheet</h3>
+                <div class="space-y-4 font-mono text-xs">
+                    <div class="flex justify-between py-3 border-b border-white/10">
+                        <span class="text-zinc-500">PLATFORM FITMENT</span>
+                        <span class="text-white font-bold">Harley-Davidson X440 (All Years)</span>
+                    </div>
+                    <div class="flex justify-between py-3 border-b border-white/10">
+                        <span class="text-zinc-500">MATERIAL COMPOSITION</span>
+                        <span class="text-[#d47a2a] font-bold">ASA Carbon Fiber Composite</span>
+                    </div>
+                    <div class="flex justify-between py-3 border-b border-white/10">
+                        <span class="text-zinc-500">INSTALLATION TYPE</span>
+                        <span class="text-white font-bold">Direct Plug-and-Play OEM Airbox Swap</span>
+                    </div>
+                    <div class="flex justify-between py-3 border-b border-white/10">
+                        <span class="text-zinc-500">SURFACE FINISH</span>
+                        <span class="text-white font-bold">Matte Micro-Textured Laminar Flow</span>
+                    </div>
+                    <div class="flex justify-between py-3">
+                        <span class="text-zinc-500">DISPATCH TIMELINE</span>
+                        <span class="text-emerald-400 font-bold">Dispatched Within 48 Hours Across India</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
+    <!-- SECTION 4: CALL TO ACTION & ORDER GATEWAY -->
+    <section id="order" class="relative z-20 py-32 px-6 md:px-16 max-w-5xl mx-auto text-center border-t border-white/5">
+        <div class="glass-hull p-12 md:p-16 rounded-3xl relative overflow-hidden border-2 border-[#d47a2a]/50 neon-glow-bronze">
+            <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#d47a2a] block mb-3">[ SECURE YOUR INTAKE UPGRADE ]</span>
+            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight mb-6">Claim Your AeroPulse X-440</h2>
+            <p class="text-zinc-300 max-w-xl mx-auto text-sm md:text-base mb-10 font-light">
+                Stop letting factory rubber choke your Harley-Davidson X440. Experience instant midrange torque punch and race-engineered throttle response today.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 font-mono">
+                <a href="mailto:orders@xcdindustries.in?subject=Harley%20X440%20Velocity%20Stack%20Order" class="px-10 py-5 bg-[#d47a2a] hover:bg-white text-black font-black uppercase tracking-[0.15em] text-xs rounded-xl transition duration-300 neon-glow-bronze">
+                    ORDER VIA EMAIL / DIRECT INQUIRY →
+                </a>
+                <a href="index.html" class="px-8 py-5 border border-white/20 hover:border-white text-white font-bold uppercase tracking-[0.15em] text-xs rounded-xl transition duration-300">
+                    Explore Other Platforms
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="relative z-20 py-8 px-6 md:px-16 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-zinc-600 text-[11px] font-mono">
+        <div>© 2026 XCD INDUSTRIES. HIGH-VELOCITY ACOUSTIC INDUCTION ARCHITECTURE.</div>
+        <div class="text-zinc-500">FOUNDED BY RACERS. BACKED BY COMPUTATIONAL FLUID DYNAMICS.</div>
+    </footer>
+
+    <!-- GSAP ANIMATIONS -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        const cursor = document.getElementById('hud-cursor');
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1, ease: "power1.out" });
+        });
+    </script>
 </body>
 </html>
