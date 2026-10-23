@@ -9,15 +9,15 @@
 
     <!-- PRIMARY SEO & SOCIAL META TAGS -->
     <meta name="title" content="XCD INDUSTRIES | Computational Fluid Dynamics & Kinetic Induction">
-    <meta name="description" content="Race-engineered velocity stacks for Aprilia RS 457 and Honda CBR 250R. Eliminating boundary-layer choking and 270° crank cylinder stealing. Dispatched across India in 48 hours.">
+    <meta name="description" content="Race-engineered velocity stacks for Aprilia RS 457, Honda CBR 250R, Harley-Davidson X440, RE GT 650, and KTM 390. Dispatched across India in 48 hours.">
     <meta name="theme-color" content="#ff1e38">
 
     <!-- OPEN GRAPH / WHATSAPP / DISCORD PREVIEWS -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://xcdindustries.is-a.dev/">
+    <meta property="og:url" content="https://xcdindustries.in/">
     <meta property="og:title" content="XCD INDUSTRIES // Kinetic Intake Velocity">
-    <meta property="og:description" content="Eliminate boundary-layer choking. Race-tested velocity stacks for Aprilia RS 457, Honda CBR 250R, RE GT 650, and KTM 390.">
-    <meta property="og:image" content="https://legayclightning22.github.io/velocity-stack/banner.jpg">
+    <meta property="og:description" content="Eliminate boundary-layer choking. CFD-engineered velocity stacks for Aprilia RS 457, Honda CBR 250R, Harley-Davidson X440, and KTM 390.">
+    <meta property="og:image" content="https://xcdindustries.in/banner.jpg">
 
     <!-- TWITTER CARD -->
     <meta name="twitter:card" content="summary_large_image">
@@ -67,6 +67,7 @@
 
         .neon-glow-red { box-shadow: 0 0 40px -5px rgba(255, 30, 56, 0.5); }
         .neon-glow-cyan { box-shadow: 0 0 35px -5px rgba(0, 240, 255, 0.45); }
+        .neon-glow-bronze { box-shadow: 0 0 35px -5px rgba(212, 122, 42, 0.45); }
 
         #spline-interactive-stage {
             will-change: transform;
@@ -112,7 +113,7 @@
         }
 
         .ticker-wrap { display: flex; overflow: hidden; user-select: none; }
-        .ticker-move { display: flex; animation: ticker 34s linear infinite; }
+        .ticker-move { display: flex; animation: ticker 28s linear infinite; }
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* Acoustic Sound Wave Visualizer Bars */
@@ -122,6 +123,53 @@
         @keyframes wave-bounce {
             0% { height: 15%; }
             100% { height: 95%; }
+        }
+
+        /* FAST HIGH-TECH CAROUSEL STYLES */
+        .carousel-outer-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+
+        .carousel-track-wrapper {
+            display: flex;
+            gap: 1.5rem;
+            will-change: transform;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .carousel-card-item {
+            flex: 0 0 calc(33.333% - 1rem);
+            min-width: 310px;
+        }
+
+        @media (max-width: 1024px) {
+            .carousel-card-item {
+                flex: 0 0 calc(50% - 0.75rem);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .carousel-card-item {
+                flex: 0 0 100%;
+            }
+        }
+
+        /* PULSING R&D STATUS DOT */
+        .pulse-dot-orange {
+            width: 10px;
+            height: 10px;
+            background-color: #ff6b00;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #ff6b00;
+            animation: pulse-orange 1.2s infinite;
+        }
+        @keyframes pulse-orange {
+            0% { opacity: 0.3; transform: scale(0.85); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.3; transform: scale(0.85); }
         }
     </style>
 </head>
@@ -155,26 +203,26 @@
                 XCD <span class="text-[#00f0ff]">INDUSTRIES</span>
             </a>
             <span class="hidden sm:inline-block px-2.5 py-0.5 text-[10px] font-mono tracking-widest uppercase bg-zinc-900 border border-zinc-800 text-[#00f0ff] rounded">
-                RS 457 & CBR 250R LABS
+                PERFORMANCE INDUCTION LABS
             </span>
         </div>
 
         <div class="hidden xl:flex items-center space-x-6 text-xs font-mono tracking-widest text-zinc-400">
-            <a href="twinsync-457.html" class="hover:text-white transition flex items-center gap-1.5 text-[#00f0ff] font-bold"><span class="w-1.5 h-1.5 rounded-full bg-[#00f0ff]"></span> RS 457 TWINSYNC</a>
-            <a href="aeropulse-r38.html" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#ff1e38]">01</span> CBR250R R-38</a>
-            <a href="catalog.html" class="hover:text-[#00f0ff] transition flex items-center gap-1.5"><span class="text-[#00f0ff]">02</span> FLEET BLUEPRINTS</a>
-            <a href="#tuner" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#ff1e38]">03</span> ACOUSTIC TUNER</a>
-            <a href="#schematic" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#00f0ff]">04</span> CAD ARCHITECTURE</a>
-            <a href="#telemetry" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#ff1e38]">05</span> DRAGY GPS DATA</a>
-            <a href="#manifesto" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#00f0ff]">06</span> MANIFESTO</a>
+            <a href="#lineup" class="hover:text-white transition flex items-center gap-1.5 text-[#00f0ff] font-bold"><span class="w-1.5 h-1.5 rounded-full bg-[#00f0ff]"></span> FLEET CAROUSEL</a>
+            <a href="twinsync-457.html" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#00f0ff]">01</span> RS 457 TWINSYNC</a>
+            <a href="aeropulse-r38.html" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#ff1e38]">02</span> CBR250R R-38</a>
+            <a href="x440.html" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#d47a2a]">03</span> HARLEY X440</a>
+            <a href="#bench" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#00f0ff]">04</span> PERFORMANCE GAINS</a>
+            <a href="#tuner" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#ff1e38]">05</span> ACOUSTIC TUNER</a>
+            <a href="#telemetry" class="hover:text-white transition flex items-center gap-1.5"><span class="text-[#00f0ff]">06</span> GPS TELEMETRY</a>
         </div>
 
         <div class="flex items-center gap-3">
             <button onclick="toggleRaceMode()" id="race-switch" class="px-3.5 py-2 text-[10px] font-mono font-bold uppercase tracking-wider border border-[#ff1e38]/60 bg-[#ff1e38]/10 text-[#ff1e38] rounded hover:bg-[#ff1e38] hover:text-white transition">
                 ⚡ OVERDRIVE [KEY: R]
             </button>
-            <a href="twinsync-457.html" class="px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider bg-[#00f0ff] text-black rounded hover:bg-white transition neon-glow-cyan">
-                RS 457 Batch →
+            <a href="#lineup" class="px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider bg-[#00f0ff] text-black rounded hover:bg-white transition neon-glow-cyan">
+                EXPLORE LINEUP ↓
             </a>
         </div>
     </nav>
@@ -184,7 +232,7 @@
         <div class="max-w-3xl">
             <div class="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full border border-[#00f0ff]/30 bg-[#00f0ff]/10 text-[#00f0ff] text-[11px] font-mono tracking-widest uppercase mb-8">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                RS 457 TwinSync-36 & CBR 250R R-38 // Production Validated
+                RS 457 • CBR 250R • HARLEY X440 // PRODUCTION VALIDATED
             </div>
 
             <h1 class="text-6xl sm:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.88] mb-8">
@@ -196,16 +244,13 @@
                 Atmospheric air is lazy. Factory rubber intake funnels choke single-cylinder throttles and starve 270° parallel-twins of charge density. We engineer mathematically staggered acoustic velocity tuners that transform intake depression into balanced, high-RPM ram power.
             </p>
 
-            <div class="flex flex-wrap items-center gap-5 font-mono text-xs">
-                <a href="twinsync-457.html" class="px-8 py-4 bg-[#00f0ff] text-black font-black uppercase tracking-wider rounded hover:bg-white transition duration-300 neon-glow-cyan flex items-center gap-2">
-                    <span>Aprilia RS 457 TwinSync Dossier</span>
+            <div class="flex flex-wrap items-center gap-4 font-mono text-xs">
+                <a href="#lineup" class="px-8 py-4 bg-[#00f0ff] text-black font-black uppercase tracking-wider rounded hover:bg-white transition duration-300 neon-glow-cyan flex items-center gap-2">
+                    <span>EXPLORE ALL 4 PLATFORMS</span>
                     <span>→</span>
                 </a>
-                <a href="aeropulse-r38.html" class="px-8 py-4 border border-[#ff1e38]/50 bg-[#ff1e38]/10 text-white font-bold uppercase tracking-wider rounded hover:bg-[#ff1e38] transition duration-300">
-                    Honda CBR 250R R-38 Stack
-                </a>
-                <a href="catalog.html" class="px-6 py-4 border border-zinc-800 bg-zinc-950/70 text-zinc-400 font-bold uppercase tracking-wider rounded hover:border-white hover:text-white transition duration-300">
-                    Fleet Catalog (4 Platforms)
+                <a href="x440.html" class="px-8 py-4 border border-[#d47a2a]/60 bg-[#d47a2a]/10 text-[#d47a2a] font-bold uppercase tracking-wider rounded hover:bg-[#d47a2a] hover:text-black transition duration-300">
+                    NEW: HARLEY X440 STACK
                 </a>
             </div>
         </div>
@@ -248,16 +293,309 @@
         <div class="ticker-move text-xs font-mono tracking-widest text-zinc-500 space-x-12">
             <span>[ SYSTEM: CFD FLUID LABS ]</span>
             <span class="text-[#00f0ff]">APRILIA RS 457: +2.4 WHP PEAK OVER-REV</span>
-            <span>270° ASYMMETRIC STAGGER: +10.5MM RUNNER DELTA</span>
-            <span class="text-[#ff1e38]">CYLINDER 2 RECOVERY: 99.4% EQ</span>
-            <span>100-160 KM/H DRAGY DELTA: -0.62 SECONDS</span>
-            <span class="text-[#00f0ff]">CBR 250R R-38: +14.2% LAMINAR VELOCITY</span>
+            <span class="text-[#d47a2a]">NEW HARLEY X440: +2.8 NM MIDRANGE TORQUE</span>
+            <span class="text-[#ff1e38]">CBR 250R: 183.5 KM/H GPS TOP SPEED</span>
+            <span>100-160 KM/H GPS DELTA: -0.62 SECONDS</span>
+            <span class="text-[#ff6b00]">R&D ALERT: DUKE 390 GEN 2 BS6 UNDER TESTING</span>
             <span>HEAT DEFLECTION: 105°C CONTINUOUS ASA-CF</span>
             <span class="text-white">DOMESTIC DISPATCH: WITHIN 48 HOURS</span>
             <span>[ SYSTEM: CFD FLUID LABS ]</span>
             <span class="text-[#00f0ff]">APRILIA RS 457: +2.4 WHP PEAK OVER-REV</span>
         </div>
     </div>
+
+    <!-- SECTION: KINETIC HIGH-SPEED PRODUCT CAROUSEL -->
+    <section id="lineup" class="relative z-20 py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
+        <div class="flex flex-col md:flex-row justify-between md:items-end mb-10 gap-4">
+            <div>
+                <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.3em] text-[#00f0ff] mb-2">
+                    <span class="w-2 h-2 rounded-full bg-[#00f0ff] animate-ping"></span>
+                    INSTANT VELOCITY MATRIX
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Active Performance Fleet</h2>
+            </div>
+            <div class="flex items-center gap-3 font-mono text-xs">
+                <button id="carousel-prev-btn" class="p-3 glass-hull rounded-lg text-white hover:text-[#00f0ff] transition hover:border-[#00f0ff]">
+                    ← PREV
+                </button>
+
+                <button id="carousel-next-btn" class="p-3 glass-hull rounded-lg text-white hover:text-[#00f0ff] transition hover:border-[#00f0ff]">
+                    NEXT →
+                </button>
+            </div>
+        </div>
+
+        <div class="carousel-outer-wrapper">
+            <div class="carousel-track-wrapper" id="homeCarouselTrack">
+                
+                <!-- CARD 1: APRILIA RS 457 -->
+                <div class="carousel-card-item">
+                    <div class="glass-hull p-7 rounded-2xl border-t-2 border-[#00f0ff] h-full flex flex-col justify-between group hover:border-[#00f0ff]">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-[10px] font-mono font-bold tracking-widest text-[#00f0ff] uppercase">PARALLEL TWIN // 270°</span>
+                                <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[9px] font-bold">IN STOCK</span>
+                            </div>
+                            <h3 class="text-2xl font-black uppercase tracking-tight text-white group-hover:text-[#00f0ff] transition mb-2">APRILIA RS 457</h3>
+                            <div class="text-xs font-mono text-zinc-400 mb-4">AEROPULSE TWINSYNC-36™</div>
+                            <p class="text-xs text-zinc-400 leading-relaxed font-light mb-6">
+                                Solves 270° cylinder robbing using asymmetric +10.5mm acoustic runner stagger. Delivers massive top-end pull and equalized charge density.
+                            </p>
+                            <div class="grid grid-cols-2 gap-2 font-mono text-[10px] py-3 border-y border-white/10 text-zinc-400 mb-6">
+                                <div><span class="text-white block font-bold text-xs">+2.4 WHP</span> PEAK OVER-REV</div>
+                                <div><span class="text-[#00f0ff] block font-bold text-xs">99.4% EQ</span> CYLINDER FILL</div>
+                            </div>
+                        </div>
+                        <a href="twinsync-457.html" class="block w-full py-3 text-center bg-[#00f0ff] hover:bg-white text-black font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition duration-200 neon-glow-cyan">
+                            BUY NOW / DOSSIER →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 2: HONDA CBR 250R -->
+                <div class="carousel-card-item">
+                    <div class="glass-hull p-7 rounded-2xl border-t-2 border-[#ff1e38] h-full flex flex-col justify-between group hover:border-[#ff1e38]">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-[10px] font-mono font-bold tracking-widest text-[#ff1e38] uppercase">SINGLE CYLINDER // MC41</span>
+                                <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[9px] font-bold">IN STOCK</span>
+                            </div>
+                            <h3 class="text-2xl font-black uppercase tracking-tight text-white group-hover:text-[#ff1e38] transition mb-2">HONDA CBR 250R</h3>
+                            <div class="text-xs font-mono text-zinc-400 mb-4">AEROPULSE R-38™</div>
+                            <p class="text-xs text-zinc-400 leading-relaxed font-light mb-6">
+                                7.0° conical venturi with 180° Coanda bellmouth lip. Eliminates boundary-layer choking past 8,500 RPM for extreme top-end speed gains.
+                            </p>
+                            <div class="grid grid-cols-2 gap-2 font-mono text-[10px] py-3 border-y border-white/10 text-zinc-400 mb-6">
+                                <div><span class="text-[#ff1e38] block font-bold text-xs">183.5 KM/H</span> GPS TOP SPEED</div>
+                                <div><span class="text-white block font-bold text-xs">-0.79s</span> 0-100 SPRINT</div>
+                            </div>
+                        </div>
+                        <a href="aeropulse-r38.html" class="block w-full py-3 text-center bg-[#ff1e38] hover:bg-white text-white hover:text-black font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition duration-200 neon-glow-red">
+                            BUY NOW / DOSSIER →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 3: HARLEY-DAVIDSON X440 -->
+                <div class="carousel-card-item">
+                    <div class="glass-hull p-7 rounded-2xl border-t-2 border-[#d47a2a] h-full flex flex-col justify-between group hover:border-[#d47a2a]">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-[10px] font-mono font-bold tracking-widest text-[#d47a2a] uppercase">NEW RELEASE // 440 SINGLE</span>
+                                <span class="px-2 py-0.5 rounded bg-[#d47a2a]/20 border border-[#d47a2a]/40 text-[#d47a2a] font-mono text-[9px] font-bold">READY TO SHIP</span>
+                            </div>
+                            <h3 class="text-2xl font-black uppercase tracking-tight text-white group-hover:text-[#d47a2a] transition mb-2">HARLEY X440</h3>
+                            <div class="text-xs font-mono text-zinc-400 mb-4">KINETIC TORQUE RUNNER</div>
+                            <p class="text-xs text-zinc-400 leading-relaxed font-light mb-6">
+                                Engineered specifically for the HD 440 single. Smooths out intake turbulence, delivering aggressive low-to-mid torque response and instant roll-on throttle.
+                            </p>
+                            <div class="grid grid-cols-2 gap-2 font-mono text-[10px] py-3 border-y border-white/10 text-zinc-400 mb-6">
+                                <div><span class="text-[#d47a2a] block font-bold text-xs">+2.8 NM</span> MID-RANGE TORQUE</div>
+                                <div><span class="text-white block font-bold text-xs">CFD TUNED</span> ASA-CF MATRIX</div>
+                            </div>
+                        </div>
+                        <a href="x440.html" class="block w-full py-3 text-center bg-[#d47a2a] hover:bg-white text-black font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition duration-200 neon-glow-bronze">
+                            BUY NOW / DOSSIER →
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- DUKE 390 UNDER TESTING STATUS BANNER -->
+        <div class="mt-8 glass-hull p-6 rounded-2xl border border-[#ff6b00]/40 bg-gradient-to-r from-[#ff6b00]/10 via-[#0a0e16] to-[#040507] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <div class="pulse-dot-orange"></div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-mono font-bold text-[#ff6b00] tracking-widest uppercase">R&D IN PROGRESS // CLOSED TRACK TESTING</span>
+                        <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-[#ff6b00]/20 text-[#ff6b00] border border-[#ff6b00]/30 uppercase">ALMOST READY</span>
+                    </div>
+                    <h4 class="text-lg font-black text-white uppercase tracking-tight mt-0.5">KTM DUKE 390 (GEN 2 BS6) VELOCITY STACK</h4>
+                    <p class="text-xs text-zinc-400 font-light mt-1">
+                        Currently undergoing high-vacuum anti-flutter wall validation on closed circuit asphalt. Final production launch imminent.
+                    </p>
+                </div>
+            </div>
+            <div class="text-right font-mono text-xs text-zinc-500 whitespace-nowrap">
+                STATUS: <span class="text-[#ff6b00] font-bold">94% COMPLETED</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: COMPREHENSIVE PERFORMANCE GAIN MATRIX (ALL 4 PLATFORMS) -->
+    <section id="bench" class="relative z-20 py-28 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
+        <div class="flex flex-col md:flex-row justify-between md:items-end mb-16 gap-4">
+            <div>
+                <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#00f0ff] block mb-2">[ CALCULATED & VERIFIED GAINS ]</span>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Performance Gain Matrix</h2>
+            </div>
+            <p class="text-xs font-mono text-zinc-500 max-w-md">
+                Calculated fluid dynamics and 100 Hz GPS satellite telemetry comparisons for all 4 current XCD platform developments over stock OEM intake configurations.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- PLATFORM 1: APRILIA RS 457 -->
+            <div class="glass-hull p-8 rounded-2xl relative overflow-hidden border-t-2 border-[#00f0ff]">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="text-[10px] font-mono font-bold text-[#00f0ff] uppercase tracking-widest block mb-1">PARALLEL TWIN // 270° CRANK</span>
+                        <h3 class="text-3xl font-black text-white uppercase tracking-tight">APRILIA RS 457</h3>
+                        <span class="text-xs font-mono text-zinc-400">AEROPULSE TWINSYNC-36™</span>
+                    </div>
+                    <span class="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold rounded">VALIDATED</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 font-mono text-xs mb-6">
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Peak Power Gain</span>
+                        <span class="text-2xl font-black text-[#00f0ff]">+2.4 WHP</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">Sustained at Over-Rev</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Cylinder Fill EQ</span>
+                        <span class="text-2xl font-black text-emerald-400">99.4%</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">Zero Cyl 2 Starvation</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">100-160 km/h GPS</span>
+                        <span class="text-2xl font-black text-white">8.32s</span>
+                        <span class="text-[10px] text-emerald-400 block mt-1">▼ 0.62s Quicker vs Stock</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Pressure Loss</span>
+                        <span class="text-2xl font-black text-[#00f0ff]">1.8 kPa</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">Reduced from 4.8 kPa</span>
+                    </div>
+                </div>
+
+                <a href="twinsync-457.html" class="block w-full py-3 text-center bg-[#00f0ff] hover:bg-white text-black font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition duration-200">
+                    GET RS 457 VELOCITY STACK →
+                </a>
+            </div>
+
+            <!-- PLATFORM 2: HONDA CBR 250R -->
+            <div class="glass-hull p-8 rounded-2xl relative overflow-hidden border-t-2 border-[#ff1e38]">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="text-[10px] font-mono font-bold text-[#ff1e38] uppercase tracking-widest block mb-1">SINGLE CYLINDER // MC41</span>
+                        <h3 class="text-3xl font-black text-white uppercase tracking-tight">HONDA CBR 250R</h3>
+                        <span class="text-xs font-mono text-zinc-400">AEROPULSE R-38™</span>
+                    </div>
+                    <span class="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold rounded">VALIDATED</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 font-mono text-xs mb-6">
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">GPS True Top Speed</span>
+                        <span class="text-2xl font-black text-[#ff1e38]">183.5 km/h</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">Stock: 165.2 km/h (+18.3)</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">0-100 km/h Sprint</span>
+                        <span class="text-2xl font-black text-white">7.62s</span>
+                        <span class="text-[10px] text-emerald-400 block mt-1">▼ 0.79s Quick Launch</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Laminar Velocity</span>
+                        <span class="text-2xl font-black text-[#00f0ff]">+14.2%</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">112 m/s Throat Speed</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Inflow Drag</span>
+                        <span class="text-2xl font-black text-[#ff1e38]">-62%</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">Coanda Venturi Lip</span>
+                    </div>
+                </div>
+
+                <a href="aeropulse-r38.html" class="block w-full py-3 text-center bg-[#ff1e38] hover:bg-white text-white hover:text-black font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition duration-200">
+                    GET CBR 250R VELOCITY STACK →
+                </a>
+            </div>
+
+            <!-- PLATFORM 3: HARLEY-DAVIDSON X440 -->
+            <div class="glass-hull p-8 rounded-2xl relative overflow-hidden border-t-2 border-[#d47a2a]">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="text-[10px] font-mono font-bold text-[#d47a2a] uppercase tracking-widest block mb-1">SINGLE CYLINDER // 440cc</span>
+                        <h3 class="text-3xl font-black text-white uppercase tracking-tight">HARLEY X440</h3>
+                        <span class="text-xs font-mono text-zinc-400">KINETIC TORQUE RUNNER</span>
+                    </div>
+                    <span class="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold rounded">RELEASED</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 font-mono text-xs mb-6">
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Midrange Torque Gain</span>
+                        <span class="text-2xl font-black text-[#d47a2a]">+2.8 Nm</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">3,800 – 6,200 RPM Range</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Inlet Velocity</span>
+                        <span class="text-2xl font-black text-white">+11.8%</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">Smooth Turbulence Loss</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Throttle Response</span>
+                        <span class="text-2xl font-black text-emerald-400">INSTANT</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">Zero Roll-on Hesitation</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Heat Resistance</span>
+                        <span class="text-2xl font-black text-[#d47a2a]">105°C</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">Continuous ASA-CF Matrix</span>
+                    </div>
+                </div>
+
+                <a href="x440.html" class="block w-full py-3 text-center bg-[#d47a2a] hover:bg-white text-black font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition duration-200">
+                    GET HARLEY X440 VELOCITY STACK →
+                </a>
+            </div>
+
+            <!-- PLATFORM 4: RE CONTINENTAL GT 650 -->
+            <div class="glass-hull p-8 rounded-2xl relative overflow-hidden border-t-2 border-orange-500">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="text-[10px] font-mono font-bold text-orange-400 uppercase tracking-widest block mb-1">PARALLEL TWIN // 648cc</span>
+                        <h3 class="text-3xl font-black text-white uppercase tracking-tight">RE GT 650</h3>
+                        <span class="text-xs font-mono text-zinc-400">ACOUSTIC HORN SYSTEM</span>
+                    </div>
+                    <span class="px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-zinc-400 font-mono text-[10px] font-bold rounded">IN CATALOG</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 font-mono text-xs mb-6">
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Torque Dip Recovery</span>
+                        <span class="text-2xl font-black text-orange-400">+3.2 Nm</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">Recaptures Standoff Pulse</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Runner Extension</span>
+                        <span class="text-2xl font-black text-white">72 mm</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">Anti-Reversion Boundary</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Midrange Punch</span>
+                        <span class="text-2xl font-black text-emerald-400">+8.5%</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">4,200 – 6,000 RPM Band</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-950/80 border border-white/5">
+                        <span class="text-zinc-500 block text-[10px] uppercase">Airbox Integration</span>
+                        <span class="text-2xl font-black text-orange-400">DIRECT</span>
+                        <span class="text-[10px] text-zinc-400 block mt-1">OEM Filter Flange Fit</span>
+                    </div>
+                </div>
+
+                <a href="catalog.html" class="block w-full py-3 text-center border border-orange-500/50 hover:bg-orange-500 text-white font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition duration-200">
+                    VIEW GT 650 BLUEPRINTS →
+                </a>
+            </div>
+
+        </div>
+    </section>
 
     <!-- SECTION 2: INTERACTIVE HELMHOLTZ RESONANCE SIMULATOR WITH PLATFORM TOGGLE -->
     <section id="tuner" class="relative z-20 py-32 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
@@ -435,32 +773,24 @@
 
                         <!-- Cylinder 1 Stack (42.0mm) -->
                         <g transform="translate(180, 100)">
-                            <!-- Toroidal Lip -->
                             <path d="M 0,40 C -15,40 -20,55 -20,70 C -20,80 -10,80 -5,75 L 5,75" fill="none" stroke="#00f0ff" stroke-width="3" />
                             <path d="M 40,40 C 55,40 60,55 60,70 C 60,80 50,80 45,75 L 35,75" fill="none" stroke="#00f0ff" stroke-width="3" />
-                            <!-- Runner Body -->
                             <path d="M 0,40 L 5,140 L 35,140 L 40,40" fill="none" stroke="#00f0ff" stroke-width="2.5" />
-                            <!-- Spigot Base -->
                             <rect x="3" y="140" width="34" height="40" fill="rgba(0,240,255,0.1)" stroke="#00f0ff" stroke-width="1.5" />
                             <text x="-25" y="25" fill="#00f0ff" font-family="JetBrains Mono" font-size="11" font-weight="bold">CYL 1: 42.0mm</text>
                             <text x="-35" y="195" fill="#71717a" font-family="JetBrains Mono" font-size="10">Ø36 THROTTLE 1</text>
-                            <!-- Ceiling clearance dimension -->
                             <line x1="20" y1="35" x2="20" y2="-65" stroke="#71717a" stroke-width="1" stroke-dasharray="3 3" />
                             <text x="25" y="-30" fill="#34d399" font-family="JetBrains Mono" font-size="10">32.0mm CLEARANCE</text>
                         </g>
 
                         <!-- Cylinder 2 Stack (52.5mm - Taller by 10.5mm) -->
                         <g transform="translate(360, 75)">
-                            <!-- Toroidal Lip -->
                             <path d="M 0,30 C -16,30 -22,46 -22,62 C -22,72 -12,72 -6,67 L 5,67" fill="none" stroke="#ff1e38" stroke-width="3" />
                             <path d="M 42,30 C 58,30 64,46 64,62 C 64,72 54,72 48,67 L 37,67" fill="none" stroke="#ff1e38" stroke-width="3" />
-                            <!-- Runner Body -->
                             <path d="M 0,30 L 6,165 L 36,165 L 42,30" fill="none" stroke="#ff1e38" stroke-width="2.5" />
-                            <!-- Spigot Base -->
                             <rect x="4" y="165" width="34" height="40" fill="rgba(255,30,56,0.1)" stroke="#ff1e38" stroke-width="1.5" />
                             <text x="-20" y="15" fill="#ff1e38" font-family="JetBrains Mono" font-size="11" font-weight="bold">CYL 2: 52.5mm (+10.5mm)</text>
                             <text x="-35" y="220" fill="#71717a" font-family="JetBrains Mono" font-size="10">Ø36 THROTTLE 2</text>
-                            <!-- Ceiling clearance dimension -->
                             <line x1="21" y1="25" x2="21" y2="-40" stroke="#71717a" stroke-width="1" stroke-dasharray="3 3" />
                             <text x="26" y="-10" fill="#34d399" font-family="JetBrains Mono" font-size="10">21.5mm SAFE (&gt;0.6D)</text>
                         </g>
@@ -491,13 +821,13 @@
         </div>
     </section>
 
-    <!-- SECTION 4: REAL-WORLD DRAGY GPS TELEMETRY DATA -->
+    <!-- SECTION 4: REAL-WORLD GPS TELEMETRY DATA -->
     <section id="telemetry" class="relative z-20 py-32 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
         <div class="mb-16 flex flex-col md:flex-row justify-between md:items-end gap-4">
             <div>
                 <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#00f0ff] block mb-2">[ CLOSED-CIRCUIT VERIFICATION ]</span>
-                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Dragy GPS Telemetry Bench</h2>
-                <p class="text-zinc-400 text-sm font-mono mt-2">Tested on closed track asphalt with 100 Hz satellite satellite logging telemetry.</p>
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">GPS Telemetry Bench</h2>
+                <p class="text-zinc-400 text-sm font-mono mt-2">Tested on closed track asphalt with 100 Hz high-precision GPS satellite logging.</p>
             </div>
             <div class="font-mono text-xs text-zinc-500">
                 PLATFORMS: <span class="text-[#00f0ff]">APRILIA RS 457</span> & <span class="text-[#ff1e38]">HONDA CBR 250R</span>
@@ -645,7 +975,41 @@
                 </a>
             </div>
 
-            <!-- BIKE 3: ROYAL ENFIELD CONTINENTAL GT 650 -->
+            <!-- BIKE 3: HARLEY-DAVIDSON X440 -->
+            <div class="glass-hull p-8 rounded-2xl relative overflow-hidden group border-2 border-[#d47a2a]/40">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#d47a2a]/20 text-[#d47a2a] border border-[#d47a2a]/40 mb-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#d47a2a] animate-pulse"></span>
+                            NEW RELEASE // AVAILABLE NOW
+                        </div>
+                        <h3 class="text-2xl font-black text-white group-hover:text-[#d47a2a] transition">HARLEY-DAVIDSON X440</h3>
+                        <span class="text-xs font-mono text-[#d47a2a]">KINETIC TORQUE RUNNER</span>
+                    </div>
+                    <span class="px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-zinc-400 rounded">440 SINGLE</span>
+                </div>
+
+                <div class="space-y-3 text-xs text-zinc-400 font-light leading-relaxed mb-6">
+                    <p>
+                        <strong class="text-zinc-200">The Stock Problem:</strong> The long-stroke 440 single suffers from harsh intake turbulence and boundary shear layer drag in the stock plastic intake manifold, choking low-to-mid torque rollout.
+                    </p>
+                    <p>
+                        <strong class="text-zinc-200">The XCD Solution:</strong> CFD-profiled conical velocity funnel that accelerates charge air into the throttle body, eliminating intake lag and delivering +2.8 Nm torque punch right where you ride.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 font-mono text-[10px] pt-4 border-t border-white/10 text-zinc-500 mb-6">
+                    <div><span class="text-[#d47a2a] block font-bold">+2.8 Nm</span> MID-RANGE TORQUE</div>
+                    <div><span class="text-white block font-bold">+11.8%</span> INLET VELOCITY</div>
+                    <div><span class="text-emerald-400 block font-bold">105°C</span> ASA-CF MATRIX</div>
+                </div>
+
+                <a href="x440.html" class="block w-full py-3 text-center bg-[#d47a2a] hover:bg-white text-black font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition duration-200">
+                    Open Harley X440 Technical Dossier →
+                </a>
+            </div>
+
+            <!-- BIKE 4: ROYAL ENFIELD CONTINENTAL GT 650 -->
             <div class="glass-hull p-8 rounded-2xl relative overflow-hidden group border-l-2 border-orange-500">
                 <div class="flex justify-between items-start mb-6">
                     <div>
@@ -668,32 +1032,6 @@
                     <div><span class="text-white block font-bold">-3.2 Nm</span> OEM FLAT-SPOT</div>
                     <div><span class="text-orange-400 block font-bold">+3.2 Nm</span> TORQUE GAIN</div>
                     <div><span class="text-white block font-bold">72 MM</span> EXTENDED HORN</div>
-                </div>
-            </div>
-
-            <!-- BIKE 4: KTM 390 PLATFORM (DUKE & RC) -->
-            <div class="glass-hull p-8 rounded-2xl relative overflow-hidden group border-l-2 border-[#ff1e38]">
-                <div class="flex justify-between items-start mb-6">
-                    <div>
-                        <span class="text-[10px] font-mono text-[#ff1e38] uppercase tracking-widest block mb-1">CYCLIC HIGH-VACUUM WALL FLUTTER</span>
-                        <h3 class="text-2xl font-black text-white group-hover:text-[#ff1e38] transition">KTM 390 PLATFORM</h3>
-                    </div>
-                    <span class="px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-zinc-400 rounded">GEN 2 & GEN 3</span>
-                </div>
-
-                <div class="space-y-3 text-xs text-zinc-400 font-light leading-relaxed mb-6">
-                    <p>
-                        <strong class="text-zinc-200">The Stock Problem:</strong> Massive single-cylinder intake vacuum pulses down to -35 kPa cause the OEM plastic funnel walls to flex and flutter inward, choking top-end breathing above 8,800 RPM.
-                    </p>
-                    <p>
-                        <strong class="text-zinc-200">The XCD Solution:</strong> FEA-reinforced ASA-Carbon matrix with 6 solid outer perimeters and integrated radial stiffeners that eliminate wall deflection completely up to 10,200 RPM.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-3 gap-2 font-mono text-[10px] pt-4 border-t border-white/10 text-zinc-500">
-                    <div><span class="text-white block font-bold">-35 kPa</span> VACUUM SPIKES</div>
-                    <div><span class="text-[#ff1e38] block font-bold">ZERO</span> WALL FLUTTER</div>
-                    <div><span class="text-white block font-bold">ASA-CF</span> MATRIX CORE</div>
                 </div>
             </div>
 
@@ -771,7 +1109,7 @@
         </div>
     </section>
 
-    <!-- SECTION 7: THE 5-YEAR ENGINEERING AIM & DISRUPTOR MANIFESTO -->
+    <!-- SECTION 7: THE ENGINEERING AIM & DISRUPTOR MANIFESTO -->
     <section id="manifesto" class="relative z-20 py-32 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/5">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
@@ -779,10 +1117,10 @@
                 <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#ff1e38] block mb-2">[ THE DISRUPTOR ORIGIN ]</span>
                 <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight mb-6">Breaking The ₹25,000 Import Cartel.</h2>
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-zinc-900 border border-zinc-800 text-xs font-mono text-[#00f0ff] mb-6">
-                    FOUNDED BY AN 18-YEAR-OLD RACER & AERODYNAMICS ENGINEER
+                    ENGINEERED, TESTED & DISPATCHED FROM BENGALURU
                 </div>
                 <p class="text-zinc-500 font-mono text-xs leading-relaxed">
-                    "I spent months waiting for basic foreign parts that cost half my paycheck. Developing for the Honda CBR 250R single and the Aprilia RS 457 270° twin on closed asphalt proved it: world-class motorsport engineering can be modeled, verified, and dispatched right here."
+                    "I spent months waiting for basic foreign parts that cost half my paycheck. Developing for the Honda CBR 250R single, Aprilia RS 457 270° twin, and Harley X440 on closed track asphalt proved it: world-class motorsport engineering can be modeled, verified, and dispatched right here."
                 </p>
             </div>
 
@@ -821,7 +1159,7 @@
                         <span class="text-zinc-500 text-[11px]">Compared to overseas imports</span>
                     </div>
                     <div>
-                        <span class="text-[#ff1e38] font-black text-xl block">100% CFD & DRAGY</span>
+                        <span class="text-[#ff1e38] font-black text-xl block">100% CFD & GPS</span>
                         <span class="text-zinc-500 text-[11px]">Validated on real track asphalt</span>
                     </div>
                 </div>
@@ -835,11 +1173,15 @@
         <span class="text-xs font-mono uppercase tracking-[0.3em] text-[#00f0ff] block mb-3">[ EXPANDING FLEET MATRIX ]</span>
         <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight mb-6">Inspect The Performance Fleet</h2>
         <p class="text-zinc-400 max-w-lg mx-auto text-sm md:text-base mb-10 font-light">
-            From the twin-harmonic Aprilia RS 457 and high-rev Honda CBR 250R to the Continental GT 650 and KTM 390 singles, access technical dossiers and telemetry specs.
+            From the twin-harmonic Aprilia RS 457 and high-rev Honda CBR 250R to the Harley X440 and RE GT 650, access technical dossiers and telemetry specs.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
             <a href="twinsync-457.html" class="px-8 py-5 bg-[#00f0ff] hover:bg-white text-black font-mono font-black uppercase tracking-[0.15em] text-xs rounded-lg transition duration-300 neon-glow-cyan inline-flex items-center gap-2">
                 <span>RS 457 TWINSYNC DOSSIER</span>
+                <span>→</span>
+            </a>
+            <a href="x440.html" class="px-8 py-5 bg-[#d47a2a] hover:bg-white text-black font-mono font-black uppercase tracking-[0.15em] text-xs rounded-lg transition duration-300 neon-glow-bronze inline-flex items-center gap-2">
+                <span>HARLEY X440 DOSSIER</span>
                 <span>→</span>
             </a>
             <a href="catalog.html" class="px-8 py-5 border border-white/20 hover:border-white text-white font-mono font-black uppercase tracking-[0.15em] text-xs rounded-lg transition duration-300 inline-flex items-center gap-2">
@@ -951,7 +1293,72 @@
             scrollTrigger: { trigger: "#intake-graphs", start: "top 75%" }
         });
 
-        // 6. DUAL-PLATFORM ACOUSTIC TUNER LOGIC (RS 457 vs CBR 250R)
+        // 6. HIGH-SPEED KINETIC CAROUSEL AUTOMATION ENGINE
+        const carouselTrack = document.getElementById('homeCarouselTrack');
+        const prevBtn = document.getElementById('carousel-prev-btn');
+        const nextBtn = document.getElementById('carousel-next-btn');
+        let currentSlide = 0;
+        let autoSlideTimer = null;
+
+        function getVisibleCardsCount() {
+            if (window.innerWidth <= 640) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        }
+
+        function updateCarouselPosition() {
+            const cards = document.querySelectorAll('.carousel-card-item');
+            if (!cards.length) return;
+            const visible = getVisibleCardsCount();
+            const maxIndex = Math.max(0, cards.length - visible);
+            
+            if (currentSlide > maxIndex) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = maxIndex;
+
+            const cardWidth = cards[0].getBoundingClientRect().width;
+            const gap = 24; // 1.5rem
+            const shiftAmount = currentSlide * (cardWidth + gap);
+            carouselTrack.style.transform = `translateX(-${shiftAmount}px)`;
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            updateCarouselPosition();
+        }
+
+        function prevSlide() {
+            currentSlide--;
+            updateCarouselPosition();
+        }
+
+        function startAutoCycle() {
+            stopAutoCycle();
+            autoSlideTimer = setInterval(nextSlide, 2800); // Fast 2.8s cycle
+        }
+
+        function stopAutoCycle() {
+            if (autoSlideTimer) clearInterval(autoSlideTimer);
+        }
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                startAutoCycle();
+            });
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                startAutoCycle();
+            });
+        }
+
+        carouselTrack.addEventListener('mouseenter', stopAutoCycle);
+        carouselTrack.addEventListener('mouseleave', startAutoCycle);
+        window.addEventListener('resize', updateCarouselPosition);
+
+        // Start initial auto cycle
+        startAutoCycle();
+
+        // 7. DUAL-PLATFORM ACOUSTIC TUNER LOGIC (RS 457 vs CBR 250R)
         let activePlatform = 'rs457';
         const slider = document.getElementById('rpm-slider');
 
@@ -1023,7 +1430,7 @@
             slider.addEventListener('input', updateTunerCalculations);
         }
 
-        // 7. OVERDRIVE EASTER EGG (KEY: R)
+        // 8. OVERDRIVE EASTER EGG (KEY: R)
         let raceMode = false;
         function toggleRaceMode() {
             raceMode = !raceMode;

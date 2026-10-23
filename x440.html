@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harley-Davidson X440 Velocity Stack | XCD Industries</title>
+
+    <style>
+        :root {
+            --bg-obsidian: #08080a;
+            --surface-card: #121216;
+            --accent-bronze: #d47a2a;
+            --accent-glow: rgba(212, 122, 42, 0.25);
+            --text-main: #f0f0f2;
+            --text-muted: #8a8a93;
+            --border-glow: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        body { background-color: var(--bg-obsidian); color: var(--text-main); line-height: 1.6; }
+
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; border-bottom: 1px solid var(--border-glow); }
+        .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: 2px; color: var(--text-main); text-decoration: none; }
+        .logo span { color: var(--accent-bronze); }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--text-main); }
+
+        .product-container { max-width: 1200px; margin: 4rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        
+        .product-preview {
+            background: radial-gradient(circle at center, var(--surface-card) 0%, var(--bg-obsidian) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 420px;
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--accent-bronze);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        .product-title { font-size: 2.5rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .product-subtitle { color: var(--accent-bronze); font-weight: 600; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .product-desc { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem; }
+
+        .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem; }
+        .spec-item { background: var(--surface-card); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-glow); }
+        .spec-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .spec-value { font-weight: 700; margin-top: 0.25rem; }
+
+        .cta-btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: var(--accent-bronze);
+            color: #000;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--accent-glow); }
+
+        @media (max-width: 768px) {
+            .product-container { grid-template-columns: 1fr; gap: 2rem; margin: 2rem auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">XCD <span>INDUSTRIES</span></a>
+        <div class="nav-links">
+            <a href="index.html#lineup">LINEUP</a>
+            <a href="index.html#testing">R&D</a>
+            <a href="index.html#contact">CONTACT</a>
+        </div>
+    </nav>
+
+    <div class="product-container">
+        <div class="product-preview">
+            <span class="badge">NEW RELEASE</span>
+            <svg width="220" height="220" viewBox="0 0 24 24" fill="none" stroke="var(--accent-bronze)" stroke-width="1.2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+        </div>
+
+        <div class="product-details">
+            <h1 class="product-title">HARLEY-DAVIDSON X440</h1>
+            <div class="product-subtitle">CUSTOM PERFORMANCE VELOCITY STACK</div>
+            <p class="product-desc">
+                Engineered specifically for the HD X440 single-cylinder powerband. Designed to smooth out intake air turbulence, increase low-to-mid torque response, and maximize volumetric efficiency across the RPM curve.
+            </p>
+
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-label">Fitment</div>
+                    <div class="spec-value">Harley-Davidson X440</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Material</div>
+                    <div class="spec-value">ASA / Carbon Fiber PETG</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Finish Options</div>
+                    <div class="spec-value">Burnt Bronze / Stealth Black</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Design Standard</div>
+                    <div class="spec-value">CFD Optimized Profile</div>
+                </div>
+            </div>
+
+            <a href="index.html#contact" class="cta-btn">INQUIRE / ORDER NOW</a>
+        </div>
+    </div>
+
+</body>
+</html>
