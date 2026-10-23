@@ -32,16 +32,6 @@
                         sans: ['Inter', 'sans-serif'],
                         tech: ['Chakra Petch', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace']
-                    },
-                    animation: {
-                        'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'glow': 'glow 2s infinite alternate',
-                    },
-                    keyframes: {
-                        glow: {
-                            '0%': { boxShadow: '0 0 15px rgba(255, 30, 56, 0.4)' },
-                            '100%': { boxShadow: '0 0 35px rgba(255, 30, 56, 0.9)' }
-                        }
                     }
                 }
             }
@@ -62,23 +52,19 @@
         .text-glow-red {
             text-shadow: 0 0 20px rgba(255, 30, 56, 0.7), 0 0 40px rgba(255, 30, 56, 0.3);
         }
-        .border-glow-red {
-            box-shadow: 0 0 15px rgba(255, 30, 56, 0.3);
-        }
         .grid-bg {
             background-image: linear-gradient(to right, rgba(255, 30, 56, 0.05) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(255, 30, 56, 0.05) 1px, transparent 1px);
             background-size: 30px 30px;
         }
         .glass-panel {
-            background: rgba(18, 18, 24, 0.75);
+            background: rgba(18, 18, 24, 0.85);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 30, 56, 0.2);
         }
         .clip-tech {
             clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
         }
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -101,15 +87,15 @@
             <span class="hidden md:inline text-brand-red font-semibold">⚡ DYNO ACCURACY: ±0.05 WHP</span>
         </div>
         <div class="flex items-center gap-6">
-            <span class="text-gray-300 hidden lg:inline"><i class="fa-solid fa-truck-fast text-brand-red mr-1"></i> EXPRESS WORLDWIDE SHIPPING AVAILABLE</span>
+            <span class="text-gray-300 hidden lg:inline"><i class="fa-solid fa-truck-fast text-brand-red mr-1"></i> 48-HOUR PAN-INDIA DISPATCH</span>
             <a href="https://wa.me/919741523704?text=Hi%20XCD%20Industries,%20I%20want%20to%20order%20a%20Velocity%20Stack%20for%20my%20motorcycle!" target="_blank" class="text-brand-red hover:text-white font-bold transition flex items-center gap-1">
-                <i class="fa-brands fa-whatsapp text-sm"></i> DIRECT WHATSAPP ORDER
+                <i class="fa-brands fa-whatsapp text-sm"></i> WHATSAPP: +91 9741523704
             </a>
         </div>
     </div>
 
     <!-- MAIN LOGO-LESS NAVIGATION HEADER -->
-    <nav class="sticky top-0 z-40 bg-brand-carbon/90 backdrop-blur-md border-b border-brand-red/30 px-4 lg:px-8 py-3.5 flex justify-between items-center">
+    <nav class="sticky top-0 z-40 bg-brand-carbon/95 backdrop-blur-md border-b border-brand-red/30 px-4 lg:px-8 py-3.5 flex justify-between items-center">
         <div class="flex items-center space-x-3">
             <a href="#" class="font-tech text-xl lg:text-2xl font-black tracking-widest text-white hover:text-brand-red transition flex items-center gap-2">
                 <span class="text-brand-red font-mono">&gt;//</span> XCD <span class="text-brand-red">INDUSTRIES</span>
@@ -122,25 +108,23 @@
             <a href="#gains" class="hover:text-brand-red transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chart-line text-brand-red text-xs"></i> DYNO DATA</a>
             <a href="#tuner" class="hover:text-brand-red transition-colors flex items-center gap-1.5"><i class="fa-solid fa-sliders text-brand-red text-xs"></i> ACOUSTIC TUNER</a>
             <a href="#telemetry" class="hover:text-brand-red transition-colors flex items-center gap-1.5"><i class="fa-solid fa-satellite text-brand-red text-xs"></i> TELEMETRY</a>
-            <a href="#contact" class="hover:text-brand-red transition-colors flex items-center gap-1.5"><i class="fa-solid fa-headset text-brand-red text-xs"></i> CONTACT</a>
+            <a href="#manifesto" class="hover:text-brand-red transition-colors flex items-center gap-1.5"><i class="fa-solid fa-flag text-brand-red text-xs"></i> MANIFESTO</a>
         </div>
 
         <div class="flex items-center space-x-3">
-            <a href="https://wa.me/919741523704?text=Hi%20XCD%20Industries,%20I%20want%20to%20consult%20regarding%20a%20velocity%20stack." target="_blank" class="bg-gradient-to-r from-brand-red to-brand-crimson hover:from-brand-neonRed hover:to-brand-red text-white font-tech font-bold px-4 py-2 text-xs uppercase rounded tracking-wider transition-all duration-300 shadow-lg shadow-brand-red/40 flex items-center gap-2">
+            <a href="https://wa.me/919741523704?text=Hi%20XCD%20Industries,%20I%20want%20to%20order%20a%20Velocity%20Stack." target="_blank" class="bg-gradient-to-r from-brand-red to-brand-crimson hover:from-brand-neonRed hover:to-brand-red text-white font-tech font-bold px-4 py-2 text-xs uppercase rounded tracking-wider transition-all duration-300 shadow-lg shadow-brand-red/40 flex items-center gap-2">
                 <i class="fa-brands fa-whatsapp text-sm"></i> Order Now
             </a>
         </div>
     </nav>
 
-    <!-- EYE-CATCHING HERO HEADER WITH RED GRADIENTS & TAGLINE -->
+    <!-- HERO HEADER -->
     <header class="relative bg-gradient-to-b from-brand-darkRed/40 via-brand-carbon to-brand-carbon py-12 lg:py-16 px-4 border-b border-brand-red/30 grid-bg overflow-hidden">
-        <!-- Ambient Red Glow Spheres -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-red/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute bottom-0 right-10 w-72 h-72 bg-brand-red/10 rounded-full blur-2xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto text-center relative z-10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-red/20 border border-brand-red/50 text-brand-red text-xs font-mono font-bold mb-4 tracking-widest uppercase animate-pulse">
-                <i class="fa-solid fa-fire-flame-curved"></i> NEXT-GEN INTAKE MANIFOLD VELOCITY STACKS
+                <i class="fa-solid fa-fire-flame-curved"></i> HIGH-VELOCITY INTAKE MANIFOLD STACKS
             </div>
             
             <h1 class="font-tech text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white mb-4">
@@ -159,39 +143,35 @@
         </div>
     </header>
 
-    <!-- KEYNOTE SLIDER SECTION (FASTER & CLEARER BIKE IDENTIFIERS) -->
+    <!-- KEYNOTE SLIDER SECTION (FULL-WIDTH EDGE-TO-EDGE, CLEAN CONTROL BAR) -->
     <section id="models" class="py-12 bg-brand-carbon relative border-b border-brand-red/20">
-        <div class="max-w-7xl mx-auto px-4">
+        <div class="w-full px-4 lg:px-12">
             
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-brand-red/20">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-brand-red/20 max-w-7xl mx-auto">
                 <div>
                     <span class="text-brand-red font-mono text-xs font-bold tracking-widest uppercase">// FEATURED MOTORCYCLE PLATFORMS</span>
                     <h2 class="font-tech text-3xl lg:text-4xl font-extrabold text-white mt-1">ENGINEERED FOR SUPREMACY</h2>
                 </div>
                 <div class="mt-4 md:mt-0 flex items-center space-x-2 font-mono text-xs">
-                    <span class="text-gray-400">SLIDE SPEED: <strong class="text-brand-red">2.8s FAST-SYNC</strong></span>
-                    <div class="flex space-x-1 ml-4">
-                        <button id="slider-prev" class="w-9 h-9 rounded bg-brand-titanium hover:bg-brand-red text-white flex items-center gap-0 justify-center transition border border-brand-red/30"><i class="fa-solid fa-chevron-left text-xs"></i></button>
-                        <button id="slider-next" class="w-9 h-9 rounded bg-brand-titanium hover:bg-brand-red text-white flex items-center gap-0 justify-center transition border border-brand-red/30"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                    <div class="flex space-x-2">
+                        <button id="slider-prev" class="w-10 h-10 rounded bg-brand-titanium hover:bg-brand-red text-white flex items-center justify-center transition border border-brand-red/30"><i class="fa-solid fa-chevron-left text-sm"></i></button>
+                        <button id="slider-next" class="w-10 h-10 rounded bg-brand-titanium hover:bg-brand-red text-white flex items-center justify-center transition border border-brand-red/30"><i class="fa-solid fa-chevron-right text-sm"></i></button>
                     </div>
                 </div>
             </div>
 
-            <!-- SLIDER CONTAINER -->
+            <!-- FULL WIDTH SLIDER CONTAINER (NO BOX CONSTRAINTS) -->
             <div class="relative overflow-hidden rounded-2xl bg-gradient-to-b from-brand-titanium/50 to-brand-carbon border border-brand-red/40 shadow-2xl">
                 
-                <!-- PROGRESS BAR TOP -->
                 <div class="w-full bg-brand-carbonLight h-1.5 relative overflow-hidden">
                     <div id="slider-progress" class="h-full bg-gradient-to-r from-brand-crimson via-brand-red to-white w-0 transition-all duration-100 ease-linear"></div>
                 </div>
 
-                <!-- SLIDES WRAPPER -->
                 <div id="slider-wrapper" class="relative min-h-[520px] sm:min-h-[460px] flex transition-transform duration-500 ease-out">
                     
                     <!-- SLIDE 1: APRILIA RS 457 -->
                     <div class="slide-item w-full flex-shrink-0 p-6 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                         <div class="lg:col-span-7 space-y-6">
-                            <!-- HUGE UNMISTAKABLE BIKE BADGE -->
                             <div class="inline-flex items-center gap-3 bg-brand-red text-white px-4 py-2 rounded-md font-tech font-black text-lg lg:text-xl tracking-wider shadow-lg shadow-brand-red/50">
                                 <i class="fa-solid fa-flag-checkered"></i> APRILIA RS 457
                             </div>
@@ -201,10 +181,9 @@
                             </h3>
 
                             <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-                                The factory parallel-twin intake suffers from severe high-RPM resonant stalling above 8,800 RPM. The XCD RS 457 Stack equalizes cylinder cylinder fill to 99.8%, unlocking immense acceleration.
+                                The factory parallel-twin intake suffers from severe high-RPM resonant stalling above 8,800 RPM. The XCD RS 457 Stack equalizes cylinder fill to 99.8%, unlocking immense acceleration.
                             </p>
 
-                            <!-- STAGE PERFORMANCE STATS GRID -->
                             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs">
                                 <div class="bg-brand-carbon/90 p-3 rounded border border-brand-red/30">
                                     <span class="text-gray-400 block text-[10px]">STOCK STACK ONLY</span>
@@ -225,10 +204,10 @@
 
                             <div class="pt-2 flex flex-wrap gap-4">
                                 <a href="https://wa.me/919741523704?text=Hi!%20I%20want%20to%20order%20the%20XCD%20Velocity%20Stack%20for%20Aprilia%20RS%20457." target="_blank" class="bg-brand-red hover:bg-brand-crimson text-white font-tech font-bold px-6 py-3 rounded text-sm uppercase tracking-wider flex items-center gap-2 transition shadow-lg shadow-brand-red/40">
-                                    <i class="fa-brands fa-whatsapp text-base"></i> Order Aprilia Stack
+                                    <i class="fa-brands fa-whatsapp text-base"></i> Order RS 457 Stack
                                 </a>
-                                <a href="#gains" class="border border-brand-red/40 hover:border-brand-red text-gray-300 hover:text-white px-5 py-3 rounded text-sm font-mono font-semibold transition">
-                                    View Dyno Curve &rarr;
+                                <a href="twinsync-457.html" class="border border-brand-red/40 hover:border-brand-red text-gray-300 hover:text-white px-5 py-3 rounded text-sm font-mono font-semibold transition">
+                                    View Platform Dossier &rarr;
                                 </a>
                             </div>
                         </div>
@@ -254,7 +233,6 @@
                     <!-- SLIDE 2: HONDA CBR 250R -->
                     <div class="slide-item w-full flex-shrink-0 p-6 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                         <div class="lg:col-span-7 space-y-6">
-                            <!-- HUGE UNMISTAKABLE BIKE BADGE -->
                             <div class="inline-flex items-center gap-3 bg-red-600 text-white px-4 py-2 rounded-md font-tech font-black text-lg lg:text-xl tracking-wider shadow-lg shadow-red-600/50">
                                 <i class="fa-solid fa-motorcycle"></i> HONDA CBR 250R
                             </div>
@@ -267,7 +245,6 @@
                                 The legendary quarter-liter single holds massive untapped potential. The XCD stack expands top-end overrev hold by 1,200 RPM while dramatically sharpening mid-corner roll-on throttle responses.
                             </p>
 
-                            <!-- STAGE PERFORMANCE STATS GRID -->
                             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs">
                                 <div class="bg-brand-carbon/90 p-3 rounded border border-brand-red/30">
                                     <span class="text-gray-400 block text-[10px]">STOCK STACK ONLY</span>
@@ -290,8 +267,8 @@
                                 <a href="https://wa.me/919741523704?text=Hi!%20I%20want%20to%20order%20the%20XCD%20Velocity%20Stack%20for%20Honda%20CBR%20250R." target="_blank" class="bg-brand-red hover:bg-brand-crimson text-white font-tech font-bold px-6 py-3 rounded text-sm uppercase tracking-wider flex items-center gap-2 transition shadow-lg shadow-brand-red/40">
                                     <i class="fa-brands fa-whatsapp text-base"></i> Order CBR 250R Stack
                                 </a>
-                                <a href="#gains" class="border border-brand-red/40 hover:border-brand-red text-gray-300 hover:text-white px-5 py-3 rounded text-sm font-mono font-semibold transition">
-                                    View Dyno Curve &rarr;
+                                <a href="aeropulse-r38.html" class="border border-brand-red/40 hover:border-brand-red text-gray-300 hover:text-white px-5 py-3 rounded text-sm font-mono font-semibold transition">
+                                    View Platform Dossier &rarr;
                                 </a>
                             </div>
                         </div>
@@ -317,7 +294,6 @@
                     <!-- SLIDE 3: HARLEY-DAVIDSON X440 -->
                     <div class="slide-item w-full flex-shrink-0 p-6 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                         <div class="lg:col-span-7 space-y-6">
-                            <!-- HUGE UNMISTAKABLE BIKE BADGE -->
                             <div class="inline-flex items-center gap-3 bg-amber-600 text-white px-4 py-2 rounded-md font-tech font-black text-lg lg:text-xl tracking-wider shadow-lg shadow-amber-600/50">
                                 <i class="fa-solid fa-bolt"></i> HARLEY-DAVIDSON X440
                             </div>
@@ -330,7 +306,6 @@
                                 Transform the single-cylinder rumble into a relentless wave of midrange torque. Smooth out throttle hesitancy between 2,500 and 5,000 RPM for instant highway overtaking.
                             </p>
 
-                            <!-- STAGE PERFORMANCE STATS GRID -->
                             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs">
                                 <div class="bg-brand-carbon/90 p-3 rounded border border-brand-red/30">
                                     <span class="text-gray-400 block text-[10px]">STOCK STACK ONLY</span>
@@ -353,8 +328,8 @@
                                 <a href="https://wa.me/919741523704?text=Hi!%20I%20want%20to%20order%20the%20XCD%20Velocity%20Stack%20for%20Harley%20X440." target="_blank" class="bg-brand-red hover:bg-brand-crimson text-white font-tech font-bold px-6 py-3 rounded text-sm uppercase tracking-wider flex items-center gap-2 transition shadow-lg shadow-brand-red/40">
                                     <i class="fa-brands fa-whatsapp text-base"></i> Order Harley X440 Stack
                                 </a>
-                                <a href="#gains" class="border border-brand-red/40 hover:border-brand-red text-gray-300 hover:text-white px-5 py-3 rounded text-sm font-mono font-semibold transition">
-                                    View Dyno Curve &rarr;
+                                <a href="x440.html" class="border border-brand-red/40 hover:border-brand-red text-gray-300 hover:text-white px-5 py-3 rounded text-sm font-mono font-semibold transition">
+                                    View Platform Dossier &rarr;
                                 </a>
                             </div>
                         </div>
@@ -365,7 +340,7 @@
                                     <span class="font-mono text-5xl font-black text-brand-red/20">#X440</span>
                                 </div>
                                 <div class="text-center py-8">
-                                    <i class="fa-solid fa-[#ff1e38] fa-compress text-7xl text-brand-red mb-4 animate-pulse"></i>
+                                    <i class="fa-solid fa-compress text-7xl text-brand-red mb-4 animate-pulse"></i>
                                     <h4 class="font-tech text-2xl font-extrabold text-white">TORQUE-INTENSIVE FUNNEL</h4>
                                     <p class="font-mono text-xs text-brand-red mt-1">ACOUSTICALLY TUNED</p>
                                 </div>
@@ -380,7 +355,6 @@
                     <!-- SLIDE 4: KTM DUKE 390 GEN 2 BS6 -->
                     <div class="slide-item w-full flex-shrink-0 p-6 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                         <div class="lg:col-span-7 space-y-6">
-                            <!-- HUGE UNMISTAKABLE BIKE BADGE -->
                             <div class="inline-flex items-center gap-3 bg-orange-600 text-white px-4 py-2 rounded-md font-tech font-black text-lg lg:text-xl tracking-wider shadow-lg shadow-orange-600/50">
                                 <i class="fa-solid fa-fire"></i> KTM DUKE 390 (GEN 2 BS6)
                             </div>
@@ -393,7 +367,6 @@
                                 Eliminate the dreaded BS6 top-end power cliff. The XCD Duke 390 Stack delivers razor-sharp throttle response out of tight corners and holds maximum horsepower all the way to the rev limiter.
                             </p>
 
-                            <!-- STAGE PERFORMANCE STATS GRID -->
                             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs">
                                 <div class="bg-brand-carbon/90 p-3 rounded border border-brand-red/30">
                                     <span class="text-gray-400 block text-[10px]">STOCK STACK ONLY</span>
@@ -416,8 +389,8 @@
                                 <a href="https://wa.me/919741523704?text=Hi!%20I%20want%20to%20order%20the%20XCD%20Velocity%20Stack%20for%20KTM%20Duke%20390." target="_blank" class="bg-brand-red hover:bg-brand-crimson text-white font-tech font-bold px-6 py-3 rounded text-sm uppercase tracking-wider flex items-center gap-2 transition shadow-lg shadow-brand-red/40">
                                     <i class="fa-brands fa-whatsapp text-base"></i> Order Duke 390 Stack
                                 </a>
-                                <a href="#gains" class="border border-brand-red/40 hover:border-brand-red text-gray-300 hover:text-white px-5 py-3 rounded text-sm font-mono font-semibold transition">
-                                    View Dyno Curve &rarr;
+                                <a href="#manifesto" class="border border-brand-red/40 hover:border-brand-red text-gray-300 hover:text-white px-5 py-3 rounded text-sm font-mono font-semibold transition">
+                                    Read R&D Manifesto &rarr;
                                 </a>
                             </div>
                         </div>
@@ -442,7 +415,6 @@
 
                 </div>
 
-                <!-- SLIDER NAVIGATION DOTS / INDICATORS -->
                 <div class="bg-brand-carbon p-4 border-t border-brand-red/20 flex justify-center items-center gap-3">
                     <button class="slide-dot w-3 h-3 rounded-full bg-brand-red transition-all" onclick="goToSlide(0)"></button>
                     <button class="slide-dot w-3 h-3 rounded-full bg-gray-600 transition-all" onclick="goToSlide(1)"></button>
@@ -478,7 +450,6 @@
                 <p class="text-gray-400 text-sm sm:text-base mt-2">Real dyno telemetry comparing OEM factory setup against XCD Velocity Stack upgrades.</p>
             </div>
 
-            <!-- COMPARATIVE CARDS GRID -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
                 <!-- STAGE 0: BASELINE -->
@@ -587,7 +558,6 @@
                         <span class="text-brand-red font-bold animate-pulse">● 100 Hz SAMPLING</span>
                     </div>
 
-                    <!-- CANVAS FOR FREQUENCY WAVE -->
                     <canvas id="waveCanvas" class="w-full h-64 bg-brand-carbonLight rounded border border-brand-red/20 my-2"></canvas>
 
                     <div class="flex justify-between items-center text-[11px] font-mono text-gray-400">
@@ -600,42 +570,45 @@
         </div>
     </section>
 
-    <!-- LIVE 100 Hz GPS TELEMETRY BENCH SECTION -->
-    <section id="telemetry" class="py-16 bg-brand-carbon relative border-b border-brand-red/20">
-        <div class="max-w-7xl mx-auto px-4">
-            
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-brand-red font-mono text-xs font-bold tracking-widest uppercase">// TRACK TELEMETRY</span>
-                <h2 class="font-tech text-4xl font-extrabold text-white mt-1">SATELLITE ACCELERATION TELEMETRY</h2>
-                <p class="text-gray-400 text-sm mt-2">Tested on 100 Hz high-precision GPS telemetry loggers at Madras International Circuit.</p>
+    <!-- FOUNDER MANIFESTO (THE MOTIVE SECTION) -->
+    <section id="manifesto" class="py-20 bg-brand-carbon relative border-b border-brand-red/20">
+        <div class="max-w-5xl mx-auto px-4 space-y-8">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-red/20 border border-brand-red/40 text-brand-red font-mono text-xs font-bold tracking-widest uppercase">
+                <i class="fa-solid fa-flag-checkered"></i> BENGALURU DYNAMICS LAB
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 font-mono">
-                
-                <div class="glass-panel p-5 rounded-xl border border-brand-red/30">
-                    <span class="text-gray-400 text-xs block">0-100 KM/H TIMED</span>
-                    <div class="text-3xl font-extrabold text-white my-2">6.88s</div>
-                    <span class="text-emerald-400 text-xs"><i class="fa-solid fa-arrow-down mr-1"></i> -1.53s vs Factory OEM</span>
-                </div>
+            <h2 class="font-tech text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                BREAKING THE ₹25,000 IMPORT CARTEL[cite: 8].
+            </h2>
 
-                <div class="glass-panel p-5 rounded-xl border border-brand-red/30">
-                    <span class="text-gray-400 text-xs block">400M QUARTER MILE</span>
-                    <div class="text-3xl font-extrabold text-white my-2">14.12s</div>
-                    <span class="text-emerald-400 text-xs"><i class="fa-solid fa-bolt mr-1"></i> +8.4 km/h Trap Speed</span>
-                </div>
+            <div class="space-y-6 text-gray-300 font-sans text-base sm:text-lg leading-relaxed">
+                <p>
+                    For years, Indian track riders and performance enthusiasts were forced to choose between underperforming OEM restrictive airboxes or paying extortionate ₹25,000+ import duties for overseas intake brands designed for European climates[cite: 8].
+                </p>
+                <p class="text-white font-semibold">
+                    XCD Industries was founded in Bengaluru by a track racer and aerodynamics engineer with a single mission: to design, benchmark, and manufacture world-class CFD-optimized air intake systems in India at 1/4th the price of imports[cite: 8].
+                </p>
+                <p>
+                    Every velocity stack, plenum chamber, and venturi throat is track-tested on 100 Hz satellite GPS telemetry, engineered using heat-resistant thermal polymers, and dispatched across India within 48 hours[cite: 8].
+                </p>
+            </div>
 
-                <div class="glass-panel p-5 rounded-xl border border-brand-red/30">
-                    <span class="text-gray-400 text-xs block">AIR INTAKE TEMP DROP</span>
-                    <div class="text-3xl font-extrabold text-white my-2">-4.2 °C</div>
-                    <span class="text-emerald-400 text-xs"><i class="fa-solid fa-snowflake mr-1"></i> Cooler Dense Air Charge</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 font-mono text-xs">
+                <div class="bg-brand-titanium/50 p-5 rounded-xl border border-brand-red/30">
+                    <i class="fa-solid fa-truck-fast text-brand-red text-2xl mb-2"></i>
+                    <h4 class="font-bold text-white text-sm mb-1">48-Hour Dispatch</h4>
+                    <p class="text-gray-400 text-[11px]">Direct from Bengaluru lab to your doorstep[cite: 8].</p>
                 </div>
-
-                <div class="glass-panel p-5 rounded-xl border border-brand-red/30">
-                    <span class="text-gray-400 text-xs block">VACUUM DEFLECTION</span>
-                    <div class="text-3xl font-extrabold text-white my-2">0.00 mm</div>
-                    <span class="text-brand-red text-xs"><i class="fa-solid fa-shield mr-1"></i> Rigid Carbon Polyolefin</span>
+                <div class="bg-brand-titanium/50 p-5 rounded-xl border border-brand-red/30">
+                    <i class="fa-solid fa-tags text-emerald-400 text-2xl mb-2"></i>
+                    <h4 class="font-bold text-white text-sm mb-1">1/4th Import Price</h4>
+                    <p class="text-gray-400 text-[11px]">Zero import duty markup. Pure engineering value[cite: 8].</p>
                 </div>
-
+                <div class="bg-brand-titanium/50 p-5 rounded-xl border border-brand-red/30">
+                    <i class="fa-solid fa-satellite text-cyan-400 text-2xl mb-2"></i>
+                    <h4 class="font-bold text-white text-sm mb-1">100Hz Satellite Benchmark</h4>
+                    <p class="text-gray-400 text-[11px]">Track verified acceleration logs[cite: 8].</p>
+                </div>
             </div>
         </div>
     </section>
@@ -739,10 +712,10 @@
             <div>
                 <h4 class="text-white font-bold mb-3 font-tech">SUPPORTED PLATFORMS</h4>
                 <ul class="space-y-1.5 text-gray-400 text-[11px]">
-                    <li>&gt; Aprilia RS 457 Twin</li>
-                    <li>&gt; Honda CBR 250R Single</li>
-                    <li>&gt; Harley-Davidson X440</li>
-                    <li>&gt; KTM Duke 390 BS6</li>
+                    <li><a href="twinsync-457.html" class="hover:text-brand-red transition">&gt; Aprilia RS 457 Twin</a></li>
+                    <li><a href="aeropulse-r38.html" class="hover:text-brand-red transition">&gt; Honda CBR 250R Single</a></li>
+                    <li><a href="x440.html" class="hover:text-brand-red transition">&gt; Harley-Davidson X440</a></li>
+                    <li><a href="#models" class="hover:text-brand-red transition">&gt; KTM Duke 390 BS6</a></li>
                 </ul>
             </div>
 
@@ -751,7 +724,7 @@
                 <ul class="space-y-1.5 text-gray-400 text-[11px]">
                     <li><button onclick="openModal('privacy-modal')" class="hover:text-brand-red transition">Privacy Policy</button></li>
                     <li><button onclick="openModal('terms-modal')" class="hover:text-brand-red transition">Terms of Performance Warranty</button></li>
-                    <li><button onclick="openModal('shipping-modal')" class="hover:text-brand-red transition">Shipping & Return Policy</button></li>
+                    <li><a href="https://wa.me/919741523704" target="_blank" class="hover:text-brand-red transition">Direct WhatsApp Support</a></li>
                 </ul>
             </div>
 
@@ -772,7 +745,7 @@
         </div>
     </footer>
 
-    <!-- FLOATING WHATSAPP DIRECT FAST BUTTON -->
+    <!-- FLOATING WHATSAPP DIRECT BUTTON TO 9741523704 -->
     <a href="https://wa.me/919741523704?text=Hi%20XCD%20Industries,%20I%20want%20to%20buy%20a%20Velocity%20Stack!" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-emerald-500 hover:bg-emerald-400 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl shadow-emerald-500/50 transition-all hover:scale-110">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -784,11 +757,11 @@
                 <h3 class="font-tech text-xl font-bold text-white">XCD PRIVACY POLICY & TELEMETRY DATA</h3>
                 <button onclick="closeModal('privacy-modal')" class="text-gray-400 hover:text-white text-lg">&times;</button>
             </div>
-            <p>At XCD Industries, we respect your privacy. All telemetry, orders, and WhatsApp consultations submitted through this site are encrypted and handled exclusively for processing your velocity stack orders.</p>
+            <p>At XCD Industries, we respect your privacy. All telemetry logs, order details, and WhatsApp consultations submitted through this site are encrypted and handled exclusively for processing your velocity stack orders.</p>
             <h4 class="text-white font-bold">1. Data Collected</h4>
-            <p>We collect contact numbers, motorcycle model details, and optional shipping addresses required for dispatching orders.</p>
+            <p>We collect phone numbers (+91 9741523704 direct link), motorcycle model details, and shipping addresses required for order fulfillment.</p>
             <h4 class="text-white font-bold">2. Telemetry Safeguards</h4>
-            <p>Calculated dynamic wave frequencies processed on our interactive tuners run client-side in JS without storing personal parameters.</p>
+            <p>Calculated acoustic frequencies processed on our interactive tuners run client-side in JavaScript without storing personal tracking information.</p>
             <div class="text-right pt-2">
                 <button onclick="closeModal('privacy-modal')" class="bg-brand-red text-white font-bold px-4 py-2 rounded">Close Window</button>
             </div>
@@ -802,9 +775,9 @@
                 <h3 class="font-tech text-xl font-bold text-white">TERMS OF PERFORMANCE WARRANTY</h3>
                 <button onclick="closeModal('terms-modal')" class="text-gray-400 hover:text-white text-lg">&times;</button>
             </div>
-            <p>All XCD Velocity Stacks are engineered to strict aero-acoustic tolerances. Horsepower and torque gains stated represent verified dyno and satellite telemetry results under controlled laboratory setups.</p>
+            <p>All XCD Velocity Stacks are engineered to strict aero-acoustic tolerances. Horsepower and torque gains stated represent verified dyno and satellite telemetry results under controlled setups.</p>
             <h4 class="text-white font-bold">Fitment Guarantee</h4>
-            <p>If your stack fails to bolt seamlessly into factory rubber airbox couplers upon arrival, XCD Industries will provide 100% free replacements or full refund.</p>
+            <p>If your stack fails to bolt seamlessly into factory rubber airbox couplers upon arrival, XCD Industries will provide 100% free replacements or a full refund.</p>
             <div class="text-right pt-2">
                 <button onclick="closeModal('terms-modal')" class="bg-brand-red text-white font-bold px-4 py-2 rounded">Close Window</button>
             </div>
@@ -813,16 +786,13 @@
 
     <!-- JAVASCRIPT SLIDER & INTERACTIVE TUNER LOGIC -->
     <script>
-        // ----------------------------------------------------
-        // KEYNOTE SLIDER LOGIC (2.8 SECONDS FASTER TRANSITIONS)
-        // ----------------------------------------------------
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide-item');
         const dots = document.querySelectorAll('.slide-dot');
         const wrapper = document.getElementById('slider-wrapper');
         const progressBar = document.getElementById('slider-progress');
         const slideCount = slides.length;
-        const slideIntervalTime = 2800; // Fast 2.8s transition
+        const slideIntervalTime = 2800;
         let slideTimer;
         let progressTimer;
         let progressPercent = 0;
@@ -861,7 +831,7 @@
             progressPercent = 0;
             progressBar.style.width = '0%';
             
-            const stepTime = 50; // Update every 50ms
+            const stepTime = 50;
             const stepIncrement = (stepTime / slideIntervalTime) * 100;
 
             progressTimer = setInterval(() => {
@@ -891,12 +861,9 @@
             startAutoSlide();
         });
 
-        // Initialize Slider on Load
         startAutoSlide();
 
-        // ----------------------------------------------------
-        // HELMHOLTZ RESONANCE INTERACTIVE CANVAS ANIMATION
-        // ----------------------------------------------------
+        // Canvas Acoustic Wave Animation
         const canvas = document.getElementById('waveCanvas');
         const ctx = canvas.getContext('2d');
         const rpmSlider = document.getElementById('rpm-slider');
@@ -907,8 +874,10 @@
         const boostOut = document.getElementById('boost-out');
 
         function resizeCanvas() {
-            canvas.width = canvas.parentElement.clientWidth;
-            canvas.height = canvas.parentElement.clientHeight;
+            if (canvas.parentElement) {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+            }
         }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
@@ -930,7 +899,6 @@
             freqOut.innerText = `${calculatedFreq} Hz`;
             boostOut.innerText = `+${calculatedBoost}% AIR VOL`;
 
-            // Draw Acoustic Sine Wave
             ctx.beginPath();
             ctx.lineWidth = 3;
             ctx.strokeStyle = '#ff1e38';
@@ -946,7 +914,6 @@
             }
             ctx.stroke();
 
-            // Draw Secondary Dynamic Wave
             ctx.beginPath();
             ctx.lineWidth = 1.5;
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
@@ -961,24 +928,14 @@
             requestAnimationFrame(drawWave);
         }
 
-        rpmSlider.addEventListener('input', () => {});
-        angleSlider.addEventListener('input', () => {});
         drawWave();
 
-        // ----------------------------------------------------
-        // UTILITY MODAL & FORM FUNCTIONS
-        // ----------------------------------------------------
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
         }
 
         function closeModal(id) {
             document.getElementById(id).classList.add('hidden');
-        }
-
-        function showFormSuccess() {
-            document.getElementById('contact-form').classList.add('hidden');
-            document.getElementById('form-success').classList.remove('hidden');
         }
     </script>
 </body>
