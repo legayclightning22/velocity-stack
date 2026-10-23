@@ -57,7 +57,7 @@ Factory OEM motorcycle airboxes are designed around noise emissions regulations 
 | **Bellmouth Flare** | 180° G1-Tangent Toroid | 180° Elliptical Coanda Lip | Rolled Hemispherical | 180° Reinforced Radius |
 | **Material Matrix** | Continuous-fiber ASA-CF | Continuous-fiber ASA-CF | Continuous-fiber ASA-CF | Continuous-fiber ASA-CF |
 | **Dyno Performance** | **+2.4 WHP Peak (+6.3 WHP Stg 2)** | **+1.8 WHP (+14.2% Flow)** | **+3.2 Nm Midrange Punch** | **Linear Rev to 10,200 RPM** |
-| **Production Status** | ![Ready](https://img.shields.io/badge/READY_TO_DELIVER-10b981?style=flat-square) | ![Ready](https://img.shields.io/badge/READY_TO_DELIVER-10b981?style=flat-square) | ![TOOLING ](https://img.shields.io/badge/PRE--ORDER-f97316?style=flat-square) | ![PRE ORDER](https://img.shields.io/badge/TOOLING_STAGE-71717a?style=flat-square) |
+| **Production Status** | ![Ready](https://img.shields.io/badge/READY_TO_DELIVER-10b981?style=flat-square) | ![Ready](https://img.shields.io/badge/READY_TO_DELIVER-10b981?style=flat-square) | ![TOOLING](https://img.shields.io/badge/TOOLING_STAGE-71717a?style=flat-square) | ![PRE ORDER](https://img.shields.io/badge/PRE--ORDER-f97316?style=flat-square) |
 
 ---
 
